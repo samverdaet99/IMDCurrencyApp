@@ -46,6 +46,17 @@ private $confirmPassword;
      */ 
     public function setEmail($email)
     {
+        $emailCheck = strrpos($email, "@student.thomasmore.be");
+    
+        if (empty ($email)){
+            throw new Exception ("Gelieve je email in te voeren.");
+        }
+
+        if ($emailCheck === false) { 
+            throw new Exception ("Vul een geldig email adress in");
+        }
+
+        
         $this->email = $email;
 
         return $this;
@@ -102,6 +113,7 @@ private $confirmPassword;
         $statement->bindParam(':email', $email);
         $result = $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
+
         $hash = $user['password'];
 	
         if(password_verify($password, $hash)){   
