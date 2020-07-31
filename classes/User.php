@@ -56,7 +56,7 @@ private $confirmPassword;
             throw new Exception ("Vul een geldig email adress in");
         }
 
-        
+
         $this->email = $email;
 
         return $this;
@@ -77,6 +77,13 @@ private $confirmPassword;
      */ 
     public function setPassword($password)
     {
+
+       
+         if(strlen(trim($password)) < 5)
+          {
+            throw new Exception ("Het wachtwoord moet minstens uit 5 tekens bestaan.");
+          }
+        
         $this->password = $password;
 
         return $this;
