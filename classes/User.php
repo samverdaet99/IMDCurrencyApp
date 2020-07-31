@@ -98,14 +98,14 @@ private $confirmPassword;
     public function canLogin($email,$password)
     {
         $conn = Db::getConnection();
-        $statement = $conn->prepare('select * from tl_users where email = :email');
+        $statement = $conn->prepare('select * from users where email = :email');
         $statement->bindParam(':email', $email);
         $result = $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
         $hash = $user['password'];
 	
-        if(password_verify($password, $hash)){   //gaat het password n^x encrypten en vergelijken met de hash
-            return true; //canlogin functie wil weten of het true is
+        if(password_verify($password, $hash)){   
+            return true; 
         }
         else{
             return false;
@@ -120,7 +120,7 @@ private $confirmPassword;
     {
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into tl_users (username,email,password) values(:username, :email, :password)");
+        $statement = $conn->prepare("insert into users (username,email,password) values(:username, :email, :password)");
         $username = $this->getUsername();
         $email = $this->getEmail();
         $password = $this->getPassword();
