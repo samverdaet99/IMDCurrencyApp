@@ -2,7 +2,21 @@
 
 include_once (__DIR__ . "/classes/User.php");
 
-
+if (!empty($_POST)) {	
+	try {
+	  $user = new User();
+	  $user->setUsername($_POST['username']);
+	  $user->setEmail($_POST['email']);
+	  $user->setPassword($_POST['wachtwoord']);
+	  $user->setConfirmPassword($_POST['wachtwoordHerhaling']);
+	  $user->registerUser();
+	  session_start();
+	  $_SESSION['user'] = $_POST['email'];
+	  header("Location: index.php");
+	} catch (\Throwable $th) {
+	  $error = $th->getMessage();
+	}
+  }
 
 ?>
 
