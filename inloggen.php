@@ -18,6 +18,16 @@ if(!empty($_POST)){
 			$_SESSION['user'] = $emaill;
 			header("Location: index.php"); //redirect to index.php
         }
+
+        else{
+			$error = "Uw e-mail en wachtwoord komen niet overeen!";
+		}
+	} 
+	else{
+		$error ="E-mail en wachtwoord zijn verplicht";	
+	}
+}
+
         
 ?>
 
