@@ -9,7 +9,10 @@ if (!empty($_POST)) {
 	  $user->setEmail($_POST['email']);
 	  $user->setPassword($_POST['wachtwoord']);
 	  $user->setConfirmPassword($_POST['wachtwoordHerhaling']);
+	  $user->setTokens($_POST['tokens']);
+
 	  $user->registerUser();
+	  
 	  session_start();
 	  $_SESSION['user'] = $_POST['email'];
 	  header("Location: index.php");

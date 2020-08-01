@@ -3,6 +3,24 @@ include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 include_once (__DIR__ . "/classes/Search.php");
 
+if (!empty($_POST)) {	
+	try {
+
+	  $transaction = new Transaction();
+	  $transaction->setBedrag($_POST['bedrag']);
+	  $transaction->setDescription($_POST['description']);
+
+	  $transaction->makeTransfer();
+
+	  session_start();
+
+	  $_SESSION['transaction'] = $_POST['bedrag'];
+	  header("Location: index.php");
+	} catch (\Throwable $th) {
+	  $error = $th->getMessage();
+	}
+  }
+
 
 ?>
 
@@ -16,10 +34,7 @@ include_once (__DIR__ . "/classes/Search.php");
 <body>
     
 <div id="form_transfer">
-			<form action="" method="post">
-
-
-
+			<form action="transfer.php" method="post">
     
     <form action="transfer.php" method="POST">
 
