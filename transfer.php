@@ -26,7 +26,7 @@ include_once (__DIR__ . "/classes/Transfer.php");
             </div>
 
             <div class="form">
-                <input class="btn border search-name-btn" type="submit" value="Naam zoeken" name='searchName'>
+                <input class="" type="submit" value="Naam zoeken" name='searchName'>
             </div>
     </form>
 
