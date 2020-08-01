@@ -16,10 +16,11 @@ if (isset($_POST['search'])){
 
 
     $count = mysqli_num_rows($query);
+
     if ($count == 0){
         $output = "there was no search results!";
     } else {
-        while($row = mysql_fetch_array($query)){
+        while($row = mysqli_fetch_array($query)){
             $uName = $row['username'];
             $id = $row['id'];
 
