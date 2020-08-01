@@ -15,18 +15,7 @@ include_once (__DIR__ . "/classes/Transaction.php");
 <body>
 
 <form method="GET" action="">
-        <div>
-            <p>Zoek een gebruiker</p>
 
-            <div class="form">
-                <label for="name"><b>Naam</b></label>
-                <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
-                <div id="zoekbalk"></div>
-            </div>
-
-            <div class="form">
-                <input class="" type="submit" value="Naam zoeken" name='searchName'>
-            </div>
     </form>
 
     
