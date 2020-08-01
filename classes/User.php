@@ -8,7 +8,10 @@ private $username;
 private $email;
 private $password;
 private $confirmPassword;
+private $tokens;
 
+
+// -------------------- GETTERS EN SETTERS  ---------------------------
 
 
           /**
@@ -109,6 +112,28 @@ private $confirmPassword;
         return $this;
     }
 
+        /**
+    * Get the value of tokens
+    */ 
+    public function getTokens()
+    {
+    return $this->tokens;
+    }
+
+    /**
+    * Set the value of tokens
+    *
+    * @return  self
+    */ 
+    public function setTokens($tokens)
+    {
+    $this->tokens = $tokens;
+    return $this;
+    }
+
+
+    // -------------------- FUNCTIONS ---------------------------
+
 
 
     //login functie ----------
@@ -139,11 +164,13 @@ private $confirmPassword;
     {
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into users (username,email,password) values(:username, :email, :password)");
+        $statement = $conn->prepare("insert into users (username,email,password,tokens) values(:username, :email, :password, '10' )");
         $username = $this->getUsername();
         $email = $this->getEmail();
         $password = $this->getPassword();
         $confirmPassword = $this->getConfirmPassword();
+        $tokens = $this->getTokens();
+        
 
         if(empty($email) || empty($username) || empty($password) || empty($confirmPassword)) {
             throw new Exception("Alle velden moeten ingevuld worden");
@@ -157,17 +184,21 @@ private $confirmPassword;
             return false;
         }else {
 
+
+
             $hash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 13]);
             $statement->bindValue(":username", $username);
             $statement->bindValue(":email", $email);
             $statement->bindValue(":password", $hash);
             $result = $statement->execute();
             return $result;
-        }
+
+            
         
 
 
-       
+            
+        }
 
 
     }
