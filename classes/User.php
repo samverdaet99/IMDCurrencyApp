@@ -129,7 +129,7 @@ private $confirmPassword;
         else{
             return false;
         }
-    
+    }
 
 
 
