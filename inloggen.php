@@ -1,5 +1,24 @@
 <?php
 
+include_once(__DIR__ . '/classes/User.php');
+
+
+if(!empty($_POST)){ 
+
+	$user = new User();
+	$email = $_POST['email'];
+    $password = $_POST['password'];
+    
+	//check if required field are not empty 
+	if(!empty($email) && !empty($password)){
+
+	//check  username
+		if($user->canLogin($email,$password)){
+			session_start();
+			$_SESSION['user'] = $emaill;
+			header("Location: index.php"); //redirect to index.php
+        }
+        
 ?>
 
 
