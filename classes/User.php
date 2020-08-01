@@ -171,7 +171,7 @@ private $tokens;
         $confirmPassword = $this->getConfirmPassword();
         $tokens = $this->getTokens();
         
-
+ 
         if(empty($email) || empty($username) || empty($password) || empty($confirmPassword)) {
             throw new Exception("Alle velden moeten ingevuld worden");
             return false;
