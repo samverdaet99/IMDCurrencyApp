@@ -74,6 +74,10 @@ if(!empty($_POST)){
 		 </div>
 	</div>
 
+    <div>
+    <p>Ben je een nieuw member? klik <a href="register.php"> hier om te registreren</a></p>
+    </div>
+
     
 </body>
 </html>
