@@ -20,7 +20,7 @@ if(!empty($_POST)){
         }
 
         else{
-			$error = "Uw e-mail en wachtwoord komen niet overeen!";
+			$error = "Onjuist E-mail adres of wachtwoord";
 		}
 	} 
 	else{
