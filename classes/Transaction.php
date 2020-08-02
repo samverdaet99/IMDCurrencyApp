@@ -94,7 +94,7 @@ class Transfers {
         $statement = $conn->prepare("insert into transfers (bedrag,description,user_ontvanger) values(:bedrag, :description, :user_ontvanger)");
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
-        $user_ontvanger = $this->getuser_ontvanger();
+        $user_ontvanger = $this->getUser_ontvanger();
         $transfers = $statement->fetch(PDO::FETCH_ASSOC);
         
 
@@ -102,7 +102,13 @@ class Transfers {
             throw new Exception("Alle velden moeten ingevuld worden");
             return false;
 
-        }  else {
+        }  else if (empty($bedrag) > ($tokens)) {
+                throw new Exception("Je hebt niet voldoende tokens");
+                return false;
+    
+            } 
+            
+            else {
 
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);

@@ -3,6 +3,7 @@
 include_once (__DIR__ . "/Db.php");
 
 $link = Db::getConnection();
+
  
 // Check connection
 if($link === false){
@@ -12,6 +13,7 @@ if($link === false){
 if(isset($_REQUEST["term"])){
     // Prepare a select statement
     $sql = "SELECT * FROM users WHERE username LIKE ?";
+    global $link;
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters

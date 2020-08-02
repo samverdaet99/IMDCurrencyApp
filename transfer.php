@@ -41,7 +41,7 @@ if (!empty($_POST)) {
 				<div class="search-box">
 				<label for="zoekbalk">Zoek een gebruiker:</label>
 				<br>
-        		<input type="text" id="user_ontvanger" name="user_ontvanger" autocomplete="off" placeholder="Search country..." />
+        		<input type="text" id="user_ontvanger" name="user_ontvanger" autocomplete="off" placeholder="Zoek een gebruiker" />
         		<div class="result"></div>
     			</div>
 
