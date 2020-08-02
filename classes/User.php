@@ -220,7 +220,31 @@ private $tokens;
         return $user;
     }
 
+// tokens 
+
+    public function checkTokens($tokens)
+    {
+        $conn = Db::getConnection();
+        $balance = $conn->prepare("SELECT * FROM users WHERE (tokens = :tokens)" );
+
+        if ($balance < 0){
+            throw new Exception("Je hebt niet voldoende tokens");
+            return false;
+        }
+            else {
+            $result = $statement->execute();
+            return $result;
+
+            
+        
 
 
+            
+        }
+
+
+
+
+}
 
 }

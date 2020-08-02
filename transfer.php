@@ -24,7 +24,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
             }
         } else {
             $error = "Geen resultaten";
-        } 
+        }
     } else{
 		header("Location: login.php");
 	}
@@ -34,7 +34,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 
 //----------------- tokens checken -----------------------------
 if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
-
+	if (isset($_GET['checkTokens'])) {
 	try {
 
 	  $transfers = new Transfers();
@@ -52,7 +52,8 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 	}
 
 
-	  }
+}
+}
 	
   ?>
 
