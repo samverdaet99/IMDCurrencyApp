@@ -3,6 +3,12 @@ include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 include_once (__DIR__ . "/classes/Search.php");
 
+
+//----- search username balk -----
+
+if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"])
+
+
 if (!empty($_POST)) {	
 	try {
 
