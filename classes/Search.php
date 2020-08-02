@@ -2,32 +2,35 @@
 
 include_once (__DIR__ . "/Db.php");
 
-$output="";
+$conn = Db::getConnection();
 
-if (isset($_POST['search'])){
-    $searchq = $_POST['search'];
-    $searchq = preg_replace("#0-9a-z#i","",$searchq);
+$searchq = $_POST['search'];
+$searchq = preg_replace("#0-9a-z#i","",$searchq);
 
-    //$query = mysql_query("SELECT * FROM members WHERE username LIKE '%$searchq%'") or die("could not seacrh");
-
-    $conn = Db::getConnection();
-    $query = $conn->prepare("SELECT * FROM members WHERE username LIKE '%$searchq%'") or die("could not seacrh");
- 
+//$query = mysql_query("SELECT * FROM members WHERE username LIKE '%$searchq%'") or die("could not seacrh");
+$query = $conn->prepare("SELECT * FROM users WHERE username LIKE '%$searchq%'") or die("could not seacrh");
 
 
-    $count = mysqli_num_rows($query);
 
-    if ($count == 0){
-        $output = "there was no search results!";
-    } else {
-        while($row = mysqli_fetch_array($query)){
-            $uName = $row['username'];
-            $id = $row['id'];
+$output = '';
+//$searchq = $_POST['search'];
+//$sql = "SELECT * FROM users WHERE username LIKE '%$searchq%'";
 
-            $output .= '<div>' .$uName. '</div>';
-        }
-    }
+$result = mysqli_query($conn, $query);
 
+if(mysqli_num_rows($result) > 0){
+    $output .= '<h4>Gebruiker</h4>';
+
+
+while ($row = mysqli_fetch_array($result)){
+    $output .= '<p>' .$row["username"].'<p>';
+     
 }
+echo $output;
+}
+else{
+    echo 'Gebruiker niet teruggevonden';
+}
+
 
 ?>

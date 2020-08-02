@@ -27,3 +27,18 @@ include_once (__DIR__ . "/classes/Search.php");
 
 </body>
 </html>
+
+
+<div id="form_transfer">
+			<form action="transfer.php" method="post">
+    
+    <form action="transfer.php" method="POST">
+
+    <div class="formfield">
+    <label for="search">Selecteer een gebruiker:</label></br>
+    <input type="text" name="search" placeholder="Searh for members">
+    <input type="submit" value=">>">
+    </div>
+
+
+

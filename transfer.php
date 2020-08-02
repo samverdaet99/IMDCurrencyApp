@@ -1,7 +1,7 @@
 <?php
 include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
-include_once (__DIR__ . "/classes/Search.php");
+//include_once (__DIR__ . "/classes/Search.php");
 
 if (!empty($_POST)) {	
 	try {
@@ -33,24 +33,13 @@ if (!empty($_POST)) {
 </head>
 <body>
     
-<div id="form_transfer">
-			<form action="transfer.php" method="post">
-    
-    <form action="transfer.php" method="POST">
-
-    <div class="formfield">
-    <label for="search">Selecteer een gebruiker:</label></br>
-    <input type="text" name="search" placeholder="Searh for members">
-    <input type="submit" value=">>">
-    </div>
-
-    </form>
-
-    <?php
-    print("$output")
-    ;?>
-
-
+				<div class="formfield">
+				<p>Kies een gebruiker:</p>
+				<span class="input_search_field">Search</span>
+				<input type="text" name="search_text" id="search_text" placeholder="Zoek een gebruiker"></div>
+				</div>
+				<br>
+				<div id="result"></div>
 				
 				<div class="formfield">
 					<label for="bedrag">Kies een bedrag:</label>
@@ -62,7 +51,7 @@ if (!empty($_POST)) {
 				<div class="formfield">
 					<label for="beschrijving">Beschrijving transfer:</label>
 					<br>
-					<input type="text" id="beschrijving" name="beschrijving">
+					<input type="text" id="description" name="description">
 				</div>
                 <br>
 
@@ -86,4 +75,32 @@ if (!empty($_POST)) {
 
 
 </body>
+
+
+
+	<!-- 
+  <script>
+
+  $(document).ready(function(){
+	  $('#search_text').keyup(function(){
+		var txt = $(this).val();
+		if(text != ''){
+
+		}else{
+			$('#result').html('');
+			$.ajax({
+				url:'/classes/Search.php',
+				method:"post",
+				data:{search:txt},
+				dataType:"text",
+				succes:function(data){
+					$('#result').html(data);
+				}
+			});
+		}
+	  });
+  })
+  </script>
+
+-->
 </html>
