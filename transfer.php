@@ -6,16 +6,16 @@ include_once (__DIR__ . "/classes/Transaction.php");
 if (!empty($_POST)) {	
 	try {
 
-	  $transaction = new Transaction();
-	  $transaction->setBedrag($_POST['bedrag']);
-	  $transaction->setDescription($_POST['description']);
+	  $transfers = new Transfers();
+	  $transfers->setBedrag($_POST['bedrag']);
+	  $transfers->setDescription($_POST['description']);
 	  
 
-	  $transaction->makeTransfer();
+	  $transfers->makeTransfer();
 
 	  session_start();
 
-	  $_SESSION['transaction'] = $_POST['bedrag'];
+	  $_SESSION['transfers'] = $_POST['bedrag'];
 	  header("Location: index.php");
 	} catch (\Throwable $th) {
 	  $error = $th->getMessage();
@@ -31,7 +31,7 @@ if (!empty($_POST)) {
 </head>
 <body>
 
-<form>
+<form action="" method="post">
 <!--
 				<div class="search-box">
 				<label for="zoekbalk">Zoek een gebruiker:</label>

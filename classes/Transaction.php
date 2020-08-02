@@ -3,7 +3,7 @@
 include_once (__DIR__ . "/Db.php");
 
 
-class Transaction {
+class Transfers {
 
     private $bedrag;
     private $description;
@@ -12,7 +12,7 @@ class Transaction {
 // -------------------- GETTERS EN SETTERS  ---------------------------
 
 
-          /**
+/**
      * Get the value of bedrag
      */ 
     public function getBedrag()
@@ -47,7 +47,6 @@ class Transaction {
      */ 
     public function setDescription($description)
     {
-
         $this->description = $description;
 
         return $this;
@@ -60,13 +59,14 @@ class Transaction {
 
     //-----------Functions 
 
-    public function makeTransfer()
+    public function makeTransfer($bedrag=0,$description=0)
     {
 
         $conn = Db::getConnection();
         $statement = $conn->prepare("insert into transfers (bedrag,description) values(:bedrag, :description)");
-        $username = $this->getBedrag();
-        $email = $this->getDescription();
+        $bedrag = $this->getBedrag();
+        $description = $this->getDescription();
+        $transfers = $statement->fetch(PDO::FETCH_ASSOC);
         
 
         if(empty($bedrag) || empty($description)) {
@@ -90,6 +90,8 @@ class Transaction {
 
     }
 
+
+    
 }
 
 ?>
