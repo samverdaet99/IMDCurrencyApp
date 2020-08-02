@@ -9,6 +9,7 @@ if (!empty($_POST)) {
 	  $transaction = new Transaction();
 	  $transaction->setBedrag($_POST['bedrag']);
 	  $transaction->setDescription($_POST['description']);
+	  
 
 	  $transaction->makeTransfer();
 
@@ -22,25 +23,26 @@ if (!empty($_POST)) {
   }
 
 
-?>
-
-
-<html lang="en">
+?><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    
-				<div class="formfield">
-				<p>Kies een gebruiker:</p>
-				<span class="input_search_field">Search</span>
-				<input type="text" name="search_text" id="search_text" placeholder="Zoek een gebruiker"></div>
-				</div>
+
+<form>
+<!--
+				<div class="search-box">
+				<label for="zoekbalk">Zoek een gebruiker:</label>
 				<br>
-				<div id="result"></div>
+        		<input type="text" id="zoekbalk" autocomplete="off" placeholder="Search country..." />
+        		<div class="result"></div>
+    			</div>
+-->
 				
+				<br> 
+
 				<div class="formfield">
 					<label for="bedrag">Kies een bedrag:</label>
 					<br>
@@ -74,33 +76,39 @@ if (!empty($_POST)) {
             </div>
 
 
-</body>
 
 
+		<!-- Zoekbalk 
+					
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript">
 
-	<!-- 
-  <script>
+		$(document).ready(function(){
+    	$('.search-box input[type="text"]').on("keyup input", function(){
 
-  $(document).ready(function(){
-	  $('#search_text').keyup(function(){
-		var txt = $(this).val();
-		if(text != ''){
+        /* Get input value on change */
+        var inputVal = $(this).val();
+        var resultDropdown = $(this).siblings(".result");
+        if(inputVal.length){
+            $.get("classes/Search.php", {term: inputVal}).done(function(data){
+                // Display the returned data in browser
+                resultDropdown.html(data);
+            });
+        } else{
+            resultDropdown.empty();
+        }
+    	});
+    
+    		// Set search input value on click of result item
+    		$(document).on("click", ".result p", function(){
+        		$(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+        		$(this).parent(".result").empty();
+    	});
+	});
 
-		}else{
-			$('#result').html('');
-			$.ajax({
-				url:'/classes/Search.php',
-				method:"post",
-				data:{search:txt},
-				dataType:"text",
-				succes:function(data){
-					$('#result').html(data);
-				}
-			});
-		}
-	  });
-  })
-  </script>
+</script>
 
 -->
+
+</body>
 </html>
