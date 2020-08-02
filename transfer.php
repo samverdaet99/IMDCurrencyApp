@@ -1,7 +1,7 @@
 <?php
 include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
-//include_once (__DIR__ . "/classes/Search.php");
+include_once (__DIR__ . "/classes/Search.php");
 
 if (!empty($_POST)) {	
 	try {
@@ -9,6 +9,7 @@ if (!empty($_POST)) {
 	  $transfers = new Transfers();
 	  $transfers->setBedrag($_POST['bedrag']);
 	  $transfers->setDescription($_POST['description']);
+	  $transfers->setUser_ontvanger($_POST['user_ontvanger']);
 	  
 
 	  $transfers->makeTransfer();
@@ -24,10 +25,10 @@ if (!empty($_POST)) {
 
 	  }
 	
-  
+  ?>
 
 
-?><html lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,14 +37,14 @@ if (!empty($_POST)) {
 <body>
 
 <form action="" method="post">
-<!--
+
 				<div class="search-box">
 				<label for="zoekbalk">Zoek een gebruiker:</label>
 				<br>
-        		<input type="text" id="zoekbalk" autocomplete="off" placeholder="Search country..." />
+        		<input type="text" id="user_ontvanger" name="user_ontvanger" autocomplete="off" placeholder="Search country..." />
         		<div class="result"></div>
     			</div>
--->
+
 				
 				<br> 
 
@@ -82,7 +83,7 @@ if (!empty($_POST)) {
 
 
 
-		<!-- Zoekbalk 
+		
 					
 		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript">
@@ -112,7 +113,7 @@ if (!empty($_POST)) {
 
 </script>
 
--->
+
 
 </body>
 </html>

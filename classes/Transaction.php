@@ -7,7 +7,8 @@ class Transfers {
 
     private $bedrag;
     private $description;
-    private $tokens;
+    private $user_ontvanger;
+    private $user_verzender;
 
 	
 // -------------------- GETTERS EN SETTERS  ---------------------------
@@ -59,23 +60,45 @@ class Transfers {
     }
 
 
+        /**
+     * Get the value of user_ontvanger
+     */ 
+    public function getUser_ontvanger()
+    {
+        return $this->user_ontvanger;
+    }
+
+    /**
+     * Set the value of user_ontvanger
+     *
+     * @return  self
+     */ 
+    public function setUser_ontvanger($user_ontvanger)
+    {
+        $this->user_ontvanger = $user_ontvanger;
+
+        return $this;
+    }
+   
+
 
 
 
 
     //-----------Functions 
 
-    public function makeTransfer($bedrag=0,$description=0)
+    public function makeTransfer($bedrag=0,$description=0, $user_ontvanger=0)
     {
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers (bedrag,description) values(:bedrag, :description)");
+        $statement = $conn->prepare("insert into transfers (bedrag,description,user_ontvanger) values(:bedrag, :description, :user_ontvanger)");
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
+        $user_ontvanger = $this->getuser_ontvanger();
         $transfers = $statement->fetch(PDO::FETCH_ASSOC);
         
 
-        if(empty($bedrag) || empty($description)) {
+        if(empty($bedrag) || empty($description) || empty($user_ontvanger)) {
             throw new Exception("Alle velden moeten ingevuld worden");
             return false;
 
@@ -83,6 +106,7 @@ class Transfers {
 
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
+            $statement->bindValue(":user_ontvanger", $user_ontvanger);
             $result = $statement->execute();
             return $result;
 
@@ -109,6 +133,7 @@ class Transfers {
     
         }
         
+
     }
 
 
