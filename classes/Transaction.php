@@ -7,8 +7,6 @@ class Transfers {
 
     private $bedrag;
     private $description;
-    private $user_ontvanger;
-    private $user_verzender;
 
 	
 // -------------------- GETTERS EN SETTERS  ---------------------------
@@ -60,25 +58,7 @@ class Transfers {
     }
 
 
-        /**
-     * Get the value of user_ontvanger
-     */ 
-    public function getUser_ontvanger()
-    {
-        return $this->user_ontvanger;
-    }
 
-    /**
-     * Set the value of user_ontvanger
-     *
-     * @return  self
-     */ 
-    public function setUser_ontvanger($user_ontvanger)
-    {
-        $this->user_ontvanger = $user_ontvanger;
-
-        return $this;
-    }
    
 
 
@@ -87,14 +67,13 @@ class Transfers {
 
     //-----------Functions 
 
-    public function makeTransfer($bedrag=0,$description=0, $user_ontvanger=0)
+    public function makeTransfer($bedrag=0,$description=0)
     {
 
         $conn = Db::getConnection();
         $statement = $conn->prepare("insert into transfers (bedrag,description,user_ontvanger) values(:bedrag, :description, :user_ontvanger)");
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
-        $user_ontvanger = $this->getUser_ontvanger();
         $transfers = $statement->fetch(PDO::FETCH_ASSOC);
         
 

@@ -4,6 +4,7 @@ include_once (__DIR__ . "/Db.php");
 
 
 class zoekUser{
+    
 
     public static function searchUser($username){
 
