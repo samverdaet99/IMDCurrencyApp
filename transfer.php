@@ -12,7 +12,9 @@ $boodschap = '';
 if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
     if (isset($_GET['searchUser'])) {
         $searchField = $_GET['searchField'];
-        $searchUser = Search::searchUser($searchField);
+		$searchUser = Search::searchUser($searchField);
+		
+		
 
         if (empty($_GET['searchField'])) {
             $error = "Vul een naam in";
@@ -22,22 +24,24 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
             }
         } else {
             $error = "Geen resultaten";
-        }
-    }
+        } 
+    } else{
+		header("Location: login.php");
+	}
 }
 
 
 
-//----------------------------------------------
-if (!empty($_POST)) {	
+//----------------- tokens checken -----------------------------
+if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
+
 	try {
 
 	  $transfers = new Transfers();
-	  $transfers->setBedrag($_POST['bedrag']);
-	  $transfers->setDescription($_POST['description']);
+	  $transfers->setTokens($_POST['tokens']);
 	  
 
-	  $transfers->makeTransfer();
+	  $transfers->checkTokens();
 
 	  session_start();
 

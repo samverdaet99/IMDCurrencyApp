@@ -7,6 +7,9 @@ class Transfers {
 
     private $bedrag;
     private $description;
+    private $tokens;
+
+
 
 	
 // -------------------- GETTERS EN SETTERS  ---------------------------
@@ -58,6 +61,26 @@ class Transfers {
     }
 
 
+    /**
+     * Get the value of bedrag
+     */ 
+    public function getTokens()
+    {
+        return $this->tokens;
+    }
+
+    /**
+     * Set the value of bedrag
+     *
+     * @return  self
+     */ 
+    public function setTokens($tokens)
+    {
+        $this->tokens = $tokens;
+
+        return $this;
+    }
+
 
    
 
@@ -100,7 +123,35 @@ class Transfers {
 
             
         }
+
+
     }
+
+
+    public function checkTokens($tokens)
+    {
+        $conn = Db::getConnection();
+        $balance = $conn->prepare("SELECT * FROM users WHERE (tokens = :tokens)" );
+
+        if ($balance < 0){
+            throw new Exception("Je hebt niet voldoende tokens");
+            return false;
+        }
+            else {
+            $result = $statement->execute();
+            return $result;
+
+            
+        
+
+
+            
+        }
+
+        
+    }
+
+
 
 
         
