@@ -4,6 +4,8 @@ include_once (__DIR__ . "/classes/Transaction.php");
 include_once (__DIR__ . "/classes/Search.php");
 
 
+$boodschap = '';
+
 //----- search username balk -----
 
 
@@ -16,7 +18,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
             $error = "Vul een naam in";
         } elseif (count($searchUser) > 0) {
             foreach ($searchUser as $username) {
-                $succes1 .= '<a>' . htmlspecialchars($username['username']) . '" >' . '<div>'  . '</a>';
+                $boodschap .= '<a>' . htmlspecialchars($username['username']) . '" >' . '<div>'  . '</a>';
             }
         } else {
             $error = "Geen resultaten";
@@ -68,6 +70,12 @@ if (!empty($_POST)) {
         		<div class="result"></div>
     			</div>
 
+				<?php if (isset($boodschap)) : ?>
+            	<p>
+            	<?php echo $boodschap; ?>
+            	</p>
+       			<?php endif; ?>
+
 				
 				<br> 
 
@@ -93,6 +101,7 @@ if (!empty($_POST)) {
 					<?php echo $error ?>
 				</div>
 				<?php endif; ?>
+
 				<div class="formfield_submit">
 					<input type="submit" value="Plaats transfer" class="btn">	
 				</div>
