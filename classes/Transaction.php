@@ -7,6 +7,7 @@ class Transfers {
 
     private $bedrag;
     private $description;
+    private $tokens;
 
 	
 // -------------------- GETTERS EN SETTERS  ---------------------------
@@ -27,6 +28,11 @@ class Transfers {
      */ 
     public function setBedrag($bedrag)
     {
+        if ($bedrag < 1 )
+          {
+            throw new Exception ("Het bedrag moet minstens 1 zijn");
+          }
+
         $this->bedrag = $bedrag;
 
         return $this;
@@ -86,15 +92,25 @@ class Transfers {
 
             
         }
-
-
     }
+
+        //niet groter dan huidig bedrag functie ----------
+
+        public function tokensCheck($tokens)
+        {
+            $conn = Db::getConnection();
+            $statement = $conn->prepare('select * from users where tokens = :tokens');
+            $statement->bindParam(':tokens', $tokens);
+            $result = $statement->execute();
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
+    
 
 
     
-}
+        }
+        
+    }
 
-?>
 
     
 

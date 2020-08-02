@@ -20,7 +20,11 @@ if (!empty($_POST)) {
 	} catch (\Throwable $th) {
 	  $error = $th->getMessage();
 	}
-  }
+
+
+	  }
+	
+  
 
 
 ?><html lang="en">
@@ -46,7 +50,7 @@ if (!empty($_POST)) {
 				<div class="formfield">
 					<label for="bedrag">Kies een bedrag:</label>
 					<br>
-					<input type="text" id="bedrag" name="bedrag">
+					<input type="number" id="bedrag" name="bedrag">
 				</div>
 				<br>
 
