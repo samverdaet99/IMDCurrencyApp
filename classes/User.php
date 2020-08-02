@@ -216,5 +216,19 @@ private $tokens;
         return $user;
     }
 
+        // get user -------------
+
+        public function getTokens($tokens)
+        {
+            $conn = Db::getConnection();
+            $statement = $conn->prepare("select * from transfers where tokens = :tokens");
+            $tokens = $tokens;
+            $statement->bindValue(':tokens', $tokens);
+            $result = $statement->execute();
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
+            return $user;
+        }
+    
+
 
 }
