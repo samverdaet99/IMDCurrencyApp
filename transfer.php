@@ -6,19 +6,17 @@ include_once (__DIR__ . "/classes/Search.php");
 
 //----- search username balk -----
 
-if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"]){
-	if (isset($_GET['searchName'])) {
+// Search for name in db 
+if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
+    if (isset($_GET['searchUser'])) {
         $searchField = $_GET['searchField'];
-        $searchName = Search::searchName($searchField);
-}
+        $searchUser = Search::searchUser($searchField);
 
-if (empty($_GET['searchField'])) {
-	$error = "Vul een naam in";
-} elseif (count($if (empty($_GET['searchField'])) {
+        if (empty($_GET['searchField'])) {
             $error = "Vul een naam in";
         } elseif (count($searchUser) > 0) {
             foreach ($searchUser as $username) {
-                $succes1 .= '<a href="view.profile.php?id=' . htmlspecialchars($username['id']) . '" >' . '<div>' . htmlspecialchars($username['username']) . " " . '</div>' . '</a>';
+                $succes1 .= '<a href="view.profile.php?id=' . htmlspecialchars($username['username']) . '" >' . '<div>'  . '</a>';
             }
         } else {
             $error = "Geen resultaten";
@@ -26,19 +24,7 @@ if (empty($_GET['searchField'])) {
     }
 } else {
     header("Location: login.php");
-}) > 0) {
-	foreach ($searchUser as $username) {
-		$succes1 .= '<a href="view.profile.php?id=' . htmlspecialchars($name['id']) . '" >' . '<div>' . htmlspecialchars($username['username']) . " " . '</div>' . '</a>';
-	}
-} else {
-	$error = "Geen resultaten";
-} 
 }
-} else {
-header("Location: login.php");
-}
-
-
 
 
 
@@ -81,7 +67,7 @@ if (!empty($_POST)) {
 				<div class="search-box">
 				<label for="zoekbalk">Zoek een gebruiker:</label>
 				<br>
-        		<input type="text" id="user_ontvanger" name="user_ontvanger" autocomplete="off" placeholder="Zoek een gebruiker" />
+        		<input type="text" id="searchUser" name="searchField" autocomplete="off" placeholder="Zoek een gebruiker" />
         		<div class="result"></div>
     			</div>
 

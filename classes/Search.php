@@ -10,7 +10,7 @@ class zoekUser{
         Db::getConnection();
 
         $statement = $conn->prepare('select * from users where LOWER (username) LIKE LOWER :username');
-        $statement->bindParam(':username'. %searchField . '%');
+        $statement->bindParam(':username' , '%' . searchField . '%');
         $statement->execute();
 
         $res = $statement->fetch(PDO::FETCH_ASSOC);
