@@ -203,5 +203,18 @@ private $tokens;
 
     }
 
+    // get user -------------
+
+    public function getUser($id)
+    {
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select * from users where id = :id");
+        $id = $id;
+        $statement->bindValue(':id', $id);
+        $result = $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        return $user;
+    }
+
 
 }
