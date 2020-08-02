@@ -71,13 +71,13 @@ class Transfers {
     {
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers (bedrag,description,user_ontvanger) values(:bedrag, :description, :user_ontvanger)");
+        $statement = $conn->prepare("insert into transfers (bedrag,description) values(:bedrag, :description)");
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
         $transfers = $statement->fetch(PDO::FETCH_ASSOC);
         
 
-        if(empty($bedrag) || empty($description) || empty($user_ontvanger)) {
+        if(empty($bedrag) || empty($description)) {
             throw new Exception("Alle velden moeten ingevuld worden");
             return false;
 
@@ -91,7 +91,6 @@ class Transfers {
 
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
-            $statement->bindValue(":user_ontvanger", $user_ontvanger);
             $result = $statement->execute();
             return $result;
 
@@ -103,20 +102,7 @@ class Transfers {
         }
     }
 
-        //niet groter dan huidig bedrag functie ----------
 
-        public function tokensCheck($tokens)
-        {
-            $conn = Db::getConnection();
-            $statement = $conn->prepare('select * from users where tokens = :tokens');
-            $statement->bindParam(':tokens', $tokens);
-            $result = $statement->execute();
-            $user = $statement->fetch(PDO::FETCH_ASSOC);
-    
-
-
-    
-        }
         
 
     }
