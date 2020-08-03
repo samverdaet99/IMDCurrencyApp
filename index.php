@@ -13,7 +13,6 @@ if(isset($_SESSION['user'])){
     header("Location: inloggen.php");
   }
 
-
   ?>
 
 <html lang="en">
@@ -43,7 +42,7 @@ Uitloggen</a>
 
     <div id='huidigsaldotekst'>
     <h2>Jouw huidige saldo is</h2>
-    <div id="huidigetokens"> 45</div>
+    <div id="huidigetokens"> <?php echo $username['tokens'];?></div>
     <h2>TOKENS</h2>
     </div>
 
@@ -63,7 +62,7 @@ Uitloggen</a>
 
 </div>
 
-
+    
 </div>
 
 
