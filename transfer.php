@@ -3,8 +3,6 @@ include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 include_once (__DIR__ . "/classes/Search.php");
 
-$allComments = Transfers::getAll();
-var_dump($allComments);
 $boodschap = '';
 
 //----- search username balk -----
@@ -83,12 +81,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
        			<?php endif; ?>
 
 
-				   <ul class="post__comments__list">
-     			 <?php foreach ($allComments as $c): ?>
-        			<li><?php echo $c['text'] ?></li> 
-      				<?php endforeach; ?> 
-      				</ul>
-
 				
 				<br> 
 
@@ -128,35 +120,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 
 
 
-		
-					
-		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript">
-
-		$(document).ready(function(){
-    	$('.search-box input[type="text"]').on("keyup input", function(){
-
-        /* Get input value on change */
-        var inputVal = $(this).val();
-        var resultDropdown = $(this).siblings(".result");
-        if(inputVal.length){
-            $.get("classes/Search.php", {term: inputVal}).done(function(data){
-                // Display the returned data in browser
-                resultDropdown.html(data);
-            });
-        } else{
-            resultDropdown.empty();
-        }
-    	});
-    
-    		// Set search input value on click of result item
-    		$(document).on("click", ".result p", function(){
-        		$(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-        		$(this).parent(".result").empty();
-    	});
-	});
-
-</script>
 
 
 
