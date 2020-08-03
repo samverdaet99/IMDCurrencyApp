@@ -8,7 +8,6 @@ if(isset($_SESSION['user'])){
 
     $username = $user->getUserByEmail($_SESSION['user']);
     $_SESSION['userid'] = $username['id'];
-    var_dump($username);
    
   } else {
     header("Location: inloggen.php");
@@ -35,10 +34,10 @@ Uitloggen</a>
 
 <div id="profieltekst">
     <h1>Lorem ipsum doleras lol!</h1>
-    <h2 >Welkom terug, 
-        <?php echo $username['username'];?>
+    <h2 >Welkom, 
+        <?php echo $username['username'];?>!
 </h2>
-    <p>Klik op onderstaande knoppen om een nieuwe transfer te maken of om jouw vorige transfers te bekijken</p>
+    <p>Klik op onderstaande knoppen om een nieuwe transfer te maken <br>of om jouw vorige transfers te bekijken</p>
 
     <div id="huidigsaldo">
 
