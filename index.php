@@ -42,7 +42,7 @@ Uitloggen</a>
 
     <div id='huidigsaldotekst'>
     <h2>Jouw huidige saldo is</h2>
-    <div id="huidigetokens"> <?php echo $username['tokens'];?></div>
+    <div id="huidigetokens"></div>
     <h2>TOKENS</h2>
     </div>
 
@@ -65,7 +65,17 @@ Uitloggen</a>
     
 </div>
 
+<script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script>
+$document.ready(function(){
+    $("#huidigetokens").load("autorefresh.php");
+    setInterval(function(){
+        $("#huidigetokens").load("autorefresh.php");
+    }, 3000);
+});
 
+
+</script>
     
 </body>
 </html>
