@@ -14,8 +14,9 @@ if(!empty($_POST)){
 
 	//check  username
 		if($user->canLogin($email,$password)){
+			
 			session_start();
-			$_SESSION['user'] = $emaill;
+			$_SESSION['user'] = $email;
 			header("Location: index.php"); //redirect to index.php
         }
 

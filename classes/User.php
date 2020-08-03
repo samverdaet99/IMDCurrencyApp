@@ -4,6 +4,7 @@ include_once (__DIR__ . "/Db.php");
 
 class User{
 
+private $id;
 private $username;
 private $email;
 private $password;
@@ -135,6 +136,26 @@ private $tokens;
     return $this;
     }
 
+    /**
+     * Get the value of id
+    */ 
+    public function getId()
+    {
+    return $this->id;
+    }
+
+    /**
+    * Set the value of id
+    *
+    * @return  self
+    */ 
+    public function setId($id)
+    {
+    $this->id = $id;
+
+    return $this;
+    }
+
 
     // -------------------- FUNCTIONS ---------------------------
 
@@ -220,6 +241,25 @@ private $tokens;
         return $user;
     }
 
+
+
+
+     // get user by email-------------
+
+    public function getUserByEmail($email)
+    {
+      $conn = Db::getConnection();
+      $statement = $conn->prepare("select * from users where email = :email");
+      $email = $email;
+      $statement->bindValue(':email', $email);
+      $result = $statement->execute();
+      $user = $statement->fetch(PDO::FETCH_ASSOC);
+      return $user;
+  
+    }
+
+
+
 // tokens 
 
     public function checkTokens($tokens)
@@ -246,5 +286,6 @@ private $tokens;
 
 
 }
+
 
 }

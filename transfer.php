@@ -14,8 +14,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
     if (isset($_GET['searchUser'])) {
         $searchField = $_GET['searchField'];
 		$searchUser = Search::searchUser($searchField);
-		
-		
 
         if (empty($_GET['searchField'])) {
             $error = "Vul een naam in";
