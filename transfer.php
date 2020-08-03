@@ -71,7 +71,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 				<label for="zoekbalk">Zoek een gebruiker:</label>
 				<br>
         		<input type="text" id="searchUser" name="searchField" autocomplete="off" placeholder="Zoek een gebruiker" />
-        		<div class="result"></div>
+        		<div id="resultSearch"></div>
     			</div>
 
 				<?php if (isset($boodschap)) : ?>
