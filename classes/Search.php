@@ -8,7 +8,7 @@ class zoekUser{
 
     public static function searchUser($searchField){
 
-        Db::getConnection();
+        $conn = Db::getConnection();
 
         $statement = $conn->prepare('select * from users where LOWER (username) LIKE LOWER :username');
         $statement->bindValue(':username' , '%' . searchField . '%');
@@ -19,6 +19,23 @@ class zoekUser{
 
    
         
+
+    }
+
+
+
+    public static function autocompleteSearchUser(){
+
+        $conn = Db::getConnection();
+        $statement = ("SELECT username, id FROM users WHERE username LIKE :username LIMIT 1");
+        $query = $conn->prepare($statement);
+
+        $query->bindValue(':username', $input, '%');
+        $query->execute();
+
+        $suggestion = $query->fetch(PDO::FETCH_ASSOC);
+
+        return $suggestion;
 
     }
 

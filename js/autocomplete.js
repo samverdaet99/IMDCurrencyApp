@@ -18,9 +18,9 @@ document.querySelector("#searchUser").addEventListener("keyup", event => {
             resultSearch.style.display = "block";
 
             result.body.forEach(element => {
-                let result = document.createElement('a');
-                result.innerHTML = element.username;
-                resultSearch.appendChild(result);
+                let suggestion = document.createElement('a');
+                suggestion.innerHTML = element.username;
+                resultSearch.appendChild(suggestion);
     });
 }) .catch(error => {
     console.log("Error", error);
