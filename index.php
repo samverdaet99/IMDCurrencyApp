@@ -13,6 +13,9 @@ if(isset($_SESSION['user'])){
     header("Location: inloggen.php");
   }
 
+
+
+
   ?>
 
 <html lang="en">
@@ -20,8 +23,11 @@ if(isset($_SESSION['user'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
-    <script> src="jquery/jquery.js"</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>IMDcurrency App</title>
+
+
 </head>
 <body>
 
@@ -68,7 +74,14 @@ Uitloggen</a>
 </body>
 
 
+<script>
+  $(document).ready(function(){
+    setInterval(function(){
+        $("huidigetokens").load("autorefresh.php");
+    },1000);
+  });
 
+</script>
 
 
 </html>
