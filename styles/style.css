@@ -67,6 +67,7 @@ p{
     height: 400px;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 5px 5px 8px #e2e2e2;
 }
 
 #profieltekst{
@@ -74,6 +75,90 @@ p{
     padding-top: 60px;
 }
 
+
+
+
+#nieuweTransfer, #alleTransfers {
+    padding: 10px;
+    background-color: white;
+    margin-top: 20px;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    
+}
+#links{
+    margin-top: 50px;
+}
 #links a{
     text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(109, 159, 169);
+}
+
+#huidigetokens{
+    color:  rgb(127, 184, 196);
+    font-size: 50px;
+    font-weight: 800;
+    padding: 20px;
+}
+
+#huidigsaldo{
+    background-color: white;
+    border-radius: 10px;
+    width: 200px;
+    height: 300px;
+    float: right;
+    margin-right: 50px;
+    margin-top: -100px;
+}
+
+#huidigsaldotekst{
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+
+
+/*NIEUWE TRANSFER*/
+
+#kader_groot_transfer{
+    background-color: rgb(189, 228, 236);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 100px;
+    width: 60%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#form_transfer{
+    padding: 40px;
+}
+
+.formfield, .search-box{
+    font-family: Arial, Helvetica, sans-serif;;
+    font-size: 15px;
+    width: 40%;
+}
+
+.btn{
+    padding: 10px;
+    border: none;
+    background: rgb(127, 184, 196);
+    border-radius: 10px;
+    color: white;
+}
+
+
+/*UITLOGGEN*/
+
+
+#logout{
+    right: 10px;
 }

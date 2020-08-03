@@ -62,12 +62,23 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/style.css">
     <title>Document</title>
 </head>
 <body>
 
-<form action="" method="post">
+<div id="logout">
+<a href="logout.php">
+Uitloggen</a>
+</div>
+
+<a href="index.php">Terug</a>
+
+
+
+<section id="kader_groot_transfer">
+<form action="" method="post" id="form_transfer">
 
 				<div class="search-box">
 				<label for="zoekbalk">Zoek een gebruiker:</label>
@@ -117,7 +128,8 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
                 
 			</form>
 
-            </div>
+
+			</section>
 
 
 

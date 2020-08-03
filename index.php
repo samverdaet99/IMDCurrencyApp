@@ -13,11 +13,26 @@ include_once(__DIR__ . '/classes/User.php');
 </head>
 <body>
 
+<div id="logout">
+<a href="logout.php">
+Uitloggen</a>
+</div>
+
 <div id="profielbox">
 
 <div id="profieltekst">
     <h1>Lorem ipsum doleras lol!</h1>
     <p>USERNAME</p>
+
+    <div id="huidigsaldo">
+
+    <div id='huidigsaldotekst'>
+    <h2>Jouw huidige saldo is</h2>
+    <div id="huidigetokens"> 45</div>
+    <h2>TOKENS</h2>
+    </div>
+
+    </div>
 
     <div id="links">
 
@@ -36,8 +51,7 @@ include_once(__DIR__ . '/classes/User.php');
 
 </div>
 
-<a href="logout.php">
-Uitloggen</a>
+
     
 </body>
 </html>
