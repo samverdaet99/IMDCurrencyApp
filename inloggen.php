@@ -36,12 +36,19 @@ if(!empty($_POST)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/style.css">
     <title>Document</title>
+	
 </head>
 <body>
 
+<section id="middenkader">
 
-</div>
+	<div id="welkomtekst">
+	<h1>Welkom bij IMDcurrency!</h1>
+	<h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit incidunt in consequuntur nobis debitis odit architecto voluptates quidem alias magnam, hic at tempore non voluptate dolores perspiciatis, dolorum veniam repudiandae?</h2>
+	<p>Vul onderstaande velden in om verder te gaan</p>
+	</div>
         
         <div id="form_inloggen">
 			<form action="" method="post">
@@ -69,14 +76,18 @@ if(!empty($_POST)){
 					<input type="submit" value="inloggen" class="btn-inloggen">	
 				</div>
  
+				<div >
+    <p>Ben je een nieuw member? <br><a href="register.php"> klik hier om te registreren</a></p>
+    </div>
                 
 			</form>
 		 </div>
 	</div>
 
-    <div>
-    <p>Ben je een nieuw member? klik <a href="register.php"> hier om te registreren</a></p>
-    </div>
+
+	</section>
+
+
 
     
 </body>

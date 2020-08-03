@@ -3,7 +3,9 @@ include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 include_once (__DIR__ . "/classes/Search.php");
 
+session_start();
 $boodschap = '';
+
 
 //----- search username balk -----
 
@@ -121,7 +123,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 
 
 
-
+			<script src="js/autocomplete.js"></script>
 
 </body>
 </html>

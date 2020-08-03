@@ -1,7 +1,7 @@
   
 <?php
 
-include_once(__DIR__ . "/../classes/Search.php");
+include_once(__DIR__ . "../classes/Search.php");
 
 if (!empty($_POST)) {
 

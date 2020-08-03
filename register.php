@@ -28,14 +28,21 @@ if (!empty($_POST)) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/style.css">
     <title>Registreren</title>
 </head>
 <body>
 
-<div class="aanmelden">
+<div id="aanmelden">
+
+<div id="welkomtekst">
+	<h1>Welkom bij IMDcurrency!</h1>
+	<h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit incidunt in consequuntur nobis debitis odit architecto voluptates quidem alias magnam, hic at tempore non voluptate dolores perspiciatis, dolorum veniam repudiandae?</h2>
+	<p>Vul onderstaande velden in om verder te gaan</p>
+	<p>Ben je al member? <br><a href="inloggen.php"> klik hier in te loggen</a></p>
+	</div>
       
-        
         
         <div id="form_aanmelden">
 			<form action="" method="post">
@@ -76,10 +83,12 @@ if (!empty($_POST)) {
 					<input type="submit" value="registreren" class="btn-aanmelden">	
 				</div>
 
-               
+				
+    </div>
                 
 			</form>
 		 </div>
+
 	</div>
     
 </body>

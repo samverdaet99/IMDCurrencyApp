@@ -1,0 +1,79 @@
+
+/* GENERAL */
+
+body{
+    background-color: ;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+
+}
+
+/*INLOGGEN*/ 
+
+#middenkader{
+    margin-top: 150px;
+    width: 60%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form_inloggen{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+/*aanmelden*/ 
+
+#aanmelden{
+    margin-top: 100px;
+    width: 60%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form_aanmelden{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+/*INDEX*/ 
+
+#profielbox{
+    background-color: rgb(189, 228, 236);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 100px;
+    width: 60%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#profieltekst{
+    padding-left: 80px;
+    padding-top: 60px;
+}
+
+#links a{
+    text-decoration: none;
+}
