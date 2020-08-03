@@ -1,7 +1,7 @@
 <?php
 include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
-include_once (__DIR__ . "/classes/Search.php");
+//include_once (__DIR__ . "/classes/Search.php");
 
 session_start();
 $boodschap = '';
@@ -10,49 +10,50 @@ $boodschap = '';
 //----- search username balk -----
 
 
-if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
-    if (isset($_GET['searchUser'])) {
-        $searchField = $_GET['searchField'];
-		$searchUser = Search::searchUser($searchField);
+//if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 
-        if (empty($_GET['searchField'])) {
-            $error = "Vul een naam in";
-        } elseif (count($searchUser) > 0) {
-            foreach ($searchUser as $username) {
-                $boodschap .= '<a>' . htmlspecialchars($username['username']) . '" >' . '<div>'  . '</a>';
-            }
-        } else {
-            $error = "Geen resultaten";
-        }
-    } else{
-		header("Location: login.php");
-	}
-}
+
+  //  if (isset($_GET['searchUser'])) {
+    //    $searchField = $_GET['searchField'];
+	//	$searchUser = Search::searchUser($searchField);
 
 
 
-//----------------- tokens checken -----------------------------
-if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
-	if (isset($_GET['checkTokens'])) {
+
+      //  if (empty($_GET['searchField'])) {
+
+        //    $error = "Vul een naam in";
+        // } elseif (count($searchUser) > 0) {
+           // foreach ($searchUser as $username) {
+             //   $boodschap .= '<a>' . htmlspecialchars($username['username']) . '" >' . '<div>'  . '</a>';
+            //}
+        //} else {
+           // $error = "Geen resultaten";
+      //  }
+    //} else{
+		//header("Location: login.php");
+//	}
+//}
+
+
+//----- data bewaren in databank -----
+
+if (!empty($_POST)) {	
 	try {
-
 	  $transfers = new Transfers();
-	  $transfers->setTokens($_POST['tokens']);
+	  $transfers->setBedrag($_POST['bedrag']);
+	  $transfers->setDescription($_POST['description']);
+
+	  $transfers->saveTransfers();
 	  
-
-	  $transfers->checkTokens();
-
 	  session_start();
-
-	  $_SESSION['transfers'] = $_POST['bedrag'];
-	  header("Location: index.php");
+	  $_SESSION['Transfers'] = $_POST['bedrag'];
+	  header("Location: transfer.php");
 	} catch (\Throwable $th) {
 	  $error = $th->getMessage();
 	}
+  }
 
-
-}
-}
 	
   ?>
 
@@ -76,8 +77,9 @@ Uitloggen</a>
 
 
 <section id="kader_groot_transfer">
-<form action="" method="post" id="form_transfer">
+<form action="" method="POST" id="form_transfer">
 
+<!--
 				<div class="search-box">
 				<label for="zoekbalk">Zoek een gebruiker:</label>
 				<br>
@@ -91,7 +93,7 @@ Uitloggen</a>
             	</p>
        			<?php endif; ?>
 
-
+-->
 				
 				<br> 
 
@@ -132,8 +134,10 @@ Uitloggen</a>
 
 
 
-
+<!--
 			<script src="js/autocomplete.js"></script>
+
+			-->
 
 </body>
 </html>

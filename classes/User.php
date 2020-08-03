@@ -132,8 +132,12 @@ private $tokens;
     */ 
     public function setTokens($tokens)
     {
-    $this->tokens = $tokens;
-    return $this;
+
+
+        $this->tokens = $tokens;
+        return $this;
+    
+
     }
 
     /**
@@ -260,29 +264,8 @@ private $tokens;
 
 
 
-// tokens 
-
-    public function checkTokens($tokens)
-    {
-        $conn = Db::getConnection();
-        $balance = $conn->prepare("SELECT * FROM users WHERE (tokens = :tokens)" );
-        $tokens = $tokens;
-        $statement->bindValue(':tokens', $tokens);
-        $result = $statement->execute();
-        $tokens = $statement->fetch(PDO::FETCH_ASSOC);
-        return $tokens; 
-
-        //if ($balance < 0){
-            //throw new Exception("Je hebt niet voldoende tokens");
-            //return false;
-        //}
-            //else {
-            //$result = $statement->execute();
-            //return $result;
-
-        //
-
-}
 
 
 }
+
+

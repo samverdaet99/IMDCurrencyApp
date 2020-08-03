@@ -8,6 +8,7 @@ if(isset($_SESSION['user'])){
 
     $username = $user->getUserByEmail($_SESSION['user']);
     $_SESSION['userid'] = $username['id'];
+
    
   } else {
     header("Location: inloggen.php");

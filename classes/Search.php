@@ -3,10 +3,10 @@
 include_once (__DIR__ . "/Db.php");
 
 
-class zoekUser{
+class searchUser{
 
 
-    public static function searchUser($searchField){
+    public function searchUser($searchField){
 
         $conn = Db::getConnection();
 

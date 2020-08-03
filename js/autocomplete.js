@@ -4,12 +4,13 @@ resultSearch.style.display= "none";
 
 document.querySelector("#searchUser").addEventListener("keyup", event => {
     let input = document.querySelector("#searchUser").Value;
-    let searchResults = new SearchResults();
-    searchResults.append("text", input);
+
+    let searchData = new SearchData();
+    searchData.append("text", input);
 
     fetch('/ajax/autocomplete.php', {
         method: "POST",
-        body: searchResults })
+        body: searchData })
 
     .then(response => response.json())
         .then(result => {  
