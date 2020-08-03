@@ -20,6 +20,7 @@ if(isset($_SESSION['user'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <script> src="jquery/jquery.js"</script>
     <title>IMDcurrency App</title>
 </head>
 <body>
@@ -42,8 +43,9 @@ Uitloggen</a>
 
     <div id='huidigsaldotekst'>
     <h2>Jouw huidige saldo is</h2>
-    <div id="huidigetokens"></div>
+    <div id="huidigetokens" name="huidigetokens"></div>
     <h2>TOKENS</h2>
+    <button id="btn_tweet"> test </button>
     </div>
 
     </div>
@@ -60,22 +62,16 @@ Uitloggen</a>
 
     </div>
 
-</div>
+    <div id="load_tweets"></div>
 
+</div>
     
 </div>
-
-<script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-<script>
-$document.ready(function(){
-    $("#huidigetokens").load("autorefresh.php");
-    setInterval(function(){
-        $("#huidigetokens").load("autorefresh.php");
-    }, 3000);
-});
-
-
-</script>
     
 </body>
+
+
+
+
+
 </html>
