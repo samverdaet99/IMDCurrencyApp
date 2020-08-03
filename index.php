@@ -45,7 +45,6 @@ Uitloggen</a>
     <h2>Jouw huidige saldo is</h2>
     <div id="huidigetokens" name="huidigetokens"></div>
     <h2>TOKENS</h2>
-    <button id="btn_tweet"> test </button>
     </div>
 
     </div>
@@ -61,8 +60,6 @@ Uitloggen</a>
     </div>
 
     </div>
-
-    <div id="load_tweets"></div>
 
 </div>
     

@@ -1,11 +1,10 @@
 
-
 var resultSearch = document.querySelector("#resultSearch");
 resultSearch.style.display= "none";
 
 document.querySelector("#searchUser").addEventListener("keyup", event => {
-    let input = document.querySelector("#searchUser").nodeValue;
-    let searchResults = new searchResults();
+    let input = document.querySelector("#searchUser").Value;
+    let searchResults = new SearchResults();
     searchResults.append("text", input);
 
     fetch('/ajax/autocomplete.php', {
@@ -14,7 +13,7 @@ document.querySelector("#searchUser").addEventListener("keyup", event => {
 
     .then(response => response.json())
         .then(result => {  
-            resultSearch.innerHTML=" ";
+            resultSearch.innerHTML= " ";
             resultSearch.style.display = "block";
 
             result.body.forEach(element => {
