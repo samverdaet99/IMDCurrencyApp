@@ -3,7 +3,8 @@ include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 include_once (__DIR__ . "/classes/Search.php");
 
-
+$allComments = Transfers::getAll();
+var_dump($allComments);
 $boodschap = '';
 
 //----- search username balk -----
@@ -80,6 +81,13 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
             	<?php echo $boodschap; ?>
             	</p>
        			<?php endif; ?>
+
+
+				   <ul class="post__comments__list">
+     			 <?php foreach ($allComments as $c): ?>
+        			<li><?php echo $c['text'] ?></li> 
+      				<?php endforeach; ?> 
+      				</ul>
 
 				
 				<br> 
