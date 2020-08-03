@@ -14,8 +14,6 @@ if(isset($_SESSION['user'])){
   }
 
 
-
-
   ?>
 
 <html lang="en">
@@ -74,13 +72,22 @@ Uitloggen</a>
 </body>
 
 
-<script>
-  $(document).ready(function(){
-    setInterval(function(){
-        $("huidigetokens").load("autorefresh.php");
-    },1000);
-  });
+<!-- Tokens reload na 10 seconden -->
 
+<script language="javascript">
+sendRequest();
+function sendRequest(){
+    $.ajax({
+        url: "autorefresh.php",
+        success: 
+        function(result){
+            $('#huidigetokens').text(result); //insert text of test.php into your div
+            setTimeout(function(){
+                sendRequest(); //this will send request again and again;
+            }, 10000);
+        }
+    });
+}
 </script>
 
 

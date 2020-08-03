@@ -285,30 +285,4 @@ private $tokens;
 }
 
 
-//refresh page ajax
-
-    
-public function reloadTokens($email)
-{
-
-$conn = Db::getConnection();
-$statement = $conn->prepare('select * from users where tokens = :tokens');
-
-
-$result = $conn->query($statement);
-
-if ($result->num_rows > 0){
-
-    while ($row = $result->fetch_assoc()){
-        echo "<div>";
-        echo  $row["tokens"];
-        echo "</div>";
-    }
-
-    $conn->close();
-        }
-    }
-
-
-
 }
