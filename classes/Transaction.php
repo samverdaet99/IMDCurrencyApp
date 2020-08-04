@@ -52,14 +52,6 @@ class Transaction{
           {
             throw new Exception ("Het bedrag moet minstens 1 zijn");
           }
-
-          //else if ($username['tokens'] < 0){
-            //throw new Exception("Je hebt niet voldoende tokens");
-            //return false;
-        //} else {
-           // $result = $statement->execute();
-            //return $result;
-
         $this->bedrag = $bedrag;
 
         return $this;
@@ -111,10 +103,6 @@ class Transaction{
 
 }
 
-
-
-
-
     public static function getAll($bedrag){
     $conn = Db::getConnection();
     $statement = $conn->prepare('select $ from transfers where bedrag = :bedrag');
@@ -129,18 +117,22 @@ class Transaction{
 // tokens 
 
 
-    public function checkTokens($tokens)
+    public function checkTokens()
     {
     $conn = Db::getConnection();
     $statement = $conn->prepare("select * from users where tokens = :tokens");
-    $tokens = $tokens;
     $statement->bindValue(':tokens', $tokens);
-    $result = $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
-    return $user;
 
-    
+    $beschrikbaar=("select * from users where tokens = :tokens");
 
+    if ($beschrikbaar < 0){
+            throw new Exception("Je hebt niet voldoende tokens");
+            return false;
+        } else {
 
-}
+        $result = $statement->execute();
+        return $result;
+
+        }
+   }
 }

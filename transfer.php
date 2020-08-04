@@ -17,9 +17,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
         $searchField = $_GET['searchField'];
 		$searchUser = Search::searchUser($searchField);
 
-
-
-
         if (empty($_GET['searchField'])) {
 
         $error = "Vul een naam in";
@@ -47,6 +44,7 @@ if (!empty($_POST)) {
 	  $transfer->setDescription($_POST['description']);
 
 	  $transfer->makeTransfer();
+	  $transfer->checkTokens();
 
 	  session_start();
 
@@ -61,7 +59,7 @@ if (!empty($_POST)) {
 ?>
 
 	
-
+ 
 
 
 <html lang="en">
