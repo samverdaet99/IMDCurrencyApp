@@ -13,16 +13,17 @@ $boodschap = '';
 if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 
 
-    if (isset($_GET['searchUser'])) {
+    if (isset($_GET['searchName'])) {
         $searchField = $_GET['searchField'];
-		$searchUser = Search::searchUser($searchField);
+		$searchUser = Search::searchName($searchField);
+
 
         if (empty($_GET['searchField'])) {
 
         $error = "Vul een naam in";
-        } elseif (count($searchUser) > 0) {
-            foreach ($searchUser as $username) {
-                $boodschap .= '<a>' . htmlspecialchars($username['username']) . '" >' . '<div>'  . '</a>';
+        } elseif (count($searchName) > 0) {
+            foreach ($searchName as $name) {
+                $boodschap .= '<a>' . htmlspecialchars($name['id']) . '" >' . '<div>'  . '</a>';
             }
         } else {
             $error = "Geen resultaten";
@@ -67,7 +68,8 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/style.css">
-    <title>Document</title>
+
+    <title>IMDCURRENCY</title>
 </head>
 <body>
 
@@ -85,10 +87,10 @@ Uitloggen</a>
 
 
 				<div class="search-box">
-				<label for="zoekbalk">Zoek een gebruiker:</label>
+				<label for="name">Zoek een gebruiker:</label>
 				<br>
-        		<input type="text" id="searchUser" name="searchField" autocomplete="off" placeholder="Zoek een gebruiker" />
-        		<div id="resultSearch"></div>
+        		<input type="text" id="searchName" name="searchField" autocomplete="off" placeholder="Zoek een gebruiker" />
+        		<div id="suggestionBox"></div>
     			</div>
 
 				<?php if (isset($boodschap)) : ?>
@@ -138,8 +140,6 @@ Uitloggen</a>
 
 
 
-
-			<script src="js/autocomplete.js"></script>
 
 			
 
