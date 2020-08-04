@@ -27,10 +27,10 @@ class searchUser{
     public static function autocompleteSearchUser(){
 
         $conn = Db::getConnection();
-        $statement = ("SELECT username, id FROM users WHERE username LIKE :username LIMIT 1");
+        $statement = ("SELECT username FROM users WHERE username LIKE :username LIMIT 1");
         $query = $conn->prepare($statement);
 
-        $query->bindValue(':username', $input, '%');
+        $query->bindValue(':username', $input . '%');
         $query->execute();
 
         $suggestion = $query->fetch(PDO::FETCH_ASSOC);

@@ -1,18 +1,16 @@
 
-
-
 var resultSearch = document.querySelector("#resultSearch");
 resultSearch.style.display= "none";
-let searchData = new SearchData();
+let searchUser = new SearchUser();
 
 document.querySelector("#searchUser").addEventListener("keyup", event => {
     let input = document.querySelector("#searchUser").Value;
 
-    searchData.append("text", input);
+    searchUser.append("text", input);
 
     fetch('/ajax/autocomplete.php', {
         method: "POST",
-        body: searchData })
+        body: searchUser })
 
     .then(response => response.json())
         .then(result => {  
