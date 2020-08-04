@@ -100,6 +100,7 @@ class Transaction{
             throw new Exception("Alle velden moeten ingevuld worden");
         }
             else {
+            $statement->bindValue(":id", $id);
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
             $result = $statement->execute();
@@ -107,6 +108,39 @@ class Transaction{
 
             
     }
+
+}
+
+
+
+
+
+    public static function getAll($bedrag){
+    $conn = Db::getConnection();
+    $statement = $conn->prepare('select $ from transfers where bedrag = :bedrag');
+    $statement->bindValue(':bedrag', $bedrag);
+
+    $result = $statement-execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+    }
+
+// tokens 
+
+
+    public function checkTokens($tokens)
+    {
+    $conn = Db::getConnection();
+    $statement = $conn->prepare("select * from users where tokens = :tokens");
+    $tokens = $tokens;
+    $statement->bindValue(':tokens', $tokens);
+    $result = $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    return $user;
+
+    
+
 
 }
 }
