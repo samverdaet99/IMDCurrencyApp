@@ -3,8 +3,8 @@ include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 //include_once (__DIR__ . "/classes/Search.php");
 
-session_start();
-$boodschap = '';
+//session_start();
+//$boodschap = '';
 
 
 //----- search username balk -----
@@ -38,21 +38,27 @@ $boodschap = '';
 
 //----- data bewaren in databank -----
 
-if (!empty($_POST)) {	
-	try {
-	  $transfers = new Transfers();
-	  $transfers->setBedrag($_POST['bedrag']);
-	  $transfers->setDescription($_POST['description']);
 
-	  $transfers->saveTransfers();
-	  
+if (!empty($_POST)) {
+		
+	try {
+	  $transfer = new Transaction();
+	  $transfer->setBedrag($_POST['bedrag']);
+	  $transfer->setDescription($_POST['description']);
+
+	  $transfer->makeTransfer();
+
 	  session_start();
-	  $_SESSION['Transfers'] = $_POST['bedrag'];
+
+	  $_SESSION['transfer'] = $_POST['bedrag'];
 	  header("Location: transfer.php");
+
 	} catch (\Throwable $th) {
 	  $error = $th->getMessage();
 	}
   }
+
+?>
 
 	
   ?>
