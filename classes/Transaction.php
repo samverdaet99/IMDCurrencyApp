@@ -92,7 +92,7 @@ class Transaction{
             throw new Exception("Alle velden moeten ingevuld worden");
         }
             else {
-            $statement->bindValue(":id", $id);
+                $statement->bindValue(":id", $id);
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
             $result = $statement->execute();
@@ -114,7 +114,7 @@ class Transaction{
 
     }
 
-// tokens 
+//tokens 
 
 
     public function checkTokens()
@@ -126,13 +126,19 @@ class Transaction{
     $beschrikbaar=("select * from users where tokens = :tokens");
 
     if ($beschrikbaar < 0){
-            throw new Exception("Je hebt niet voldoende tokens");
+     
+           throw new Exception("Je hebt niet voldoende tokens");
             return false;
         } else {
 
         $result = $statement->execute();
         return $result;
 
-        }
-   }
+       }
+   
+
+   
+}
+
+
 }

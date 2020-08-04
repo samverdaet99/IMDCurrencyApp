@@ -7,13 +7,9 @@ class Search {
     public static function searchName($searchField)
     {
         $conn = Db::getConnection();
-
-        $statement = $conn->prepare("SELECT * FROM tl_user WHERE LOWER(firstName) LIKE LOWER(:name)  LIKE LOWER(:name)");
-
-        $statement->bindValue(':name', '%' . $searchField . '%');
-
+        $statement = $conn->prepare("SELECT * FROM users WHERE LOWER(username) LIKE LOWER(:username) ");
+        $statement->bindValue(':username', '%' . $searchField . '%');
         $statement->execute();
-
         $count = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $count;
     }
@@ -21,11 +17,9 @@ class Search {
     public static function autocompleteSearchName($input)
     {
         $conn = Db::getConnection();
-        $statement = ("SELECT Firstname FROM tl_user WHERE firstName LIKE :name  :name LIMIT 1");
+        $statement = ("SELECT username FROM users WHERE username LIKE :username  :username LIMIT 1");
         $query = $conn->prepare($statement);
-
-        $query->bindValue(':name', $input . '%');
-
+        $query->bindValue(':username', $input . '%');
         $query->execute();
 
         $suggestion = $query->fetch(PDO::FETCH_ASSOC);

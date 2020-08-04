@@ -6,28 +6,27 @@ include_once (__DIR__ . "/classes/Search.php");
 session_start();
 $boodschap = '';
 
-
 //----- search username balk -----
 
 // Search for name in db 
 	if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
     if (isset($_GET['searchName'])) {
-        $searchField = $_GET['searchField'];
-        $searchName = Search::searchName($searchField);
+       $searchField = $_GET['searchField'];
+         $searchName = Search::searchName($searchField);
 
-        if (empty($_GET['searchField'])) {
-            $error = "Vul een naam in";
+         if (empty($_GET['searchField'])) {
+           $error = "Vul een naam in";
         } elseif (count($searchName) > 0) {
-            foreach ($searchName as $name) {
-                $boodschap .=  htmlspecialchars($name['username']) ;
+           foreach ($searchName as $username) {
+               $boodschap .=  htmlspecialchars($username['username']) ;
             }
         } else {
-            $error = "Geen resultaten";
-        }
-    }
+           $error = "Geen resultaten";
+       }
+  }
 	} 	else {
-    //header("Location: inloggen.php");
-}
+   header("Location: transfer.php");
+ }
 
 
 //----- data bewaren in databank -----
@@ -37,15 +36,16 @@ if (!empty($_POST)) {
 		
 	try {
 	  $transfer = new Transaction();
+	  $transfer->setId($_POST['id']);
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 
 	  $transfer->makeTransfer();
-	  $transfer->checkTokens();
+	  //$transfer->checkTokens();
 
 	  session_start();
 
-	  $_SESSION['transfer'] = $_POST['bedrag'];
+	  $_SESSION['user'] = $_POST['email'];
 	  header("Location: transfer.php");
 
 	} catch (\Throwable $th) {
@@ -82,7 +82,7 @@ Uitloggen</a>
 <form action="" method="POST" id="form_transfer">
 
 
-<div class="form-group">
+		<div class="form-group">
                 <label for="name"><b>Naam</b></label>
                 <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
                 <div id="suggesstionBox"></div>
@@ -96,6 +96,7 @@ Uitloggen</a>
 
 
 				
+
 				<br> 
 
 				<div class="formfield">
@@ -132,7 +133,7 @@ Uitloggen</a>
 
 			</section>
 
-			<script src="js/autocomplete.js"></script>
+			 <script src="js/autocomplete.js"></script> 
 			
 
 </body>
