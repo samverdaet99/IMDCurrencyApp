@@ -9,28 +9,24 @@ $boodschap = '';
 
 //----- search username balk -----
 
-
-if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
-
-
+// Search for name in db 
+	if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
     if (isset($_GET['searchName'])) {
         $searchField = $_GET['searchField'];
-		$searchUser = Search::searchName($searchField);
-
+        $searchName = Search::searchName($searchField);
 
         if (empty($_GET['searchField'])) {
-
-        $error = "Vul een naam in";
+            $error = "Vul een naam in";
         } elseif (count($searchName) > 0) {
             foreach ($searchName as $name) {
-                $boodschap .= '<a>' . htmlspecialchars($name['id']) . '" >' . '<div>'  . '</a>';
+                $boodschap .=  htmlspecialchars($name['username']) ;
             }
         } else {
             $error = "Geen resultaten";
         }
-    } else{
-		header("Location: login.php");
-		}
+    }
+	} 	else {
+    //header("Location: inloggen.php");
 }
 
 
@@ -68,8 +64,8 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/style.css">
-
-    <title>IMDCURRENCY</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
 </head>
 <body>
 
@@ -86,13 +82,12 @@ Uitloggen</a>
 <form action="" method="POST" id="form_transfer">
 
 
-				<div class="search-box">
-				<label for="name">Zoek een gebruiker:</label>
-				<br>
-        		<input type="text" id="searchName" name="searchField" autocomplete="off" placeholder="Zoek een gebruiker" />
-        		<div id="suggestionBox"></div>
-    			</div>
-
+<div class="form-group">
+                <label for="name"><b>Naam</b></label>
+                <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
+                <div id="suggesstionBox"></div>
+            </div>
+			
 				<?php if (isset($boodschap)) : ?>
             	<p>
             	<?php echo $boodschap; ?>
@@ -137,10 +132,7 @@ Uitloggen</a>
 
 			</section>
 
-
-
-
-
+			<script src="js/autocomplete.js"></script>
 			
 
 </body>
