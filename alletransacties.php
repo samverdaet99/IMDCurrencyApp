@@ -2,14 +2,15 @@
 //include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 
-$transfer= new Transaction();
+$transfer = new Transaction();
 
 session_start();
 
 if(isset($_SESSION['transfer'])){
 
-    $allTransfers = $transfer->getTransfers($_SESSION['transaction']);
-    $getTransfer = $transfer->getTransfer($_SESSION['transaction']);
+    $transfer = new Transaction();
+
+    $allTransfers = $transfer->getTransfers($_SESSION['transfer']);
 
     if ($allTransfers == null)
     {
@@ -17,13 +18,12 @@ if(isset($_SESSION['transfer'])){
     }
    
   } else {
-    header("Location: inloggen.php");
+    header("Location: transfer.php");
   }
 
 
   ?>
 
-?>
 
 
 <html lang="en">
@@ -51,28 +51,30 @@ Uitloggen</a>
         <h2 class="emptyMessage"><?php echo $emptymessage; ?></h2>
     <?php endif; ?>   
 
-<div id="transactie_datum"><p>09-10-2010</p></div>
-
-<div id="transactie_kader">
 
 <?php foreach ($allTransfers as $allTranser) :?>
-<div id="transactie_gegevens">
 
-<p>Verzender: <?php echo $allTranser['user_verzender'];?></p>
-<p>Ontvanger: <?php echo $allTranser['user_ontvanger'];?> </p>
+  <div id="transactie_datum"><p><?php echo $allTranser['datum']; ?></p></div>
 
-<?php endforeach; ?>
+  <div id="transactie_kader">
 
 
-<?php foreach ($getTransfer as $getTrans) :?>
-<div id="transactie_bedrag">
-<p> Tokens :<?php echo $getTrans['bedrag'];?> </p>
- </div>
- <?php endforeach; ?>
+  <div id="transactie_gegevens">
 
-<div id="transactie_details">
-<p>Meer details >> </p>
-</div>
+  <p>Verzender: <?php echo $allTranser['user_verzender'];?></p>
+  <p>Ontvanger: <?php echo $allTranser['user_ontvanger'];?> </p>
+
+
+
+  <div id="transactie_bedrag">
+  <p> Tokens :<?php echo $allTranser['bedrag'];?> </p>
+  </div>
+ 
+  <?php endforeach; ?>
+
+  <div id="transactie_details">
+  <a href="detailstransfer.php">Meer details >></a>
+  </div>
 
 
 

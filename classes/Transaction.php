@@ -8,17 +8,10 @@ class Transaction{
     private $id;
     private $bedrag;
     private $description;
-
-    //alle transfers
+    private $datum;
     private $user_ontvanger;
     private $user_verzender;
-    private $transfer_id;
 
-
-
-
-
-    
 
     /**
      * Get the value of id
@@ -85,6 +78,26 @@ class Transaction{
         return $this;
     }
 
+        /**
+     * Get the value of datum
+     */ 
+    public function getDatum()
+    {
+        return $this->datum;
+    }
+
+    /**
+     * Set the value of datum
+     *
+     * @return  self
+     */ 
+    public function setDatum($datum)
+    {
+        $this->datum = $datum;
+
+        return $this;
+    }
+
 
 
         /**
@@ -127,25 +140,7 @@ class Transaction{
         return $this;
     }
 
-    /**
-     * Get the value of transfer_id
-     */ 
-    public function getTransfer_id()
-    {
-        return $this->transfer_id;
-    }
 
-    /**
-     * Set the value of transfer_id
-     *
-     * @return  self
-     */ 
-    public function setTransfer_id($transfer_id)
-    {
-        $this->transfer_id = $transfer_id;
-
-        return $this;
-    }
 
 
     //----------GETTERS EN SETTERS
@@ -238,10 +233,10 @@ class Transaction{
 
         //get all transfers
     
-    public function getTransfers ($id){
+        public function getTransfers ($id){
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("select transfers.id,transfers.user_verzender, transfers.user_ontvanger from alletransfers");
+        $statement = $conn->prepare("select transfers.id, transfers.bedrag, transfers.description, transfers.datum, transfers.user_verzender, transfers.user_ontvanger from transfers");
         $id = $id;
         $statement->bindValue(":id", $id);
         $result = $statement->execute();
@@ -250,18 +245,6 @@ class Transaction{
     }
 
 
-    //get all one transfer
-    
-    public function getTransfer ($id){
-
-        $conn = Db::getConnection();
-        $statement = $conn->prepare("select transfers.id, transfers.bedrag, transfers.description from transfers");
-        $id = $id;
-        $statement->bindValue(":id", $id);
-        $result = $statement->execute();
-        $transfer = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $transfer;
-    }
 
 
 
