@@ -6,6 +6,7 @@ $transfer = new Transaction();
 session_start();
 
 if(isset($_SESSION['transfer'])){
+  //if (!empty($_POST)) {
 
     $transfer = new Transaction();
 

@@ -30,17 +30,14 @@ if(isset($_SESSION['user'])){
 </head>
 <body>
 
-<div id="logout">
-<a href="logout.php">
-Uitloggen</a>
-</div>
+
 
 <div id="profielbox">
 
 <div id="profieltekst">
-    <h1>Lorem ipsum doleras lol!</h1>
-    <h2 >Welkom, 
-        <?php echo $username['username'];?>!
+    <h1>Welkom op IMDCurrency!</h1>
+    <h2 >Wat fijn dat je gebruik maakt <br> van onze  applicatie, 
+       <span id="geel"> <?php echo $username['username'];?></span>!
 </h2>
     <p>Klik op onderstaande knoppen om een nieuwe transfer te maken <br>of om jouw vorige transfers te bekijken</p>
 
@@ -66,6 +63,11 @@ Uitloggen</a>
 
     </div>
 
+</div>
+
+<div id="logout">
+<a href="logout.php">
+Uitloggen</a>
 </div>
     
 </div>

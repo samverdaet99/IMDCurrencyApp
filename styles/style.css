@@ -3,45 +3,327 @@
 
 h1{
     font-family: Arial, Helvetica, sans-serif;
+    color: rgb(71, 71, 71);
 }
 
 h2{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+    color: rgb(71, 71, 71);
 }
 
 p{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
+    color: rgb(71, 71, 71);
 
 }
+
+
+
+ 
 
 /*INLOGGEN*/ 
 
 #middenkader{
-    margin-top: 150px;
+    background-color: rgb(164, 199, 206);
+    padding: 50px;
+    border-radius: 20px;;
+    margin-top: 30px;
     width: 60%;
-    height: 400px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    box-shadow: 5px 5px 8px #e2e2e2;
+    margin-bottom: 30px;
+}
+
+#middenkader h1{
+    font-size: 30px;
+  
+}
+
+#middenkader h2{
+    font-size: 20px;
+  
+}
+
+
+
+#form_inloggen{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: rgb(231, 246, 248);
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 50px;
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.formfield{
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
+
+.btn-inloggen{
+    -webkit-appearance: none;
+    background-color: rgb(213, 180, 49);
+    border: none;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
+    color: white;
+    
+
+}
+
+#middenkader a{
+    text-decoration: none;
+    font-size: 16px;
+    color:  rgb(213, 180, 49);
+    padding-top: 8px;
+}
+
+/*-----------aanmelden*/ 
+
+#aanmelden{
+    background-color: rgb(164, 199, 206);
+    padding: 50px;
+    border-radius: 20px;;
+    margin-top: 30px;
+    width: 60%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    margin-bottom: 100px;
+    box-shadow: 5px 5px 8px #e2e2e2;
+}
+
+#aanmelden a{
+    text-decoration: none;
+    font-size: 16px;
+    color:  rgb(238, 214, 116);
+    padding-top: 8px;
+}
+
+#aanmelden h2{
+    font-size: 16px;
+}
+
+#aanmelden h1{
+    font-size: 30px;
+}
+
+#form_aanmelden{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: rgb(231, 246, 248);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*INDEX---------------------------*/ 
+
+#profielbox{
+    background-color:  rgb(164, 199, 206);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    width: 70%;
+    height:100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 5px 5px 8px #e2e2e2;
+    padding-bottom: 100px;
+}
+
+#profieltekst{
+    padding: 20px;
+}
+
+#geel{
+    color: rgb(196, 165, 44);
+    padding: 2px;
+}
+
+
+
+
+#nieuweTransfer, #alleTransfers {
+    padding: 10px;
+    background-color: white;
+    margin-top: 20px;
+    width: 78%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px rgb(144, 174, 179);;
+    margin-left: 10%;
+    
+}
+#links{
+    margin-top: 50px;
+}
+#links a{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(109, 159, 169);
+}
+
+#huidigetokens{
+    color:   rgb(213, 180, 49);
+    font-size: 50px;
+    font-weight: 800;
+    padding: 20px;
+}
+
+#huidigsaldo{
+    background-color: white;
+    border-radius: 10px;
+    width: 60%;
+    margin-left: 20%;
+    height: 300px;
+    margin-top: 50px;
+}
+
+#huidigsaldotekst{
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+
+/*UITLOGGEN--------------------*/
+
+
+#logout{
+    right: 80px;
+    padding: 20px;
+    background-color:rgb(213, 180, 49);
+    width: 70px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    
+}
+
+#logout a{
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+}
+
+
+
+
+
+
+
+/* MEDIAQUERIE PC------------------------------*/
+
+@media only screen and (min-width: 1210px) {
+    /* tablets and desktop */
+
+/*INLOGGEN*/ 
+
+#middenkader{
+    background-color: rgb(164, 199, 206);
+    padding: 50px;
+    border-radius: 20px;;
+    margin-top: 100px;
+    width: 60%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    box-shadow: 5px 5px 8px #e2e2e2;
+}
+
+#middenkader h1{
+    font-size: 40px;
+    line-height: 7px;
+  
+}
+
+
 
 #form_inloggen{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    background-color: rgb(231, 246, 248);
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 50px;
+    color: grey;
 }
 
-
-/*aanmelden*/ 
-
-#aanmelden{
-    margin-top: 100px;
-    width: 60%;
-    height: 400px;
+.formfield{
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.btn-inloggen{
+    -webkit-appearance: none;
+    background-color: rgb(213, 180, 49);
+    border: none;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
+    color: white;
+    
+
+}
+
+#middenkader a{
+    text-decoration: none;
+    font-size: 16px;
+    color:  rgb(213, 180, 49);
+    padding-top: 8px;
+}
+
+/*-----------aanmelden*/ 
+
+#aanmelden{
+    background-color: rgb(164, 199, 206);
+    padding: 50px;
+    border-radius: 20px;;
+    margin-top: 80px;
+    width: 60%;
+    height: 530px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    margin-bottom: 100px;
+    box-shadow: 5px 5px 8px #e2e2e2;
+}
+
+#aanmelden a{
+    text-decoration: none;
+    font-size: 16px;
+    color:  rgb(238, 214, 116);
+    padding-top: 8px;
 }
 
 #form_aanmelden{
@@ -49,13 +331,18 @@ p{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    background-color: rgb(231, 246, 248);
+    padding: 20px;
+    margin-top: -20px;
+    border-radius: 20px;
+    color: grey;
 }
 
 
 /*INDEX*/ 
 
 #profielbox{
-    background-color: rgb(189, 228, 236);
+    background-color:  rgb(164, 199, 206);
     border-radius: 10px;
     padding: 20px;
     margin-top: 100px;
@@ -71,6 +358,11 @@ p{
     padding-top: 60px;
 }
 
+#geel{
+    color: rgb(196, 165, 44);
+    padding: 2px;
+}
+
 
 
 
@@ -81,6 +373,8 @@ p{
     width: 50%;
     text-align: center;
     border-radius: 10px;
+    box-shadow: 5px 5px 8px rgb(144, 174, 179);
+    margin-left: 0%;
     
 }
 #links{
@@ -94,7 +388,7 @@ p{
 }
 
 #huidigetokens{
-    color:  rgb(127, 184, 196);
+    color:   rgb(213, 180, 49);
     font-size: 50px;
     font-weight: 800;
     padding: 20px;
@@ -106,8 +400,8 @@ p{
     width: 200px;
     height: 300px;
     float: right;
-    margin-right: 50px;
-    margin-top: -100px;
+    margin-right: 80px;
+    margin-top: -130px;
 }
 
 #huidigsaldotekst{
@@ -238,10 +532,26 @@ p{
     border-radius: 20px;
 }
 
-
 /*UITLOGGEN*/
 
 
 #logout{
-    right: 10px;
+    right: 80px;
+    padding: 20px;
+    background-color:rgb(213, 180, 49);
+    width: 70px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    
+}
+
+#logout a{
+    text-decoration: none;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+}
+
 }

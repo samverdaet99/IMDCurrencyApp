@@ -46,7 +46,7 @@ if(!empty($_POST)){
 <section id="middenkader">
 
 	<div id="welkomtekst">
-	<h1>Welkom bij IMDcurrency!</h1>
+	<h1>Welkom terug bij IMDcurrency!</h1>
 	<h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit incidunt in consequuntur nobis debitis odit architecto voluptates quidem alias magnam, hic at tempore non voluptate dolores perspiciatis, dolorum veniam repudiandae?</h2>
 	<p>Vul onderstaande velden in om verder te gaan</p>
 	</div>
@@ -76,7 +76,7 @@ if(!empty($_POST)){
 				<div class="formfield_submit">
 					<input type="submit" value="inloggen" class="btn-inloggen">	
 				</div>
- 
+				<br>
 				<div >
     <p>Ben je een nieuw member? <br><a href="register.php"> klik hier om te registreren</a></p>
     </div>

@@ -81,7 +81,7 @@ if (!empty($_POST)) {
 				</div>
 				<?php endif; ?>
 				<div class="formfield_submit">
-					<input type="submit" value="registreren" class="btn-aanmelden">	
+					<input type="submit" value="registreren" class="btn-inloggen">	
 				</div>
 
 				
