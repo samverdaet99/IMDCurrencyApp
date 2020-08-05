@@ -233,7 +233,7 @@ class Transaction{
 
         //get all transfers
     
-        public function getTransfers ($id){
+        public function getTransfers($id){
 
         $conn = Db::getConnection();
         $statement = $conn->prepare("select transfers.id, transfers.bedrag, transfers.description, transfers.datum, transfers.user_verzender, transfers.user_ontvanger from transfers");

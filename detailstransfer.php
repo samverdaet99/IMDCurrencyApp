@@ -11,14 +11,9 @@ if(isset($_SESSION['transfer'])){
     $transfer = new Transaction();
 
     $allTransfers = $transfer->getTransfers($_SESSION['transfer']);
-
-    if ($allTransfers == null)
-    {
-    $emptymessage = "Nog geen transacties";
-    }
    
   } else {
-    header("Location: transfer.php");
+    //header("Location: transfer.php");
   }
 
 
@@ -31,7 +26,7 @@ if(isset($_SESSION['transfer'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
-    <title>IMDCurrency - alle transfers</title>
+    <title>IMDCurrency - details transfer</title>
 </head>
 <body>
 
@@ -41,14 +36,13 @@ if(isset($_SESSION['transfer'])){
 Uitloggen</a>
 </div>
 
-<a href="index.php">Terug</a>
+<a href="alletransacties.php">Terug</a>
 
 
 
-<section id="kader_groot_transfer">
+<section id="kader_details">
 
-
-<div id="transactie_kader">
+<div id="details_kader">
 
 <?php if(isset($emptymessage)) :?>
         <h2 class="emptyMessage"><?php echo $emptymessage; ?></h2>
@@ -57,7 +51,11 @@ Uitloggen</a>
 
 <?php foreach ($allTransfers as $allTranser) :?>
 
-  <div id="transactie_datum"><p><?php echo $allTranser['datum']; ?></p></div>
+
+  <div id="details_datum">
+  <p> Uitvoerdatum:<?php echo $allTranser['datum'];?> </p>
+  </div>
+
 
 
 
@@ -71,21 +69,17 @@ Uitloggen</a>
   <div id="transactie_bedrag">
   <p> Tokens :<?php echo $allTranser['bedrag'];?> </p>
   </div>
+
+  <div id="transactie_beschrijving">
+  <p> Beschrijving transactie :<?php echo $allTranser['description'];?> </p>
+  </div>
+
+  </div>
  
   <?php endforeach; ?>
 
-  <div id="transactie_details">
-  <a href="detailstransfer.php">Meer details >></a>
-  </div>
-
-
-
+    </div>
 </div>
-
-
-</div>
-
-
 
 
 
