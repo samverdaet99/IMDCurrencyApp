@@ -291,6 +291,7 @@ private $transfer_id;
             $statement->bindValue(":email", $email);
             $statement->bindValue(":password", $hash);
             
+            $result = $statement->execute();
             return $result;
 
             

@@ -1,15 +1,15 @@
 <?php
-include_once (__DIR__ . "/classes/User.php");
+//include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 
-$user= new User();
+$transfer= new Transaction();
 
 session_start();
 
-if(isset($_SESSION['user'])){
+if(isset($_SESSION['transfer'])){
 
-    $allTransfers = $user->getTransfers($_SESSION['user']);
-    $getTransfer = $user->getTransfer($_SESSION['user']);
+    $allTransfers = $transfer->getTransfers($_SESSION['transaction']);
+    $getTransfer = $transfer->getTransfer($_SESSION['transaction']);
 
     if ($allTransfers == null)
     {

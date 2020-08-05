@@ -9,6 +9,14 @@ class Transaction{
     private $bedrag;
     private $description;
 
+    //alle transfers
+    private $user_ontvanger;
+    private $user_verzender;
+    private $transfer_id;
+
+
+
+
 
     
 
@@ -79,14 +87,79 @@ class Transaction{
 
 
 
+        /**
+     * Get the value of user_ontvanger
+     */ 
+    public function getUser_ontvanger()
+    {
+        return $this->user_ontvanger;
+    }
+
+    /**
+     * Set the value of user_ontvanger
+     *
+     * @return  self
+     */ 
+    public function setUser_ontvanger($user_ontvanger)
+    {
+        $this->user_ontvanger = $user_ontvanger;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of user_verzender
+     */ 
+    public function getUser_verzender()
+    {
+        return $this->user_verzender;
+    }
+
+    /**
+     * Set the value of user_verzender
+     *
+     * @return  self
+     */ 
+    public function setUser_verzender($user_verzender)
+    {
+        $this->user_verzender = $user_verzender;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of transfer_id
+     */ 
+    public function getTransfer_id()
+    {
+        return $this->transfer_id;
+    }
+
+    /**
+     * Set the value of transfer_id
+     *
+     * @return  self
+     */ 
+    public function setTransfer_id($transfer_id)
+    {
+        $this->transfer_id = $transfer_id;
+
+        return $this;
+    }
+
+
+    //----------GETTERS EN SETTERS
+
+
+
 
 
 
     public function saveTransfer(){
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers ('bedrag', 'description') values (:bedrag, :description)");
-   
+        $statement = $conn->prepare("insert into transfers (id,bedrag, description) values (:id, :bedrag, :description)");
+        $id = $this->getId();
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
 
@@ -96,8 +169,10 @@ class Transaction{
             return false;
         }
             else {
+            $statement->bindValue(":id", $id);
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
+
             $result = $statement->execute();
             return $result;
     
@@ -138,15 +213,15 @@ class Transaction{
 //tokens 
 
 
-    public function checkTokens()
-    {
-    $conn = Db::getConnection();
-    $statement = $conn->prepare("select * from users where tokens = :tokens");
-    $statement->bindValue(':tokens', $tokens);
+        public function checkTokens()
+        {
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select * from users where tokens = :tokens");
+        $statement->bindValue(':tokens', $tokens);
 
-    $beschrikbaar=("select * from users where tokens = :tokens");
+        $beschrikbaar=("select * from users where tokens = :tokens");
 
-    if ($beschrikbaar < 0){
+        if ($beschrikbaar < 0){
      
            throw new Exception("Je hebt niet voldoende tokens");
             return false;
@@ -157,13 +232,43 @@ class Transaction{
 
        }
 
+    }
 
 
-       
-   
 
-   
-}
+        //get all transfers
+    
+    public function getTransfers ($id){
+
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select transfers.id,transfers.user_verzender, transfers.user_ontvanger from alletransfers");
+        $id = $id;
+        $statement->bindValue(":id", $id);
+        $result = $statement->execute();
+        $transfer = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $transfer;
+    }
+
+
+    //get all one transfer
+    
+    public function getTransfer ($id){
+
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select transfers.id, transfers.bedrag, transfers.description from transfers");
+        $id = $id;
+        $statement->bindValue(":id", $id);
+        $result = $statement->execute();
+        $transfer = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $transfer;
+    }
+
+
+
+
+
+
+
 
 
 
