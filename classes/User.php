@@ -11,6 +11,13 @@ private $password;
 private $confirmPassword;
 private $tokens;
 
+//alle transfers
+private $user_ontvanger;
+private $user_verzender;
+private $transfer_id;
+
+
+
 
 
 
@@ -161,6 +168,70 @@ private $tokens;
     }
 
 
+
+    /**
+     * Get the value of user_ontvanger
+     */ 
+    public function getUser_ontvanger()
+    {
+        return $this->user_ontvanger;
+    }
+
+    /**
+     * Set the value of user_ontvanger
+     *
+     * @return  self
+     */ 
+    public function setUser_ontvanger($user_ontvanger)
+    {
+        $this->user_ontvanger = $user_ontvanger;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of user_verzender
+     */ 
+    public function getUser_verzender()
+    {
+        return $this->user_verzender;
+    }
+
+    /**
+     * Set the value of user_verzender
+     *
+     * @return  self
+     */ 
+    public function setUser_verzender($user_verzender)
+    {
+        $this->user_verzender = $user_verzender;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of transfer_id
+     */ 
+    public function getTransfer_id()
+    {
+        return $this->transfer_id;
+    }
+
+    /**
+     * Set the value of transfer_id
+     *
+     * @return  self
+     */ 
+    public function setTransfer_id($transfer_id)
+    {
+        $this->transfer_id = $transfer_id;
+
+        return $this;
+    }
+
+
+
+
     // -------------------- FUNCTIONS ---------------------------
 
 
@@ -260,6 +331,20 @@ private $tokens;
       $user = $statement->fetch(PDO::FETCH_ASSOC);
       return $user;
   
+    }
+
+
+    //get all transfers
+    
+    public function getTransfers ($id){
+
+        $conn = Db::getConnection();
+        $statement= $conn->prepare("select alletransfers.id,alletransfers.user_verzender, alletransfers.user_ontvanger, alletransfers.transfer_id from alletransfers where alletransfers.transfer_id = :transfers.id");
+        $id = $id;
+        $statement->bindValue(":id", $id);
+        $result = $statement->execute();
+        $user= $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $user;
     }
 
 
