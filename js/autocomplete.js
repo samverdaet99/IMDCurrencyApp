@@ -10,11 +10,13 @@ document.querySelector("#searchName").addEventListener("keyup", event => {
     fetch('./ajax/autocomplete.php', {
         method: "POST",
         body: formData
+        
     }).then(response => response.json())
         .then(result => {
             sugesstionBox.style.display = "block";
             sugesstionBox.innerHTML = "";
             result.body.forEach(element => {
+
                 let suggestion = document.createElement('a');
                 suggestion.setAttribute(element.id)
                 suggestion.innerHTML = element.username ;

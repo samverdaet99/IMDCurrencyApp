@@ -25,7 +25,7 @@ $boodschap = '';
        }
   }
 	} 	else {
-   header("Location: transfer.php");
+   	//header("Location:transfer.php");
  }
 
 
@@ -36,16 +36,15 @@ if (!empty($_POST)) {
 		
 	try {
 	  $transfer = new Transaction();
-	  $transfer->setId($_POST['id']);
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 
 	  $transfer->makeTransfer();
-	  //$transfer->checkTokens();
+	  $transfer->checkTokens();
 
 	  session_start();
 
-	  $_SESSION['user'] = $_POST['email'];
+	  $_SESSION['transfer'] = $_POST['bedrag'];
 	  header("Location: transfer.php");
 
 	} catch (\Throwable $th) {
@@ -64,7 +63,7 @@ if (!empty($_POST)) {
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="jquery/jquery.js"></script> 
     <title>Document</title>
 </head>
 <body>
@@ -87,6 +86,8 @@ Uitloggen</a>
                 <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
                 <div id="suggesstionBox"></div>
             </div>
+
+		
 			
 				<?php if (isset($boodschap)) : ?>
             	<p>
@@ -134,6 +135,7 @@ Uitloggen</a>
 			</section>
 
 			 <script src="js/autocomplete.js"></script> 
+			 <script src="jquery/jquery.js"></script> 
 			
 
 </body>

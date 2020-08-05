@@ -92,7 +92,7 @@ class Transaction{
             throw new Exception("Alle velden moeten ingevuld worden");
         }
             else {
-                $statement->bindValue(":id", $id);
+            $statement->bindValue(":id", $id);
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
             $result = $statement->execute();
