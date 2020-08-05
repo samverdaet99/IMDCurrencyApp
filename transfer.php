@@ -3,30 +3,28 @@ include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 include_once (__DIR__ . "/classes/Search.php");
 
-session_start();
-$boodschap = '';
 
 //----- search username balk -----
 
 // Search for name in db 
-	if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
-    if (isset($_GET['searchName'])) {
-       $searchField = $_GET['searchField'];
-         $searchName = Search::searchName($searchField);
+	//if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {	
+    //if (isset($_GET['searchName'])) {
+      // $searchField = $_GET['searchField'];
+        // $searchName = Search::searchName($searchField);
 
-         if (empty($_GET['searchField'])) {
-           $error = "Vul een naam in";
-        } elseif (count($searchName) > 0) {
-           foreach ($searchName as $username) {
-               $boodschap .=  htmlspecialchars($username['username']) ;
-            }
-        } else {
-           $error = "Geen resultaten";
-       }
-  }
-	} 	else {
+         // if (empty($_GET['searchField'])) {
+           // $error = "Vul een naam in";
+        // } elseif (count($searchName) > 0) {
+           // foreach ($searchName as $username) {
+              //  $boodschap .=  htmlspecialchars($username['username']) ;
+            // }
+        // } else {
+          // $error = "Geen resultaten";
+       //}
+  // }
+	//} 	else {
    	//header("Location:transfer.php");
- }
+ //}
 
 
 //----- data bewaren in databank -----

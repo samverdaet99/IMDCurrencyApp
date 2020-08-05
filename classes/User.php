@@ -339,13 +339,29 @@ private $transfer_id;
     public function getTransfers ($id){
 
         $conn = Db::getConnection();
-        $statement= $conn->prepare("select alletransfers.id,alletransfers.user_verzender, alletransfers.user_ontvanger, alletransfers.transfer_id from alletransfers where alletransfers.transfer_id = :transfers.id");
+        $statement = $conn->prepare("select alletransfers.id,alletransfers.user_verzender, alletransfers.user_ontvanger, alletransfers.transfer_id from alletransfers");
         $id = $id;
         $statement->bindValue(":id", $id);
         $result = $statement->execute();
-        $user= $statement->fetchAll(PDO::FETCH_ASSOC);
+        $user = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $user;
     }
+
+
+    //get all one transfer
+    
+    public function getTransfer ($id){
+
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select transfers.id, transfers.bedrag, transfers.description from transfers");
+        $id = $id;
+        $statement->bindValue(":id", $id);
+        $result = $statement->execute();
+        $user = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $user;
+    }
+
+           
 
 
 
