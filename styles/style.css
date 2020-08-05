@@ -157,16 +157,34 @@ p{
 
 
 /*  ALLE TRANSACTIES--------------------*/
-.transactie_kader{
+#transactie_kader{
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
-    height: 100px;
-    width: 100px;;
+    margin: 40px;
+    padding: 10px;
+    padding-left: 100px;
+    height: 120px;
+    width: 80%;
 }
 
-.transactie_details{
-    color: red;
+#transactie_datum{
+    text-align: center;
+    margin-bottom: -30px;;
+}
+
+#transactie_details{
+    background-color: rgb(127, 184, 196);
+    padding-right: 10px;
+    padding-left: 10px;
+    padding: 5px;
+    text-align: center;
+    float: right;
+    margin-top: -80px;
+    color: white;
+    border-radius: 10px;
+    margin-right: 70px;
+    width: 160px;
+    
 }
 
 
