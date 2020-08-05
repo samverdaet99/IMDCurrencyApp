@@ -4,6 +4,8 @@ include_once (__DIR__ . "/classes/Transaction.php");
 include_once (__DIR__ . "/classes/Search.php");
 
 
+
+
 //----- search username balk -----
 
 // Search for name in db 
@@ -29,21 +31,14 @@ include_once (__DIR__ . "/classes/Search.php");
 
 //----- data bewaren in databank -----
 
-
 if (!empty($_POST)) {
-		
 	try {
-	  $transfer = new Transaction();
-	  $transfer->setBedrag($_POST['bedrag']);
-	  $transfer->setDescription($_POST['description']);
+	  $user = new Transaction();
+	  $user->setBedrag($_POST['bedrag']);
+	  $user->setDescription($_POST['description']);
 
-	  $transfer->makeTransfer();
-	  $transfer->checkTokens();
+	  $activationId = $user->saveTransfer();
 
-	  session_start();
-
-	  $_SESSION['transfer'] = $_POST['bedrag'];
-	  header("Location: transfer.php");
 
 	} catch (\Throwable $th) {
 	  $error = $th->getMessage();
@@ -79,8 +74,9 @@ Uitloggen</a>
 <form action="" method="POST" id="form_transfer">
 
 
-		<div class="form-group">
-                <label for="name"><b>Naam</b></label>
+		<div class="formfield">
+				<label for="name">Naam:</label>
+				<br>
                 <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
                 <div id="suggesstionBox"></div>
             </div>
@@ -109,6 +105,18 @@ Uitloggen</a>
 					<label for="beschrijving">Beschrijving transfer:</label>
 					<br>
 					<input type="text" id="description" name="description">
+				</div>
+				<br>
+				
+				<div class="formfield">
+					<label for="datum">Huidige datum:</label>
+					<br>
+
+					<?php
+					$datum = date('d-m-Y H:i:s');
+					?>
+
+				<p><?php echo date('d-m-Y H:i:s'); ?> </p>
 				</div>
                 <br>
 

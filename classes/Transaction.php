@@ -80,36 +80,57 @@ class Transaction{
 
 
 
-    public function makeTransfer(){
+
+
+    public function saveTransfer(){
+
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers (id,bedrag,description) values (:id, :bedrag, :description)");
-        $id = $this->getId();
+        $statement = $conn->prepare("insert into transfers (bedrag,description) values (:bedrag, :description)");
+   
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
 
 
         if(empty($bedrag) || empty($description) ){
             throw new Exception("Alle velden moeten ingevuld worden");
+            return false;
         }
             else {
-            $statement->bindValue(":id", $id);
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
             $result = $statement->execute();
             return $result;
-
-            
+    
     }
 
 }
 
-    public static function getAll($bedrag){
-    $conn = Db::getConnection();
-    $statement = $conn->prepare('select $ from transfers where bedrag = :bedrag');
-    $statement->bindValue(':bedrag', $bedrag);
 
-    $result = $statement-execute();
-    return $statement->fetchAll(PDO::FETCH_ASSOC);
+    //get all transfers
+    
+    public function getEverything($id){
+
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select transfers.id, transfers.bedrag, transfers.description from transfers");
+        $id = $id;
+        $statement->bindValue(":id", $id);
+        $result = $statement->execute();
+        $transfer = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $transfer;
+    }
+
+
+
+
+    // get bedrag
+
+        public static function getAll($bedrag){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare('select $ from transfers where bedrag = :bedrag');
+        $statement->bindValue(':bedrag', $bedrag);
+
+        $result = $statement-execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
     }
@@ -143,6 +164,8 @@ class Transaction{
 
    
 }
+
+
 
 
 }
