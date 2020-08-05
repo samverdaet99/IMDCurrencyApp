@@ -44,7 +44,7 @@ Uitloggen</a>
 
 
 
-<section id="kader_groot_transfer">
+<section id="kader_groot_transfer2">
 
 
 <div id="transactie_kader">
@@ -70,12 +70,14 @@ Uitloggen</a>
   <div id="transactie_bedrag">
   <p> Tokens :<?php echo $allTranser['bedrag'];?> </p>
   </div>
- 
-  <?php endforeach; ?>
 
+  
   <div id="transactie_details">
   <a href="detailstransfer.php">Meer details >></a>
   </div>
+ 
+  <?php endforeach; ?>
+
 
 
 

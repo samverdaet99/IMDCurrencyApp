@@ -1,8 +1,6 @@
 
 /* GENERAL */
 
-
-
 h1{
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -155,24 +153,44 @@ p{
 
 
 /*  ALLE TRANSACTIES--------------------*/
+
+
 #transactie_kader{
-    background-color: white;
+    background-color: rgb(189, 228, 236);
     border-radius: 10px;
-    margin: 40px;
-    padding: 10px;
-    padding-left: 100px;
-    height: 120px;
-    width: 80%;
+    padding: 40px;
     margin-top: 100px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 #transactie_datum{
     text-align: center;
     margin-bottom: -30px;
 }
 
+
+
+#transactie_datum{
+    text-align: center;
+
+}
+
+#transactie_gegevens{
+    background-color: white;
+    padding-left: 30px;
+    padding: 20px;
+    border-radius: 20px;
+    
+}
+
+
 #transactie_details{
+    text-decoration: none;
     background-color: rgb(127, 184, 196);
+    text-decoration: none;
     padding-right: 10px;
     padding-left: 10px;
     padding: 5px;
@@ -190,10 +208,34 @@ p{
 /*  DETAILS--------------------*/
 
 #kader_details{
-    background-color: red;
-    height: 100px;
-    width: 100px;
-    margin-left: 100px;
+    border-radius: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 100px;
+    padding: 40px;
+}
+
+#details_kader{
+    background-color:rgb(189, 228, 236);
+    padding: 40px;
+    border-radius: 20px;
+    padding-left: 40px;
+}
+
+#kader_details p{
+    font-size: 16px;
+}
+
+#details_datum{
+    text-align: center;
+
+}
+
+#details_gegevens{
+    background-color: white;
+    padding-left: 30px;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 

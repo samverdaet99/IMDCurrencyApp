@@ -53,25 +53,25 @@ Uitloggen</a>
 
 
   <div id="details_datum">
-  <p> Uitvoerdatum:<?php echo $allTranser['datum'];?> </p>
+  <p> Uitvoerdatum: <br><?php echo $allTranser['datum'];?> </p>
   </div>
 
 
 
 
-  <div id="transactie_gegevens">
+  <div id="details_gegevens">
 
-  <p>Verzender: <?php echo $allTranser['user_verzender'];?></p>
-  <p>Ontvanger: <?php echo $allTranser['user_ontvanger'];?> </p>
+  <p>Verzender: <br><?php echo $allTranser['user_verzender'];?></p>
+  <p>Ontvanger: <br><?php echo $allTranser['user_ontvanger'];?> </p>
 
 
 
-  <div id="transactie_bedrag">
-  <p> Tokens :<?php echo $allTranser['bedrag'];?> </p>
+  <div id="details_bedrag">
+  <p> Tokens: <br><?php echo $allTranser['bedrag'];?> </p>
   </div>
 
-  <div id="transactie_beschrijving">
-  <p> Beschrijving transactie :<?php echo $allTranser['description'];?> </p>
+  <div id="details_beschrijving">
+  <p> Beschrijving transactie: <br><?php echo $allTranser['description'];?> </p>
   </div>
 
   </div>
