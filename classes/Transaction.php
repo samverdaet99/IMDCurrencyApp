@@ -85,7 +85,7 @@ class Transaction{
     public function saveTransfer(){
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers (bedrag,description) values (:bedrag, :description)");
+        $statement = $conn->prepare("insert into transfers ('bedrag', 'description') values (:bedrag, :description)");
    
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();

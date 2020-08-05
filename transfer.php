@@ -1,7 +1,6 @@
 <?php
-include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
-include_once (__DIR__ . "/classes/Search.php");
+//include_once (__DIR__ . "/classes/Search.php");
 
 
 
@@ -31,23 +30,26 @@ include_once (__DIR__ . "/classes/Search.php");
 
 //----- data bewaren in databank -----
 
+
 if (!empty($_POST)) {
+		
 	try {
-	  $user = new Transaction();
-	  $user->setBedrag($_POST['bedrag']);
-	  $user->setDescription($_POST['description']);
+	  $transfer = new Transaction();
+	  $transfer->setBedrag($_POST['bedrag']);
+	  $transfer->setDescription($_POST['description']);
 
-	  $activationId = $user->saveTransfer();
-
-
-	} catch (\Throwable $th) {
+	  $transfer->saveTransfer();
+	  
+	  session_start();
+	  $_SESSION['transfer'] = $_POST['bedrag'];
+	  header("Location: transfer.php");
+	} 
+	catch (\Throwable $th) {
 	  $error = $th->getMessage();
 	}
   }
 
 ?>
-
-	
  
 
 
