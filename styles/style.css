@@ -156,6 +156,21 @@ p{
 }
 
 
+/*  ALLE TRANSACTIES--------------------*/
+.transactie_kader{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    height: 100px;
+    width: 100px;;
+}
+
+.transactie_details{
+    color: red;
+}
+
+
+
 /*UITLOGGEN*/
 
 

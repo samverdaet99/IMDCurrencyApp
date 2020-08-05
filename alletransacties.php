@@ -29,6 +29,31 @@ Uitloggen</a>
 
 <section id="kader_groot_transfer">
 
+
+<div id="transactie_kader">
+
+<div id="transactie_gegevens">
+<p>Datum:</p>
+<p>Verzender:</p>
+<p>Ontvanger:</p>
+
+<div id="transactie_bedrag">
+<p> Bedrag: </p>
+ </div>
+<div id="transactie_details">
+<p>Meer details >> </p>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
 </section>
 
 

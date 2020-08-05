@@ -82,7 +82,7 @@ class Transaction{
 
     public function makeTransfer(){
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers (id,bedrag,description) values(:id, :bedrag, :description)");
+        $statement = $conn->prepare("insert into transfers (id,bedrag,description) values (:id, :bedrag, :description)");
         $id = $this->getId();
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();

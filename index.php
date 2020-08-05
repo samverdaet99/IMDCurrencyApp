@@ -61,7 +61,7 @@ Uitloggen</a>
     </div>
 
     <div id="alleTransfers">
-        <a href="">Bekijk alle transfers</a>
+        <a href="alletransacties.php">Bekijk alle transfers</a>
     </div>
 
     </div>
