@@ -1,7 +1,8 @@
 <?php
 include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
-
+ 
+  
 $transfer = new Transaction();
 session_start();
 
@@ -20,6 +21,7 @@ if(isset($_SESSION['transfer'])){
   } else {
     //header("Location: alletransacties.php");
   }
+
 
 
   ?>
