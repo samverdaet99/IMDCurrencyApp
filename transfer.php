@@ -6,37 +6,46 @@ include_once (__DIR__ . "/classes/User.php");
 
 
 
-//----- data bewaren in databank -----
-if (!empty($_POST)) {
 
-		//if (isset($_GET['searchName'])) {
-		//	$searchField = $_GET['user_ontvanger'];
-		//	  $searchName = Search::searchName($user_ontvanger);
-	 
-		//	  if (empty($_GET['user_ontvanger'])) {
-		//		$error = "Vul een naam in";
-		//	 } elseif (count($searchName) > 0) {
-		//		foreach ($searchName as $user_ontvanger) {
-		//			 $boodschap .=  htmlspecialchars($user_ontvanger['user_ontvanger']) ;
-		//		  }
-		//	  } else {
-		//	   $error = "Geen resultaten";
-		//	}
-	   // }
-		 //} 	else {
-			//header("Location:transfer.php");
-	  //}
-	 
+//----- data bewaren in databank -----
+//if (!empty($_POST)) {
+
+		//$user = new User();
+		//session_start();
+
+		//$succes1 = '';	
+
+	
+	  if (isset($_GET['searchName'])) {
+		$searchField = $_GET['searchField'];
+		$searchName = Search::searchName($searchField);
+	
+		if (empty($_GET['searchField'])) {
+			$error = "Vul een naam in";
+		} elseif (count($searchName) > 0) {
+			foreach ($searchName as $name) {
+				$succes1 .=  htmlspecialchars($name['username'])  . '</div>' . '</a>';
+			}
+		} else {
+			$error = "Geen resultaten";
+		}
+	}
+
+//}
+	//else {
+	//header("Location: zoekbalk.php");
+	//}
+
+
+	if (!empty($_POST)) {
 		
 	try {
 	  $transfer = new Transaction();
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 	  $transfer->setDatum($_POST['datum']);
-	  $transfer->setUser_ontvanger($_POST['user_ontvanger']);
 
-	  $transfer->setUsername($_POST['username']);
-	  $transfer->getUsername();
+
 
 
 	  $transfer->saveTransfer();
@@ -78,21 +87,26 @@ if (!empty($_POST)) {
 <form action="" method="POST" id="form_transfer">
 
 
-		<div class="formfield">
-				<label for="name">Selecteer een gebruiker om <br> tokens naar te verzenden:</label>
-				<br>
-                <input class="form-control" type="text" name="user_ontvanger" placeholder="Naam" id="searchName" autocomplete="off">
+
+			<div class="form-group">
+                <label for="name"><b>Naam</b></label>
+                <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
                 <div id="suggesstionBox"></div>
             </div>
 
 
+
+            <div class="form-group">
+
+        <?php if (isset($succes1)) : ?>
+            <p>
+                <?php echo $succes1; ?>
+            </p>
+        <?php endif; ?>
+    	</div>
+
+
 		
-			
-				<?php if (isset($boodschap)) : ?>
-            	<p>
-            	<?php echo $boodschap; ?>
-            	</p>
-       			<?php endif; ?>
 
 				<br> 
 
@@ -142,6 +156,7 @@ if (!empty($_POST)) {
 
 			 <script src="js/autocomplete.js"></script> 
 			 <script src="jquery/jquery.js"></script> 
+			 
 			
 
 </body>

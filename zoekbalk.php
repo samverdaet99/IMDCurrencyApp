@@ -1,15 +1,33 @@
 <?php
 
 include_once(__DIR__ . "/classes/User.php");
+include_once(__DIR__ . "/classes/Search.php");
 
 $user = new User();
 session_start();
 
+$succes1 = '';
 
-if (!empty($_POST['user'])) {
-  $namesearch = htmlspecialchars($_POST['username']);
-  $results = $user->searchpeop($username);
+
+
+
+  if (isset($_GET['searchName'])) {
+    $searchField = $_GET['searchField'];
+    $searchName = Search::searchName($searchField);
+
+    if (empty($_GET['searchField'])) {
+        $error = "Vul een naam in";
+    } elseif (count($searchName) > 0) {
+        foreach ($searchName as $name) {
+            $succes1 .=  htmlspecialchars($name['username'])  . '</div>' . '</a>';
+        }
+    } else {
+        $error = "Geen resultaten";
+    }
 }
+//else {
+//header("Location: zoekbalk.php");
+//}
 
 ?>
 
@@ -22,28 +40,30 @@ if (!empty($_POST['user'])) {
 
 <body>
 
-<h2>Search</h2>
-
-<h1> Filter op naam </h1>
-      <br>
-      <form action="" method="post">
-        <div class="form-group">
-          <label for="namesearch" class=""> Search name </label>
-          <input type="text" name="username" id="username" placeholder="name">
-        </div> <br>
-        <div class="form btn">
-          <input type="submit" class="btn btn-primary" name="name" value="searchname">
-        </div>
-      </form>
+<div class="form-group">
+                <label for="name"><b>Naam</b></label>
+                <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
+                <div id="suggesstionBox"></div>
+            </div>
 
 
-         <p> <b> Results: </b> </p>
-            <?php if (isset($results)) : ?>
-           <?php foreach ($results as $result) : ?>
-            <p><?php echo $result['username'];  ?> </p>  
-          <?php endforeach; ?>
-           <?php endif; ?> 
+
+            <div class="form-group">
+        <?php if (isset($error)) : ?>
+            <p>
+                <?php echo $error; ?>
+            </p>
+        <?php endif; ?>
+
+        <?php if (isset($succes1)) : ?>
+            <p>
+                <?php echo $succes1; ?>
+            </p>
+        <?php endif; ?>
+    </div>
 
 </body>
+
+<script src="js/autocomplete.js"></script>
 
 </html>

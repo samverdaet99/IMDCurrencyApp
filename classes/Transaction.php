@@ -220,12 +220,11 @@ class Transaction{
     public function saveTransfer(){
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum, user_ontvanger) values (:id, :bedrag, :description, :datum, :user_ontvanger)");
+        $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum) values (:id, :bedrag, :description, :datum)");
         $id = $this->getId();
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
         $datum = $this->getDatum();
-        $user_ontvanger = $this->getUser_ontvanger();
 
 
 
@@ -238,7 +237,6 @@ class Transaction{
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
             $statement->bindValue(":datum", $datum);
-            $statement->bindValue(":user_ontvanger", $user_ontvanger);
 
             $result = $statement->execute();
             return $result;

@@ -1,6 +1,7 @@
+
 <?php
 
-include_once(__DIR__ . "/classes/Search.php");
+include_once(__DIR__ . "./classes/Search.php");
 
 if (!empty($_POST)) {
 
@@ -14,7 +15,6 @@ if (!empty($_POST)) {
         'body' => $resp_body
     ];
 
-    header('Content-Type: application/json; charset=utf-8');
+    header('Content-Type: application/json');
     echo json_encode($response);
-    exit;
 }
