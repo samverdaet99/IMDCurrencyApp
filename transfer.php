@@ -11,7 +11,7 @@ if (!empty($_POST)) {
 
 		if (isset($_GET['searchName'])) {
 			$searchField = $_GET['user_ontvanger'];
-			  $searchName = Search::searchName($searchField);
+			  $searchName = Search::searchName($user_ontvanger);
 	 
 			  if (empty($_GET['user_ontvanger'])) {
 				$error = "Vul een naam in";
@@ -72,7 +72,7 @@ if (!empty($_POST)) {
 
 
 		<div class="formfield">
-				<label for="name">Naam:</label>
+				<label for="name">Selecteer een gebruiker om <br>tokens naar te verzenden:</label>
 				<br>
                 <input class="form-control" type="text" name="user_ontvanger" placeholder="Naam" id="searchName" autocomplete="off">
                 <div id="suggesstionBox"></div>
