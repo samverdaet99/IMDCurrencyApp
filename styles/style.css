@@ -20,7 +20,6 @@ p{
 }
 
 
-
  
 
 /*INLOGGEN*/ 
@@ -437,6 +436,8 @@ p{
     width: 40%;
 }
 
+
+
 .btn{
     padding: 10px;
     border: none;
@@ -446,66 +447,14 @@ p{
 }
 
 
-/*  ALLE TRANSACTIES--------------------*/
-
-
-#transactie_kader{
-    background-color: rgb(189, 228, 236);
-    border-radius: 10px;
-    padding: 40px;
-    margin-top: 100px;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-#transactie_datum{
-    text-align: center;
-    margin-bottom: -30px;
-}
-
-
-
-#transactie_datum{
-    text-align: center;
-
-}
-
-#transactie_gegevens{
-    background-color: white;
-    padding-left: 30px;
-    padding: 20px;
-    border-radius: 20px;
-    
-}
-
-
-#transactie_details{
-    text-decoration: none;
-    background-color: rgb(127, 184, 196);
-    text-decoration: none;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding: 5px;
-    text-align: center;
-    float: right;
-    margin-top: -80px;
-    color: white;
-    border-radius: 10px;
-    margin-right: 70px;
-    width: 160px;
-    
-}
-
-
+/*  ALLE TRANSACTIES--en 
 /*  DETAILS--------------------*/
 
 #kader_details{
     border-radius: 20px;
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-top: 100px;
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 90px;
     padding: 40px;
 }
 
@@ -532,7 +481,10 @@ p{
     border-radius: 20px;
 }
 
-/*UITLOGGEN*/
+
+
+
+/*UITLOGGEN EN TERUG*/
 
 
 #logout{
@@ -552,6 +504,12 @@ p{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
+}
+
+#terug{
+   color: red;
+   padding: 20px; 
+   background-color: red;
 }
 
 }

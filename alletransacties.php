@@ -24,8 +24,6 @@ if(isset($_SESSION['transfer'])){
 
   ?>
 
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,19 +34,12 @@ if(isset($_SESSION['transfer'])){
 <body>
 
 
-<div id="logout">
-<a href="logout.php">
-Uitloggen</a>
-</div>
-
-<a href="index.php">Terug</a>
+<div id="terug"><a href="index.php">Terug</a></div>
 
 
+<section id="kader_details">
 
-<section id="kader_groot_transfer2">
-
-
-<div id="transactie_kader">
+<div id="details_kader">
 
 <?php if(isset($emptymessage)) :?>
         <h2 class="emptyMessage"><?php echo $emptymessage; ?></h2>
@@ -57,41 +48,42 @@ Uitloggen</a>
 
 <?php foreach ($allTransfers as $allTranser) :?>
 
-  <div id="transactie_datum"><p><?php echo $allTranser['datum']; ?></p></div>
 
-
-
-  <div id="transactie_gegevens">
-
-  <p>Verzender: <?php echo $allTranser['user_verzender'];?></p>
-  <p>Ontvanger: <?php echo $allTranser['user_ontvanger'];?> </p>
-
-
-
-  <div id="transactie_bedrag">
-  <p> Tokens :<?php echo $allTranser['bedrag'];?> </p>
+  <div id="details_datum">
+  <p> Uitvoerdatum: <br><?php echo $allTranser['datum'];?> </p>
   </div>
 
-  
-  <div id="transactie_details">
-  <a href="detailstransfer.php">Meer details >></a>
+
+
+
+  <div id="details_gegevens">
+
+  <p>Verzender: <br><?php echo $allTranser['user_verzender'];?></p>
+  <p>Ontvanger: <br><?php echo $allTranser['user_ontvanger'];?> </p>
+
+
+
+  <div id="details_bedrag">
+  <p> Tokens: <br><?php echo $allTranser['bedrag'];?> </p>
   </div>
+
+<div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
+
+</div>
  
   <?php endforeach; ?>
 
-
-
-
+      </div>
 </div>
-
-
-</div>
-
-
 
 
 
 </section>
+
+<div id="logout">
+<a href="logout.php">
+Uitloggen</a>
+</div>
 
 
     

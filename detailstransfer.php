@@ -31,10 +31,6 @@ if(isset($_SESSION['transfer'])){
 <body>
 
 
-<div id="logout">
-<a href="logout.php">
-Uitloggen</a>
-</div>
 
 <a href="alletransacties.php">Terug</a>
 
@@ -85,7 +81,10 @@ Uitloggen</a>
 
 </section>
 
-
+<div id="logout">
+<a href="logout.php">
+Uitloggen</a>
+</div>
     
 </body>
 </html>
