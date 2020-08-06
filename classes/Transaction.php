@@ -156,10 +156,13 @@ class Transaction{
     public function saveTransfer(){
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers (id,bedrag, description) values (:id, :bedrag, :description)");
+        $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum, user_ontvanger) values (:id, :bedrag, :description, :datum, :user_ontvanger)");
         $id = $this->getId();
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
+        $datum = $this->getDatum();
+        $user_ontvanger = $this->getUser_ontvanger();
+
 
 
         if(empty($bedrag) || empty($description) ){
@@ -170,6 +173,8 @@ class Transaction{
             $statement->bindValue(":id", $id);
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
+            $statement->bindValue(":datum", $datum);
+            $statement->bindValue(":user_ontvanger", $user_ontvanger);
 
             $result = $statement->execute();
             return $result;

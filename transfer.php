@@ -9,20 +9,20 @@ include_once (__DIR__ . "/classes/User.php");
 //----- data bewaren in databank -----
 if (!empty($_POST)) {
 
-		//if (isset($_GET['searchName'])) {
-			//$searchField = $_GET['searchField'];
-			 // $searchName = Search::searchName($searchField);
+		if (isset($_GET['searchName'])) {
+			$searchField = $_GET['user_ontvanger'];
+			  $searchName = Search::searchName($searchField);
 	 
-			  //if (empty($_GET['searchField'])) {
-			//	$error = "Vul een naam in";
-			 //} elseif (count($searchName) > 0) {
-				//foreach ($searchName as $username) {
-				//	 $boodschap .=  htmlspecialchars($username['username']) ;
-				 // }
-			  //} else {
-			   //$error = "Geen resultaten";
-			//}
-	   //}
+			  if (empty($_GET['user_ontvanger'])) {
+				$error = "Vul een naam in";
+			 } elseif (count($searchName) > 0) {
+				foreach ($searchName as $user_ontvanger) {
+					 $boodschap .=  htmlspecialchars($user_ontvanger['user_ontvanger']) ;
+				  }
+			  } else {
+			   $error = "Geen resultaten";
+			}
+	   }
 		 //} 	else {
 			//header("Location:transfer.php");
 	  //}
@@ -32,6 +32,8 @@ if (!empty($_POST)) {
 	  $transfer = new Transaction();
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
+	  $transfer->setDatum($_POST['datum']);
+	  $transfer->setUser_ontvanger($_POST['user_ontvanger']);
 
 
 	  $transfer->saveTransfer();
@@ -72,9 +74,10 @@ if (!empty($_POST)) {
 		<div class="formfield">
 				<label for="name">Naam:</label>
 				<br>
-                <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
+                <input class="form-control" type="text" name="user_ontvanger" placeholder="Naam" id="searchName" autocomplete="off">
                 <div id="suggesstionBox"></div>
             </div>
+
 
 		
 			
@@ -83,9 +86,6 @@ if (!empty($_POST)) {
             	<?php echo $boodschap; ?>
             	</p>
        			<?php endif; ?>
-
-
-				
 
 				<br> 
 
@@ -103,19 +103,14 @@ if (!empty($_POST)) {
 				</div>
 				<br>
 
-
-				
 				<div class="formfield">
-					<label for="datum">Huidige datum:</label>
+					<label for="datum">Datum:</label>
 					<br>
-
-					<?php
-					$datum = date('d-m-Y H:i:s');
-					?>
-
-				<p><?php echo date('d-m-Y H:i:s'); ?> </p>
+					<input type="date" id="datum" name="datum">
 				</div>
-                <br>
+				<br>
+
+
 
 
 
