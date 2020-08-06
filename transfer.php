@@ -1,48 +1,46 @@
 <?php
 include_once (__DIR__ . "/classes/Transaction.php");
-//include_once (__DIR__ . "/classes/Search.php");
+include_once (__DIR__ . "/classes/Search.php");
+include_once (__DIR__ . "/classes/User.php");
 
 
-
-
-//----- search username balk -----
-
-// Search for name in db 
-	//if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {	
-    //if (isset($_GET['searchName'])) {
-      // $searchField = $_GET['searchField'];
-        // $searchName = Search::searchName($searchField);
-
-         // if (empty($_GET['searchField'])) {
-           // $error = "Vul een naam in";
-        // } elseif (count($searchName) > 0) {
-           // foreach ($searchName as $username) {
-              //  $boodschap .=  htmlspecialchars($username['username']) ;
-            // }
-        // } else {
-          // $error = "Geen resultaten";
-       //}
-  // }
-	//} 	else {
-   	//header("Location:transfer.php");
- //}
 
 
 //----- data bewaren in databank -----
-
-
 if (!empty($_POST)) {
+
+		//if (isset($_GET['searchName'])) {
+			//$searchField = $_GET['searchField'];
+			 // $searchName = Search::searchName($searchField);
+	 
+			  //if (empty($_GET['searchField'])) {
+			//	$error = "Vul een naam in";
+			 //} elseif (count($searchName) > 0) {
+				//foreach ($searchName as $username) {
+				//	 $boodschap .=  htmlspecialchars($username['username']) ;
+				 // }
+			  //} else {
+			   //$error = "Geen resultaten";
+			//}
+	   //}
+		 //} 	else {
+			//header("Location:transfer.php");
+	  //}
+	 
 		
 	try {
 	  $transfer = new Transaction();
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 
+
 	  $transfer->saveTransfer();
+	  $transfer->checkTokens("tokens");
+	  $transfer->vergelijk();
 	  
 	  session_start();
 	  $_SESSION['transfer'] = $_POST['bedrag'];
-	  header("Location: transfer.php");
+	  //header("Location: transfer.php");
 	} 
 	catch (\Throwable $th) {
 	  $error = $th->getMessage();
@@ -62,11 +60,6 @@ if (!empty($_POST)) {
     <title>Document</title>
 </head>
 <body>
-
-<div id="logout">
-<a href="logout.php">
-Uitloggen</a>
-</div>
 
 <a href="index.php">Terug</a>
 
@@ -109,6 +102,8 @@ Uitloggen</a>
 					<input type="text" id="description" name="description">
 				</div>
 				<br>
+
+
 				
 				<div class="formfield">
 					<label for="datum">Huidige datum:</label>
@@ -141,6 +136,12 @@ Uitloggen</a>
 
 
 			</section>
+
+			<div id="logout">
+<a href="logout.php">
+Uitloggen</a>
+</div>
+
 
 			 <script src="js/autocomplete.js"></script> 
 			 <script src="jquery/jquery.js"></script> 

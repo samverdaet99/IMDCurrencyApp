@@ -5,12 +5,15 @@ include_once (__DIR__ . "/Db.php");
 
 class Transaction{
 
+    
     private $id;
     private $bedrag;
     private $description;
     private $datum;
     private $user_ontvanger;
     private $user_verzender;
+
+    private $tokens;
 
 
     /**
@@ -205,29 +208,6 @@ class Transaction{
 
     }
 
-//tokens 
-
-
-        public function checkTokens()
-        {
-        $conn = Db::getConnection();
-        $statement = $conn->prepare("select * from users where tokens = :tokens");
-        $statement->bindValue(':tokens', $tokens);
-
-        $beschrikbaar=("select * from users where tokens = :tokens");
-
-        if ($beschrikbaar < 0){
-     
-           throw new Exception("Je hebt niet voldoende tokens");
-            return false;
-        } else {
-
-        $result = $statement->execute();
-        return $result;
-
-       }
-
-    }
 
 
 
@@ -245,15 +225,44 @@ class Transaction{
     }
 
 
+    
+    //check tokens
+
+    
+    public function checkTokens($tokens)
+    {
+    $conn = Db::getConnection();
+    $statement = $conn->prepare("select * from users where tokens = :tokens");
+
+    //$beschrikbaar=("select * from users where tokens = :tokens");
+    //if ($beschrikbaar < 0){
+ 
+      //throw new Exception("Je hebt niet voldoende tokens");
+       //return false;
+    //} else {
+
+    $statement->bindValue(':tokens', $tokens);
+    $result = $statement->execute();
+    return $result;
+
+   }
 
 
 
 
+   public function vergelijk(){
 
+           $beschrikbaar=("select * from users where tokens = :tokens");
+           $bedrag = ("select * from transfers where bedrag = :bedrag");
 
-
-
-
+            if ($beschrikbaar < $bedrag ){
+ 
+            throw new Exception("Je hebt niet voldoende tokens");
+            return false;
+            }else{
+                throw new Exception("Je hebt voldoende"); 
+            }
+   }
 
 
 }
