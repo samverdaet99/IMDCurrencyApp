@@ -3,24 +3,33 @@ include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
  
   
-$transfer = new Transaction();
-session_start();
-
-if(isset($_SESSION['transfer'])){
-  //if (!empty($_POST)) {
+//$transfer = new Transaction();
+//session_start();
 
     $transfer = new Transaction();
-
     $allTransfers = $transfer->getTransfers($_SESSION['transfer']);
 
     if ($allTransfers == null)
     {
     $emptymessage = "Nog geen transacties";
     }
+
+
+//if(isset($_SESSION['transfer'])){
+  //if (!empty($_POST)) {
+
+   // $transfer = new Transaction();
+
+    //$allTransfers = $transfer->getTransfers($_SESSION['transfer']);
+
+    //if ($allTransfers == null)
+    //{
+    //$emptymessage = "Nog geen transacties";
+    //}
    
-  } else {
+  //} else {
     //header("Location: alletransacties.php");
-  }
+  //}
 
 
 
@@ -41,7 +50,7 @@ if(isset($_SESSION['transfer'])){
 
 <div id="paginatitel">
 	<h1>Mijn  transacties</h1>
-	<p>Hieronder vindt u een weergave van de transacties die u reeds uitvoerde.</p>
+	<p>Hieronder vindt u een weergave van de transacties die u reeds hebt uitgevoerd.</p>
 </div>
 
 <section id="kader_details">

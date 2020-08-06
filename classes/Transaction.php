@@ -13,6 +13,10 @@ class Transaction{
     private $user_ontvanger;
     private $user_verzender;
 
+    private $username;
+    private $email;
+    private $password;
+    private $confirmPassword;
     private $tokens;
 
 
@@ -143,6 +147,66 @@ class Transaction{
         return $this;
     }
 
+        /**
+     * Get the value of username
+     */ 
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set the value of username
+     *
+     * @return  self
+     */ 
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tokens
+     */ 
+    public function getTokens()
+    {
+        return $this->tokens;
+    }
+
+    /**
+     * Set the value of tokens
+     *
+     * @return  self
+     */ 
+    public function setTokens($tokens)
+    {
+        $this->tokens = $tokens;
+
+        return $this;
+    }
+
 
 
 
@@ -213,6 +277,36 @@ class Transaction{
 
     }
 
+    
+         // get user by name-------------
+
+         public function getUserUsername($username)
+         {
+           $conn = Db::getConnection();
+           $statement = $conn->prepare("select * from users where username = :username");
+           $username = $username;
+           $statement->bindValue(':username', $email);
+           $result = $statement->execute();
+           $user = $statement->fetch(PDO::FETCH_ASSOC);
+           return $user;
+       
+         }
+
+
+         // get user by email-------------
+
+         public function getUserByEmail($email)
+         {
+           $conn = Db::getConnection();
+           $statement = $conn->prepare("select * from users where email = :email");
+           $email = $email;
+           $statement->bindValue(':email', $email);
+           $result = $statement->execute();
+           $user = $statement->fetch(PDO::FETCH_ASSOC);
+           return $user;
+       
+         }
+
 
 
 
@@ -234,23 +328,23 @@ class Transaction{
     //check tokens
 
     
-    public function checkTokens($tokens)
+        public function checkTokens($tokens)
     {
-    $conn = Db::getConnection();
-    $statement = $conn->prepare("select * from users where tokens = :tokens");
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select * from users where tokens = :tokens");
 
-    //$beschrikbaar=("select * from users where tokens = :tokens");
-    //if ($beschrikbaar < 0){
+        //$beschrikbaar=("select * from users where tokens = :tokens");
+        //if ($beschrikbaar < 0){
  
-      //throw new Exception("Je hebt niet voldoende tokens");
+        //throw new Exception("Je hebt niet voldoende tokens");
        //return false;
-    //} else {
+        //} else {
 
-    $statement->bindValue(':tokens', $tokens);
-    $result = $statement->execute();
-    return $result;
+        $statement->bindValue(':tokens', $tokens);
+        $result = $statement->execute();
+        return $result;
 
-   }
+        }
 
 
 
@@ -267,7 +361,9 @@ class Transaction{
             }else{
                 throw new Exception("Je hebt voldoende"); 
             }
-   }
+     }
+
+
 
 
 }

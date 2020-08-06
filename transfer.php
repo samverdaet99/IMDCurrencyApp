@@ -9,20 +9,20 @@ include_once (__DIR__ . "/classes/User.php");
 //----- data bewaren in databank -----
 if (!empty($_POST)) {
 
-		if (isset($_GET['searchName'])) {
-			$searchField = $_GET['user_ontvanger'];
-			  $searchName = Search::searchName($user_ontvanger);
+		//if (isset($_GET['searchName'])) {
+		//	$searchField = $_GET['user_ontvanger'];
+		//	  $searchName = Search::searchName($user_ontvanger);
 	 
-			  if (empty($_GET['user_ontvanger'])) {
-				$error = "Vul een naam in";
-			 } elseif (count($searchName) > 0) {
-				foreach ($searchName as $user_ontvanger) {
-					 $boodschap .=  htmlspecialchars($user_ontvanger['user_ontvanger']) ;
-				  }
-			  } else {
-			   $error = "Geen resultaten";
-			}
-	   }
+		//	  if (empty($_GET['user_ontvanger'])) {
+		//		$error = "Vul een naam in";
+		//	 } elseif (count($searchName) > 0) {
+		//		foreach ($searchName as $user_ontvanger) {
+		//			 $boodschap .=  htmlspecialchars($user_ontvanger['user_ontvanger']) ;
+		//		  }
+		//	  } else {
+		//	   $error = "Geen resultaten";
+		//	}
+	   // }
 		 //} 	else {
 			//header("Location:transfer.php");
 	  //}
@@ -34,6 +34,9 @@ if (!empty($_POST)) {
 	  $transfer->setDescription($_POST['description']);
 	  $transfer->setDatum($_POST['datum']);
 	  $transfer->setUser_ontvanger($_POST['user_ontvanger']);
+
+	  $transfer->setUsername($_POST['username']);
+	  $transfer->getUsername();
 
 
 	  $transfer->saveTransfer();
