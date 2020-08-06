@@ -1,5 +1,5 @@
 <?php
-//include_once (__DIR__ . "/classes/User.php");
+include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 
 $transfer = new Transaction();
@@ -34,8 +34,13 @@ if(isset($_SESSION['transfer'])){
 <body>
 
 
-<div id="terug"><a href="index.php">Terug</a></div>
+<div id="terug"><a href="index.php">&#8592;</a></div>
 
+
+<div id="paginatitel">
+	<h1>Mijn  transacties</h1>
+	<p>Hieronder vindt u een weergave van de transacties die u reeds uitvoerde.</p>
+</div>
 
 <section id="kader_details">
 
@@ -80,10 +85,7 @@ if(isset($_SESSION['transfer'])){
 
 </section>
 
-<div id="logout">
-<a href="logout.php">
-Uitloggen</a>
-</div>
+
 
 
 

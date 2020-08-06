@@ -39,7 +39,7 @@ if(isset($_SESSION['user'])){
     <h2 >Wat fijn dat je gebruik maakt <br> van onze  applicatie, 
        <span id="geel"> <?php echo $username['username'];?></span>!
 </h2>
-    <p>Klik op onderstaande knoppen om een nieuwe transfer te maken <br>of om jouw vorige transfers te bekijken</p>
+    <p>Klik op onderstaande knoppen om een nieuwe transactie te maken <br>of om jouw vorige transacties te bekijken</p>
 
     <div id="huidigsaldo">
 
@@ -54,11 +54,11 @@ if(isset($_SESSION['user'])){
     <div id="links">
 
     <div id="nieuweTransfer">
-        <a href="transfer.php">Maak een nieuwe transfer</a>
+        <a href="transfer.php">Maak een nieuwe transactie</a>
     </div>
 
     <div id="alleTransfers">
-        <a href="alletransacties.php">Bekijk alle transfers</a>
+        <a href="alletransacties.php">Bekijk alle transacties</a>
     </div>
 
     </div>

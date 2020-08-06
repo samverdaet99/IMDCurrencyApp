@@ -63,9 +63,13 @@ if (!empty($_POST)) {
 </head>
 <body>
 
-<a href="index.php">Terug</a>
+<div id="terug"><a href="index.php">&#8592;</a></div>
 
 
+<div id="paginatitel">
+	<h1>Nieuwe transactie</h1>
+	<p>Vul onderstaande velden in om een nieuwe transactie uit te voeren.</p>
+</div>
 
 <section id="kader_groot_transfer">
 <form action="" method="POST" id="form_transfer">
@@ -131,11 +135,6 @@ if (!empty($_POST)) {
 
 
 			</section>
-
-			<div id="logout">
-<a href="logout.php">
-Uitloggen</a>
-</div>
 
 
 			 <script src="js/autocomplete.js"></script> 
