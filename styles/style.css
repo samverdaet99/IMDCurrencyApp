@@ -507,9 +507,9 @@ p{
 }
 
 #terug{
-   color: red;
+   color: white;
    padding: 20px; 
-   background-color: red;
+   background-color:rgb(213, 180, 49);;
 }
 
 }

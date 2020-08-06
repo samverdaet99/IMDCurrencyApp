@@ -72,7 +72,7 @@ if (!empty($_POST)) {
 
 
 		<div class="formfield">
-				<label for="name">Selecteer een gebruiker om <br>tokens naar te verzenden:</label>
+				<label for="name">Selecteer een gebruiker om <br> tokens naar te verzenden:</label>
 				<br>
                 <input class="form-control" type="text" name="user_ontvanger" placeholder="Naam" id="searchName" autocomplete="off">
                 <div id="suggesstionBox"></div>
