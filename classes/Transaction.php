@@ -241,25 +241,9 @@ class Transaction{
             $result = $statement->execute();
             return $result;
     
-    }
+            }
 
-}
-
-
-    //get all transfers
-    
-    public function getEverything($id){
-
-        $conn = Db::getConnection();
-        $statement = $conn->prepare("select transfers.id, transfers.bedrag, transfers.description from transfers");
-        $id = $id;
-        $statement->bindValue(":id", $id);
-        $result = $statement->execute();
-        $transfer = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $transfer;
-    }
-
-
+        }       
 
 
     // get bedrag
