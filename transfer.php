@@ -86,8 +86,8 @@ include_once (__DIR__ . "/classes/User.php");
 
 
 
-			<div class="form-group">
-                <label for="name"><b>Naam</b></label>
+			<div class="formfield">
+                <label for="name">Naar:</label><br>
                 <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
                 <div id="suggesstionBox"></div>
             </div>
@@ -123,7 +123,7 @@ include_once (__DIR__ . "/classes/User.php");
 				<br>
 
 				<div class="formfield">
-					<label for="datum">Datum:</label>
+					<label for="datum">Datum van uitvoering:</label>
 					<br>
 					<input type="date" id="datum" name="datum">
 				</div>
