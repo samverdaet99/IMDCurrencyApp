@@ -84,8 +84,6 @@ include_once (__DIR__ . "/classes/User.php");
 <section id="kader_groot_transfer">
 <form action="" method="POST" id="form_transfer">
 
-<div id="muntprent"></div>
-
 
 
 			<div class="form-group">

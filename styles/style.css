@@ -25,7 +25,12 @@ p{
 /*INLOGGEN*/ 
 
 #middenkader{
-    background-color: rgb(164, 199, 206);
+    background-color:rgb(189, 228, 236);
+    background-image: url(../img/munt.png);
+    background-repeat: no-repeat;
+    background-size: 140px;
+    background-position: top right;
+
     padding: 50px;
     border-radius: 20px;;
     margin-top: 30px;
@@ -93,7 +98,12 @@ p{
 /*-----------aanmelden*/ 
 
 #aanmelden{
-    background-color: rgb(164, 199, 206);
+    background-color:rgb(189, 228, 236);
+    background-image: url(../img/munt.png);
+    background-repeat: no-repeat;
+    background-size: 140px;
+    background-position: top right;
+
     padding: 50px;
     border-radius: 20px;;
     margin-top: 30px;
@@ -138,7 +148,12 @@ p{
 /*INDEX---------------------------*/ 
 
 #profielbox{
-    background-color:  rgb(164, 199, 206);
+    background-color:rgb(189, 228, 236);
+    background-image: url(../img/top_munt.png);
+    background-repeat: no-repeat;
+    background-size: 190px;
+    background-position: top right;
+
     border-radius: 10px;
     padding: 20px;
     margin-top: 30px;
@@ -207,6 +222,104 @@ p{
 }
 
 
+/*NIEUWE TRANSFER*/
+
+#paginatitel{
+    width: 100%;
+    height: 100px;
+    text-align:center;
+    margin-bottom: -120px;
+}
+#paginatitel p{
+    margin-top: -16px;
+}
+
+
+#kader_groot_transfer{
+    background-color: rgb(189, 228, 236);
+    background-image: url(../img/munt.png);
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-position: bottom right;
+
+    
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 100px;
+    width: 60%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 5px 5px 8px rgb(144, 174, 179);
+
+}
+
+#form_transfer{
+    padding: 40px;
+    padding-left: 20px;
+}
+
+.formfield, .search-box{
+    font-family: Arial, Helvetica, sans-serif;;
+    font-size: 15px;
+    width: 40%;
+}
+
+#form_transfer .formfield{
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: left;
+}
+
+
+
+
+
+
+.btn{
+    padding: 10px;
+    border: none;
+    background: rgb(127, 184, 196);
+    border-radius: 10px;
+    color: white;
+    margin-left: 40px;
+    }
+    
+
+/*  ALLE TRANSACTIES--en 
+/*  DETAILS--------------------*/
+
+#kader_details{
+    border-radius: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+    padding: 40px;
+}
+
+#details_kader{
+    background-color:rgb(189, 228, 236);
+    padding: 40px;
+    border-radius: 20px;
+    padding-left: 40px;
+}
+
+#kader_details p{
+    font-size: 16px;
+}
+
+#details_datum{
+    text-align: center;
+
+}
+
+#details_gegevens{
+    background-color: white;
+    padding-left: 30px;
+    padding: 20px;
+    border-radius: 20px;
+}
+ 
 /*UITLOGGEN--------------------*/
 
 
@@ -243,7 +356,13 @@ p{
 /*INLOGGEN*/ 
 
 #middenkader{
-    background-color: rgb(164, 199, 206);
+    background-color:rgb(189, 228, 236);
+    background-image: url(../img/munt.png);
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position-x: 600px;
+    background-position-y: 140px;
+
     padding: 50px;
     border-radius: 20px;;
     margin-top: 100px;
@@ -265,8 +384,7 @@ p{
 
 #form_inloggen{
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-right: 700px;
     text-align: center;
     background-color: rgb(231, 246, 248);
     padding: 20px;
@@ -305,7 +423,13 @@ p{
 /*-----------aanmelden*/ 
 
 #aanmelden{
-    background-color: rgb(164, 199, 206);
+    background-color:rgb(189, 228, 236);
+    background-image: url(../img/munt.png);
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position-x: 700px;
+    background-position-y: 140px;
+
     padding: 50px;
     border-radius: 20px;;
     margin-top: 80px;
@@ -341,7 +465,13 @@ p{
 /*INDEX*/ 
 
 #profielbox{
-    background-color:  rgb(164, 199, 206);
+    background-color:rgb(189, 228, 236);
+    background-image: url(../img/top_munt.png);
+    background-repeat: no-repeat;
+    background-size: 300px;
+    background-position-x: 700px;
+    background-position-y: -10px;
+
     border-radius: 10px;
     padding: 20px;
     margin-top: 100px;
@@ -426,8 +556,14 @@ p{
 
 
 #kader_groot_transfer{
+    background-color: rgb(189, 228, 236);
     background-image: url(../img/munt.png);
-    background-color: red;
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position-x: 500px;
+    background-position-y: 10px;
+
+    
     border-radius: 10px;
     padding: 20px;
     margin-top: 100px;
