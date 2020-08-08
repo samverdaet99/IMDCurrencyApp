@@ -220,11 +220,12 @@ class Transaction{
     public function saveTransfer(){
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum) values (:id, :bedrag, :description, :datum)");
+        $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum, user_verzender, user_ontvanger) values (:id, :bedrag, :description, :datum, :usersender, :userontvanger)");
         $id = $this->getId();
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
         $datum = $this->getDatum();
+        $ontvanger = $this->getUser_ontvanger();
 
 
 
@@ -237,6 +238,8 @@ class Transaction{
             $statement->bindValue(":bedrag", $bedrag);
             $statement->bindValue(":description", $description);
             $statement->bindValue(":datum", $datum);
+            $statement->bindValue(":usersender", $_SESSION["userid"]);
+            $statement->bindValue(":userontvanger", $ontvanger);
 
             $result = $statement->execute();
             return $result;
@@ -294,12 +297,11 @@ class Transaction{
 
         //get all transfers
     
-        public function getTransfers($id){
+        public function getTransfers(){
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("select transfers.id, transfers.bedrag, transfers.description, transfers.datum, transfers.user_verzender, transfers.user_ontvanger from transfers");
-        $id = $id;
-        $statement->bindValue(":id", $id);
+        $statement = $conn->prepare("select * from transfers where user_verzender =:id or user_ontvanger =:id");
+        $statement->bindValue(":id", $_SESSION['userid']);
         $result = $statement->execute();
         $transfer = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $transfer;
@@ -346,6 +348,45 @@ class Transaction{
      }
 
 
+     public static function transactiesVerzender()
+    {
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("SELECT * FROM users INNER JOIN transfers ON users.id = transfers.user_verzender");
 
+        $statement->bindValue(":id", $_SESSION['userid']);
+        $statement->execute();
+        $transactieVerzender = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $transactieVerzender;
+    }
+
+    public static function transactiesOntvanger()
+    {
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("SELECT * FROM users INNER JOIN transfers ON users.id = transfers.user_ontvanger");
+
+        $statement->bindValue(":id", $_SESSION['userid']);
+        $statement->execute();
+        $transactieOntvanger = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $transactieOntvanger;
+    }
+
+
+    /*
+    public static function findUser()
+    {
+        $conn = Db::getConnection();
+        $statement1 = $conn->prepare("SELECT username FROM users WHERE id = :verzender");
+
+        $verzender = $_SESSION['verzender'];
+
+        $statement1->bindValue(":verzender", $verzender);
+
+        $user = $statement1->execute();
+
+        return $user;
+    }
+    */
 
 }

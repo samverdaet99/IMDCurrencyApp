@@ -5,7 +5,7 @@ include_once (__DIR__ . "/classes/User.php");
 
 
 
-
+session_start();
 
 //----- data bewaren in databank -----
 //if (!empty($_POST)) {
@@ -15,6 +15,7 @@ include_once (__DIR__ . "/classes/User.php");
 
 		//$succes1 = '';	
 
+		/*
 	
 	  if (isset($_GET['searchName'])) {
 		$searchField = $_GET['searchField'];
@@ -32,6 +33,8 @@ include_once (__DIR__ . "/classes/User.php");
 	}
 
 //}
+
+*/
 	//else {
 	//header("Location: zoekbalk.php");
 	//}
@@ -44,15 +47,17 @@ include_once (__DIR__ . "/classes/User.php");
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 	  $transfer->setDatum($_POST['datum']);
+	  $transfer->setUser_ontvanger($_POST['searchField']);
 
 
 	  $transfer->saveTransfer();
-	  $transfer->checkTokens("tokens");
-	  $transfer->vergelijk();
+	  // $transfer->checkTokens("tokens");
+	  // $transfer->vergelijk();
 	  
-	  session_start();
 	  $_SESSION['transfer'] = $_POST['bedrag'];
 	  //header("Location: transfer.php");
+	  
+
 	} 
 	catch (\Throwable $th) {
 	  $error = $th->getMessage();

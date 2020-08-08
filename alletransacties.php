@@ -4,10 +4,16 @@ include_once (__DIR__ . "/classes/Transaction.php");
  
   
 //$transfer = new Transaction();
-//session_start();
+session_start();
 
     $transfer = new Transaction();
-    $allTransfers = $transfer->getTransfers($_SESSION['transfer']);
+    $allTransfers = $transfer->getTransfers();
+
+    $transactieVerzender = Transaction::transactiesVerzender($transfer);
+    $transactieOntvanger = Transaction::transactiesOntvanger($transfer);
+
+  
+   // $user = Transaction::findUser($transfer);
 
     if ($allTransfers == null)
     {
@@ -62,11 +68,21 @@ include_once (__DIR__ . "/classes/Transaction.php");
     <?php endif; ?>   
 
 
-<?php foreach ($allTransfers as $allTranser) :?>
+    <?php
+
+for($i=0, $count = count($transactieOntvanger);$i<$count;$i++):
+          $transactieOntvangers = $transactieOntvanger[$i];
+          $transactieVerzenders = $transactieVerzender[$i];
+      ?>
+
+
+
+<?php /* foreach ($allTransfers as $allTranser) */?>
+
 
 
   <div id="details_datum">
-  <p> Uitvoerdatum: <br><?php echo $allTranser['datum'];?> </p>
+  <p> Uitvoerdatum: <br><?php echo $transactieVerzenders['datum']?> </p>
   </div>
 
 
@@ -74,34 +90,44 @@ include_once (__DIR__ . "/classes/Transaction.php");
 
   <div id="details_gegevens">
 
-  <p>Verzender: <br><?php echo $allTranser['user_verzender'];?></p>
-  <p>Ontvanger: <br><?php echo $allTranser['user_ontvanger'];?> </p>
+ 
+        
+            <?php 
+            {
+                
+                 ?>
+                <table class="table table-striped table-bordered table-hover">
+                <th scope="col">
+                    <?php echo $transactieVerzenders['username'];
+                          echo  " is buddies with "; 
+                    
+           } 
+     {
+                         echo  $transactieOntvangers['username'];?>
+                </th>
+                </table>
+                <?php           
+            } 
+           ?>
+    
+       
+  
 
 
 
   <div id="details_bedrag">
-  <p> Tokens: <br><?php echo $allTranser['bedrag'];?> </p>
+  <p> Tokens: <br><?php echo $transactieVerzenders['bedrag']?> </p>
   </div>
 
 <div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
 
 </div>
  
-  <?php endforeach; ?>
 
-      </div>
-</div>
+  <?php endfor; ?>
+  
 
-
-
-</section>
-
-
-
-
-
-
-     
+</section>    
 
 
     
