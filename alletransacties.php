@@ -70,17 +70,16 @@ session_start();
 
     <?php
 
+
 for($i=0, $count = count($transactieOntvanger);$i<$count;$i++):
           $transactieOntvangers = $transactieOntvanger[$i];
           $transactieVerzenders = $transactieVerzender[$i];
-      ?>
 
+      
 
+if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
 
-<?php /* foreach ($allTransfers as $allTranser) */?>
-
-
-
+  ?>
   <div id="details_datum">
   <p> Uitvoerdatum: <br><?php echo $transactieVerzenders['datum']?> </p>
   </div>
@@ -99,7 +98,7 @@ for($i=0, $count = count($transactieOntvanger);$i<$count;$i++):
                 <table class="table table-striped table-bordered table-hover">
                 <th scope="col">
                     <?php echo $transactieVerzenders['username'];
-                          echo  " is buddies with "; 
+                          echo  " ontvanger "; 
                     
            } 
      {
@@ -122,9 +121,23 @@ for($i=0, $count = count($transactieOntvanger);$i<$count;$i++):
 <div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
 
 </div>
+
+<?php     
+} else{
+  
+}
+endfor; 
+
+
+?>
  
 
-  <?php endfor; ?>
+
+  
+  
+
+
+
   
 
 </section>    
