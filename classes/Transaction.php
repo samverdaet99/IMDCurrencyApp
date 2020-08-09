@@ -332,22 +332,6 @@ class Transaction{
 
 
 
-
-   public function vergelijk(){
-
-           $beschrikbaar=("select * from users where tokens = :tokens");
-           $bedrag = ("select * from transfers where bedrag = :bedrag");
-
-            if ($beschrikbaar < $bedrag ){
- 
-            throw new Exception("Je hebt niet voldoende tokens");
-            return false;
-            }else{
-                throw new Exception("Je hebt voldoende"); 
-            }
-     }
-
-
      public static function transactiesVerzender()
     {
         $conn = Db::getConnection();

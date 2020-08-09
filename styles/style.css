@@ -320,9 +320,10 @@ p{
 
 #details_kader{
     background-color:rgb(189, 228, 236);
-    padding: 40px;
+    padding: 20px;
     border-radius: 20px;
-    padding-left: 40px;
+    padding-left: 10px;
+    
 }
 
 #kader_details p{
@@ -336,12 +337,12 @@ p{
 
 .btndetails{
     float: right;
-   padding-left: 20px; 
-   padding-right: 20px;
+   padding-left: 10px; 
+   padding-right: 10px;
    padding: 10px; 
    text-align: center;
    background-color: #7FB8C4;
-   width: 120px;
+   width: 60px;
    border-radius: 10px;
    margin-top: -90px;
    margin-right: 20px;
@@ -352,7 +353,7 @@ p{
    text-decoration: none;
    font-family: Arial, Helvetica, sans-serif;
    font-weight: bold;
-   font-size: 14px;
+   font-size: 10px;
 }
 
 #details_gegevens{
@@ -360,6 +361,10 @@ p{
     padding-left: 30px;
     padding: 20px;
     border-radius: 20px;
+    font-family: arial;
+    color: rgb(71, 71, 71);
+    padding-left: 60px;
+    padding-top: 30px;
 }
  
 /*UITLOGGEN--------------------*/
@@ -681,6 +686,10 @@ p{
     padding-left: 30px;
     padding: 20px;
     border-radius: 20px;
+    font-family: arial;
+    color: rgb(71, 71, 71);
+    padding-left: 60px;
+    padding-top: 30px;
 }
 
 
@@ -703,6 +712,8 @@ p{
    font-family: Arial, Helvetica, sans-serif;
    font-weight: bold;
 }
+
+
 
 
 

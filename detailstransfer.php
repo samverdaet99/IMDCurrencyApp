@@ -2,23 +2,24 @@
 //include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
 
-$transfer = new Transaction();
-
+//$transfer = new Transaction();
 session_start();
 
-if(isset($_SESSION['transfer'])){
-
     $transfer = new Transaction();
+    $allTransfers = $transfer->getTransfers();
 
-    $allTransfers = $transfer->getTransfers($_SESSION['transfer']);
-   
-  } else {
-    //header("Location: transfer.php");
-  }
+    $transactieVerzender = Transaction::transactiesVerzender($transfer);
+    $transactieOntvanger = Transaction::transactiesOntvanger($transfer);
 
+  
+   // $user = Transaction::findUser($transfer);
 
-  ?>
+    if ($allTransfers == null)
+    {
+    $emptymessage = "Nog geen transacties";
+    }
 
+?>
 
 
 <html lang="en">

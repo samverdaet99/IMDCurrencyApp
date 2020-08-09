@@ -95,16 +95,13 @@ if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($trans
             {
                 
                  ?>
-                <table class="table table-striped table-bordered table-hover">
-                <th scope="col">
-                    <?php echo $transactieVerzenders['username'];
-                          echo  " ontvanger "; 
+                    <?php echo  "Verzender: ";
+                      echo $transactieVerzenders['username'] ;
                     
            } 
-     {
-                         echo  $transactieOntvangers['username'];?>
-                </th>
-                </table>
+     {                  echo  " <br> Ontvanger: ";
+                         echo  $transactieOntvangers['username']; ; ?>
+              
                 <?php           
             } 
            ?>
