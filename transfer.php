@@ -4,6 +4,13 @@ include_once (__DIR__ . "/classes/Search.php");
 include_once (__DIR__ . "/classes/User.php");
 
 
+
+session_start();
+
+
+//------- search user
+
+
     if (isset($_GET['searchUser'])) {
         $searchField = trim($_GET['searchField'], " t.");
         $searchUser = Search::findUser($searchField);
@@ -17,7 +24,7 @@ include_once (__DIR__ . "/classes/User.php");
         if (strlen($searchField) > 2) {
             if (count($searchUser) > 0) {
                 foreach ($searchUser as $searchusers) {
-                    $succes = '<div class="font-weight-bold">' . 'Username: '
+                    $succes = '<div class="font-weight-bold">' . 'Gevonden user: '
                         . htmlspecialchars($searchusers['username']) . '</div>' ;
                 }
             } else {
@@ -30,46 +37,7 @@ include_once (__DIR__ . "/classes/User.php");
 }
 
 
-
-
-
-
-
-
-session_start();
-
-//----- data bewaren in databank -----
-//if (!empty($_POST)) {
-
-		//$user = new User();
-		//session_start();
-
-		//$succes1 = '';	
-
-		/*
-	
-	  if (isset($_GET['searchName'])) {
-		$searchField = $_GET['searchField'];
-		$searchName = Search::searchName($searchField);
-	
-		if (empty($_GET['searchField'])) {
-			$error = "Vul een naam in";
-		} elseif (count($searchName) > 0) {
-			foreach ($searchName as $name) {
-				$succes1 .=  htmlspecialchars($name['username'])  . '</div>' . '</a>';
-			}
-		} else {
-			$error = "Geen resultaten";
-		}
-	}
-
-//}
-
-*/
-	//else {
-	//header("Location: zoekbalk.php");
-	//}
-
+//------- transacties
 
 	if (!empty($_POST)) {
 		
@@ -78,7 +46,7 @@ session_start();
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 	  $transfer->setDatum($_POST['datum']);
-	 // $transfer->setUser_ontvanger($_POST['searchField']);
+	 $transfer->setUser_ontvanger($_POST['searchField']);
 
 
 
@@ -101,8 +69,6 @@ session_start();
 	  
 
 	  $_SESSION['transfer'] = $_POST['bedrag'];
-	  //header("Location: transfer.php");
-	  
 
 	} 
 	catch (\Throwable $th) {
@@ -141,7 +107,7 @@ session_start();
 <form method="GET" action="">
             <div class="formfield">
                 <label for="username">Naar welke gebruiker wil je een bedrag overschrijven?</label>
-                <input class="form-control" type="text" name="searchField" placeholder="Gebruiker" id='searchUser' autocomplete="off">
+                <input class="formfield" type="text" name="searchField" placeholder="Gebruiker" id='searchUser' autocomplete="off">
                 <div><a class="" id="autocompleteClass"></a></div>
             </div>
 
@@ -173,9 +139,7 @@ session_start();
             </p>
         <?php endif; ?>
 		</div>
-		
-		-->
-
+	
 				<br> 
 
 				<div class="formfield">
@@ -198,11 +162,6 @@ session_start();
 					<input type="date" id="datum" name="datum">
 				</div>
 				<br>
-
-
-
-
-
 
                 <br>
 
