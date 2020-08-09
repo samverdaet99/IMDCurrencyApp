@@ -50,9 +50,23 @@ session_start();
 	  $transfer->setUser_ontvanger($_POST['searchField']);
 
 
+
 	  $transfer->saveTransfer();
 	  // $transfer->checkTokens("tokens");
-	  // $transfer->vergelijk();
+
+
+	 
+		$tokenschecken = Transaction::tokenscheck($transfer);
+		$bedragchekken = Transaction::bedragcheck($transfer);
+		
+		var_dump($tokenschecken);
+
+	  if ($tokenschecken > $bedragchekken){
+		echo "beschikbaar";
+	  } else{
+		  echo "niet beschikbaar";
+		}
+
 	  
 	  $_SESSION['transfer'] = $_POST['bedrag'];
 	  //header("Location: transfer.php");
@@ -74,7 +88,7 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/style.css">
 	<script src="jquery/jquery.js"></script> 
-    <title>Document</title>
+    <title>Transfers</title>
 </head>
 <body>
 
@@ -106,7 +120,9 @@ session_start();
                 <?php echo $succes1; ?>
             </p>
         <?php endif; ?>
-    	</div>
+		</div>
+		
+		
 
 
 		
@@ -133,6 +149,7 @@ session_start();
 					<input type="date" id="datum" name="datum">
 				</div>
 				<br>
+
 
 
 

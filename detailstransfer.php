@@ -39,6 +39,7 @@ session_start();
 
 <section id="kader_details">
 
+
 <div id="details_kader">
 
 <?php if(isset($emptymessage)) :?>

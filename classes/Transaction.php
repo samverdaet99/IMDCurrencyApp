@@ -308,27 +308,30 @@ class Transaction{
     }
 
 
-    
-    //check tokens
+    //-----vergelijk
 
-    
-        public function checkTokens($tokens)
-    {
+    public function bedragcheck(){
+            $conn = Db::getConnection();
+            $statement = $conn->prepare('select bedrag from transfers');
+            $statement->bindValue(":bedrag", $_SESSION['userid']);
+            $result = $statement->execute();
+            $bedragchekken = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $bedragchekken;
+        
+  }
+
+  
+
+    public function tokenscheck(){
         $conn = Db::getConnection();
-        $statement = $conn->prepare("select * from users where tokens = :tokens");
-
-        //$beschrikbaar=("select * from users where tokens = :tokens");
-        //if ($beschrikbaar < 0){
- 
-        //throw new Exception("Je hebt niet voldoende tokens");
-       //return false;
-        //} else {
-
-        $statement->bindValue(':tokens', $tokens);
+        $statement = $conn->prepare('select tokens from users');
+        $statement->bindValue(":tokens", $_SESSION['userid']);
         $result = $statement->execute();
-        return $result;
+        $tokenschecken = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $tokenschecken;
+    }
 
-        }
+
 
 
 
@@ -356,6 +359,11 @@ class Transaction{
         return $transactieOntvanger;
     }
 
+
+
+
+
+ 
 
     /*
     public static function findUser()
