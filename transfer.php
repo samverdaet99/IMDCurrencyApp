@@ -4,6 +4,37 @@ include_once (__DIR__ . "/classes/Search.php");
 include_once (__DIR__ . "/classes/User.php");
 
 
+    if (isset($_GET['searchUser'])) {
+        $searchField = trim($_GET['searchField'], " t.");
+        $searchUser = Search::findUser($searchField);
+
+        if (empty($searchField)) {
+            $error = 'Vul een username in';
+        } elseif (strlen($searchField) < 3) {
+            $error = "Voer minstens 3 karakters in.";
+        }
+
+        if (strlen($searchField) > 2) {
+            if (count($searchUser) > 0) {
+                foreach ($searchUser as $searchusers) {
+                    $succes = '<div class="font-weight-bold">' . 'Username: '
+                        . htmlspecialchars($searchusers['username']) . '</div>' ;
+                }
+            } else {
+                $error = 'Geen users gevonden';
+            }
+        }
+    
+} else {
+    //header("Location: login.php");
+}
+
+
+
+
+
+
+
 
 session_start();
 
@@ -47,27 +78,28 @@ session_start();
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 	  $transfer->setDatum($_POST['datum']);
-	  $transfer->setUser_ontvanger($_POST['searchField']);
+	 // $transfer->setUser_ontvanger($_POST['searchField']);
 
 
 
 	  $transfer->saveTransfer();
-	  // $transfer->checkTokens("tokens");
+	 //$transfer->checkTokens("tokens");
 
 
 	 
-		$tokenschecken = Transaction::tokenscheck($transfer);
-		$bedragchekken = Transaction::bedragcheck($transfer);
+		//$tokenschecken = Transaction::tokenscheck($transfer);
+		//$bedragchekken = Transaction::bedragcheck($transfer);
 		
-		var_dump($tokenschecken);
+		//var_dump($tokenschecken);
 
-	  if ($tokenschecken > $bedragchekken){
-		echo "beschikbaar";
-	  } else{
-		  echo "niet beschikbaar";
-		}
+	  //if ($tokenschecken > $bedragchekken){
+	//	echo "beschikbaar";
+	 // } else{
+		//  echo "niet beschikbaar";
+		//}
 
 	  
+
 	  $_SESSION['transfer'] = $_POST['bedrag'];
 	  //header("Location: transfer.php");
 	  
@@ -100,17 +132,37 @@ session_start();
 	<p>Vul onderstaande velden in om een nieuwe transactie uit te voeren.</p>
 </div>
 
-<section id="kader_groot_transfer">
-<form action="" method="POST" id="form_transfer">
 
 
+<section id="kader_groot_transfer">			
+				<br> 
 
-			<div class="formfield">
-                <label for="name">Naar:</label><br>
-                <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
-                <div id="suggesstionBox"></div>
+
+<form method="GET" action="">
+            <div class="formfield">
+                <label for="username">Naar welke gebruiker wil je een bedrag overschrijven?</label>
+                <input class="form-control" type="text" name="searchField" placeholder="Gebruiker" id='searchUser' autocomplete="off">
+                <div><a class="" id="autocompleteClass"></a></div>
             </div>
 
+            <div class="form-group">
+                <input class="btn border search-name-btn" type="submit" value="Zoek" name='searchUser'>
+            </div>
+	</form>
+
+	<div class="">
+        <?php if (isset($succes)) : ?>
+            <p id="description"><?php echo $succes; ?></p>
+        <?php endif; ?>
+
+        <?php if (isset($error)) : ?>
+            <p><?php echo $error; ?></p>
+        <?php endif; ?>
+
+    </div>
+	
+
+<form action="" method="POST" id="form_transfer">
 
 
             <div class="form-group">
@@ -122,10 +174,7 @@ session_start();
         <?php endif; ?>
 		</div>
 		
-		
-
-
-		
+		-->
 
 				<br> 
 
@@ -156,11 +205,6 @@ session_start();
 
 
                 <br>
-				<?php if (isset($error)) : ?>
-    			<div class="error" >
-					<?php echo $error ?>
-				</div>
-				<?php endif; ?>
 
 				<div class="formfield_submit">
 					<input type="submit" value="Plaats transfer" class="btn">	
@@ -169,7 +213,6 @@ session_start();
                
                 
 			</form>
-
 
 			</section>
 

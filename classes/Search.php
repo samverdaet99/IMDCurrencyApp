@@ -2,26 +2,27 @@
 
 include_once(__DIR__ . "/Db.php");
 
-class Search {
 
-    public static function searchName($searchField)
+class Search
+{
+    public static function findUser($searchField)
     {
         $conn = Db::getConnection();
-        $statement = $conn->prepare("SELECT * FROM users WHERE LOWER(username) LIKE LOWER(:name)");
-        $statement->bindValue(':name', '%' . $searchField . '%');
+        $statement = $conn->prepare("SELECT * FROM users WHERE LOWER(username) LIKE LOWER(:username)");
+        $statement->bindValue(':username', $searchField);
         $statement->execute();
         $count = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $count;
     }
 
-    public static function autocompleteSearchName($input)
+    public static function autocompleteClass($searchUser)
     {
         $conn = Db::getConnection();
-        $statement = ("SELECT Firstname, lastName, id FROM users WHERE username LIKE :name  LIMIT 1");
-        $query = $conn->prepare($statement);
-        $query->bindValue(':name', $input . '%');
-        $query->execute();
-        $suggestion = $query->fetch(PDO::FETCH_ASSOC);
-        return $suggestion;
+        $statement = $conn->prepare("SELECT username FROM users WHERE LOWER(username) LIKE LOWER(:username)");
+        $statement->bindValue(':username', '%' . $searchClass . '%');
+        $statement->execute();
+        $autocomplete = $statement->fetch(PDO::FETCH_ASSOC);
+        return $autocomplete;
     }
 }
+

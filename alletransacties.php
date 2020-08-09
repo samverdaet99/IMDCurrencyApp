@@ -21,9 +21,6 @@ session_start();
     }
 
 
-   
-
-
 //if(isset($_SESSION['transfer'])){
   //if (!empty($_POST)) {
 
@@ -98,13 +95,17 @@ if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($trans
             {
                 
                  ?>
-                    <?php echo  "Verzender: ";
-                      echo $transactieVerzenders['username'] ;
+
+                    <?php echo  " verzender: ";
+                      echo $transactieVerzenders['username'];
+                      
+                          
                     
            } 
-     {                  echo  " <br> Ontvanger: ";
+     {                  echo  "<ontvanger: ";
                          echo  $transactieOntvangers['username']; ; ?>
-              
+
+
                 <?php           
             } 
            ?>

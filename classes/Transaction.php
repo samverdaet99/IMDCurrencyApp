@@ -313,19 +313,17 @@ class Transaction{
     public function bedragcheck(){
             $conn = Db::getConnection();
             $statement = $conn->prepare('select bedrag from transfers');
-            $statement->bindValue(":bedrag", $_SESSION['userid']);
             $result = $statement->execute();
             $bedragchekken = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $bedragchekken;
         
   }
 
-  
+
 
     public function tokenscheck(){
         $conn = Db::getConnection();
-        $statement = $conn->prepare('select tokens from users');
-        $statement->bindValue(":tokens", $_SESSION['userid']);
+        $statement = $conn->prepare('select tokens from user');
         $result = $statement->execute();
         $tokenschecken = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $tokenschecken;
