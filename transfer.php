@@ -24,7 +24,7 @@ session_start();
         if (strlen($searchField) > 2) {
             if (count($searchUser) > 0) {
                 foreach ($searchUser as $searchusers) {
-                    $succes = '<div class="font-weight-bold">' . 'Gevonden user: '
+                    $succes = '<div>' . 'Gevonden user: '
                         . htmlspecialchars($searchusers['username']) . '</div>' ;
                 }
             } else {
@@ -104,22 +104,8 @@ session_start();
 				<br> 
 
 
-<form method="GET" action="">
-            <div class="formfield">
-                <label for="username">Naar welke gebruiker wil je een bedrag overschrijven?</label>
-                <input class="formfield" type="text" name="searchField" placeholder="Gebruiker" id='searchUser' autocomplete="off">
-                <div><a class="" id="autocompleteClass"></a></div>
-            </div>
-
-            <div class="form-group">
-                <input class="btn border search-name-btn" type="submit" value="Zoek" name='searchUser'>
-            </div>
 	</form>
 
-	<div class="">
-        <?php if (isset($succes)) : ?>
-            <p id="description"><?php echo $succes; ?></p>
-        <?php endif; ?>
 
         <?php if (isset($error)) : ?>
             <p><?php echo $error; ?></p>
@@ -130,6 +116,18 @@ session_start();
 
 <form action="" method="POST" id="form_transfer">
 
+
+<div class="formfield">
+                <label for="username">Naar welke gebruiker wil je een bedrag overschrijven? (Bv: 'Max') <br></label>
+                <input class="formfield" type="text" name="searchField" placeholder="Zoek een gebruiker" id='searchUser' autocomplete="off">
+                <div><a class="" id="autocompleteClass"></a></div>
+
+				<?php if (isset($succes)) : ?>
+            <p id="description"><?php echo $succes; ?></p>
+        <?php endif; ?>
+
+
+            </div>
 
             <div class="form-group">
 
