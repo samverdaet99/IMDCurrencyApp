@@ -33,9 +33,13 @@ session_start();
 
 
 
-<a href="alletransacties.php">Terug</a>
 
+<div id="terug"><a href="alletransacties.php">&#8592;</a></div>
 
+<div id="paginatitel">
+	<h1>Details transactie</h1>
+	
+</div>
 
 <section id="kader_details">
 

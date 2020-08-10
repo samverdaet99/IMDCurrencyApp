@@ -17,7 +17,7 @@ session_start();
 
         if (empty($searchField)) {
             $error = 'Vul een username in';
-        } elseif (strlen($searchField) <= 3) {
+        } elseif (strlen($searchField) < 3) {
             $error = "Voer minstens 3 karakters in.";
         }
 
@@ -109,6 +109,8 @@ session_start();
 
     </div>
 
+
+<!--
 	<form method="GET" action="">
             <div class="formfield">
                 <label for="username">Naar welke gebruiker wil je een bedrag overschrijven? (Bv: 'Max') <br></label>
@@ -129,7 +131,7 @@ session_start();
 			
 
 			</form> 
-
+-->
 	
 
 <form action="" method="POST" id="form_transfer">
@@ -143,6 +145,13 @@ session_start();
             </p>
         <?php endif; ?>
 		</div>
+
+
+			<div class="formfield">
+                <label for="name">Naar:</label><br>
+                <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
+                <div id="suggesstionBox"></div>
+            </div>
 
 
 				<br> 

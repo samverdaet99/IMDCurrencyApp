@@ -221,6 +221,10 @@ class Transaction{
 
         $conn = Db::getConnection();
         $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum, user_verzender, user_ontvanger) values (:id, :bedrag, :description, :datum, :usersender, :userontvanger)");
+
+        $statement2 = $conn->prepare("update users set tokens where tokens= :tokens");
+
+       
         $id = $this->getId();
         $bedrag = $this->getBedrag();
         $description = $this->getDescription();
@@ -232,7 +236,11 @@ class Transaction{
         if(empty($bedrag) || empty($description) ){
             throw new Exception("Alle velden moeten ingevuld worden");
             return false;
-        }
+        } 
+        elseif ($bedrag < 0){
+           throw new Exception("Je hebt te weinig saldo voor deze transactie");
+           return false;
+            }
             else {
             $statement->bindValue(":id", $id);
             $statement->bindValue(":bedrag", $bedrag);
@@ -246,7 +254,11 @@ class Transaction{
     
             }
 
-        }       
+        }
+
+
+    
+        
 
 
     // get bedrag
@@ -358,25 +370,5 @@ class Transaction{
     }
 
 
-
-
-
- 
-
-    /*
-    public static function findUser()
-    {
-        $conn = Db::getConnection();
-        $statement1 = $conn->prepare("SELECT username FROM users WHERE id = :verzender");
-
-        $verzender = $_SESSION['verzender'];
-
-        $statement1->bindValue(":verzender", $verzender);
-
-        $user = $statement1->execute();
-
-        return $user;
-    }
-    */
 
 }

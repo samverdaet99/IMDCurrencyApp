@@ -71,7 +71,7 @@ session_start();
     <?php
 
 
-for($i=0, $count = count($transactieOntvanger);$i<$count;$i++):
+for($i= 0, $count = count($transactieOntvanger);$i<$count;$i++):
           $transactieOntvangers = $transactieOntvanger[$i];
           $transactieVerzenders = $transactieVerzender[$i];
 
@@ -121,7 +121,7 @@ if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($trans
 
 <div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
 
-</div>
+
 
 <?php     
 } else{
@@ -130,9 +130,10 @@ if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($trans
 endfor; 
 
 
+
 ?>
  
-
+ </div>
 
   
   
