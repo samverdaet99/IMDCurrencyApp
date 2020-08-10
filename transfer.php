@@ -17,7 +17,7 @@ session_start();
 
         if (empty($searchField)) {
             $error = 'Vul een username in';
-        } elseif (strlen($searchField) < 3) {
+        } elseif (strlen($searchField) <= 3) {
             $error = "Voer minstens 3 karakters in.";
         }
 
@@ -46,7 +46,7 @@ session_start();
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 	  $transfer->setDatum($_POST['datum']);
-	 $transfer->setUser_ontvanger($_POST['searchField']);
+	$transfer->setUser_ontvanger($_POST['searchField']);
 
 
 
@@ -103,21 +103,14 @@ session_start();
 <section id="kader_groot_transfer">			
 				<br> 
 
-
-	</form>
-
-
         <?php if (isset($error)) : ?>
             <p><?php echo $error; ?></p>
         <?php endif; ?>
 
     </div>
-	
 
-<form action="" method="POST" id="form_transfer">
-
-
-<div class="formfield">
+	<form method="GET" action="">
+            <div class="formfield">
                 <label for="username">Naar welke gebruiker wil je een bedrag overschrijven? (Bv: 'Max') <br></label>
                 <input class="formfield" type="text" name="searchField" placeholder="Zoek een gebruiker" id='searchUser' autocomplete="off">
                 <div><a class="" id="autocompleteClass"></a></div>
@@ -129,6 +122,19 @@ session_start();
 
             </div>
 
+
+        <div class="form-group">
+                <input class="btn" type="submit" value="Zoek" name='searchUser'>
+            </div>
+			
+
+			</form> 
+
+	
+
+<form action="" method="POST" id="form_transfer">
+
+
             <div class="form-group">
 
         <?php if (isset($succes1)) : ?>
@@ -137,7 +143,8 @@ session_start();
             </p>
         <?php endif; ?>
 		</div>
-	
+
+
 				<br> 
 
 				<div class="formfield">
