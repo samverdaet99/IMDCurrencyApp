@@ -71,9 +71,6 @@ session_start();
 		//}
 
 
-		$user = new User();
-		User::checkBalance($user);
-
 	  
 
 	  $_SESSION['transfer'] = $_POST['bedrag'];
