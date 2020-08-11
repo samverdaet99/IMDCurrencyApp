@@ -47,7 +47,7 @@ session_start();
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 	  $transfer->setDatum($_POST['datum']);
-	$transfer->setUser_ontvanger($_POST['searchField']);
+		$transfer->setUser_ontvanger($_POST['searchField']);
 
 
 
@@ -69,6 +69,10 @@ session_start();
 	 // } else{
 		//  echo "niet beschikbaar";
 		//}
+
+
+		$user = new User();
+		User::checkBalance($user);
 
 	  
 

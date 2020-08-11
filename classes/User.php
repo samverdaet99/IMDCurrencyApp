@@ -335,6 +335,24 @@ private $transfer_id;
     }
 
 
+    public function checkBalance(){
+        $conn = Db::getConnection();
+        $statement = ("select * from users where tokens = :tokens");
+
+        if($statement < 0){
+            throw new Exception("Onvoldoende saldo");
+            return false;
+        } else {
+        $statement = $tokens;
+        $statement->bindValue(':tokens', $tokens);
+        $result = $statement->execute();
+        return $user;
+
+    }
+    
+    }
+
+
 
 
 

@@ -313,18 +313,6 @@ class Transaction{
     }
 
 
-    //-----vergelijk
-
-    public function bedragcheck(){
-            $conn = Db::getConnection();
-            $statement = $conn->prepare('select bedrag from transfers');
-            $result = $statement->execute();
-            $bedragchekken = $statement->fetchAll(PDO::FETCH_ASSOC);
-            return $bedragchekken;
-        
-  }
-
-
 //----transacties
 
      public static function transactiesVerzender()
@@ -352,32 +340,38 @@ class Transaction{
     }
 
 
-    //----tokens checken
+    //----tokens checken verzender
 
     
     public function updateTokens($transaction){
         $conn = Db::getConnection();
         $bedrag = $transaction->getBedrag();
         $statement = $conn->prepare("UPDATE users SET tokens = tokens - :add WHERE id = :id");
+
+        
         $statement->bindValue(":add", $bedrag );
         $statement->bindValue(":id", $_SESSION['userid']);
         $result = $statement->execute();
     
         return $result;
 
+        
     }
 
-     //----tokens checken
+     //----tokens checken ontvanger
 
     
      public function updateTokensOntvanger($transaction){
         $conn = Db::getConnection();
         $bedrag = $transaction->getBedrag();
-        $statement = $conn->prepare("UPDATE users SET tokens = tokens + :add WHERE id = :id");
+        $id = $transaction->getId();
+        $statement = $conn->prepare("UPDATE users SET tokens = tokens + :add inner join transfers on user.id = transfers.user_ontvanger WHERE id = :id");
         $statement->bindValue(":add", $bedrag );
-        $statement->bindValue(":id", "id");
+        $statement->bindValue(":id", $id);
         $result = $statement->execute();
         return $result;
+
+        
 
     }
 
