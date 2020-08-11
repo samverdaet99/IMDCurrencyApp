@@ -68,6 +68,15 @@ session_start();
         <h2 class="emptyMessage"><?php echo $emptymessage; ?></h2>
     <?php endif; ?>   
 
+    <!--for($i= 1, $count = count($transactieOntvanger);$i<$count;$i++):
+          $transactieOntvangers = $transactieOntvanger[$i];
+          $transactieVerzenders = $transactieVerzender[$i];
+
+      
+
+      if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
+
+-->
 
 <?php foreach ($allTransfers as $allTranser) :?>
 
