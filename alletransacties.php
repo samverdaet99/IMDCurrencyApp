@@ -53,13 +53,14 @@ session_start();
 
 <div id="terug"><a href="index.php">&#8592;</a></div>
 
-
 <div id="paginatitel">
 	<h1>Mijn  transacties</h1>
 	<p>Hieronder vindt u een weergave van de transacties die u reeds hebt uitgevoerd.</p>
 </div>
 
 <section id="kader_details">
+
+  
 
 <div id="details_kader">
 
@@ -68,20 +69,11 @@ session_start();
     <?php endif; ?>   
 
 
-    <?php
+<?php foreach ($allTransfers as $allTranser) :?>
 
 
-for($i= 0, $count = count($transactieOntvanger);$i<$count;$i++):
-          $transactieOntvangers = $transactieOntvanger[$i];
-          $transactieVerzenders = $transactieVerzender[$i];
-
-      
-
-if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
-
-  ?>
   <div id="details_datum">
-  <p> Uitvoerdatum: <br><?php echo $transactieVerzenders['datum']?> </p>
+  <p> Uitvoerdatum: <br><?php echo $allTranser['datum'];?> </p>
   </div>
 
 
@@ -89,54 +81,24 @@ if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($trans
 
   <div id="details_gegevens">
 
- 
-        
-            <?php 
-            {
-                
-                 ?>
-
-                    <?php echo  " verzender: ";
-                      echo $transactieVerzenders['username'];
-                      
-                          
-                    
-           } 
-     {                  echo  "<ontvanger: ";
-                         echo  $transactieOntvangers['username']; ; ?>
-
-
-                <?php           
-            } 
-           ?>
-    
-       
-  
+  <p>Verzender: <br><?php echo $allTranser['user_verzender'];?></p>
+  <p>Ontvanger: <br><?php echo $allTranser['user_ontvanger'];?> </p>
 
 
 
   <div id="details_bedrag">
-  <p> Tokens: <br><?php echo $transactieVerzenders['bedrag']?> </p>
+  <p> Tokens: <br><?php echo $allTranser['bedrag'];?> </p>
   </div>
 
-<div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
+  <div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
 
 
-
-<?php     
-} else{
-  
-}
-endfor; 
-
-
-
-?>
+  </div>
  
- </div>
+  <?php endforeach; ?>
 
-  
-  
+      </div>
+</div>
 
 
 

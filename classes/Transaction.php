@@ -222,8 +222,6 @@ class Transaction{
         $conn = Db::getConnection();
         $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum, user_verzender, user_ontvanger) values (:id, :bedrag, :description, :datum, :usersender, :userontvanger)");
 
-        $statement2 = $conn->prepare("update users set tokens where tokens= :tokens");
-
        
         $id = $this->getId();
         $bedrag = $this->getBedrag();
@@ -255,10 +253,6 @@ class Transaction{
             }
 
         }
-
-
-    
-        
 
 
     // get bedrag
@@ -332,18 +326,7 @@ class Transaction{
   }
 
 
-
-    public function tokenscheck(){
-        $conn = Db::getConnection();
-        $statement = $conn->prepare('select tokens from user');
-        $result = $statement->execute();
-        $tokenschecken = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $tokenschecken;
-    }
-
-
-
-
+//----transacties
 
      public static function transactiesVerzender()
     {
@@ -368,6 +351,38 @@ class Transaction{
 
         return $transactieOntvanger;
     }
+
+
+    //----tokens checken
+
+    
+    public function updateTokens($transaction){
+        $conn = Db::getConnection();
+        $bedrag = $transaction->getBedrag();
+        $statement = $conn->prepare("UPDATE users SET tokens = tokens - :add WHERE id = :id");
+        $statement->bindValue(":add", $bedrag );
+        $statement->bindValue(":id", $_SESSION['userid']);
+        $result = $statement->execute();
+    
+        return $result;
+
+    }
+
+     //----tokens checken
+
+    
+     public function updateTokensOntvanger($transaction){
+        $conn = Db::getConnection();
+        $bedrag = $transaction->getBedrag();
+        $statement = $conn->prepare("UPDATE users SET tokens = tokens + :add WHERE id = :id");
+        $statement->bindValue(":add", $bedrag );
+        $statement->bindValue(":id", "id");
+        $result = $statement->execute();
+    
+        return $result;
+
+    }
+
 
 
 

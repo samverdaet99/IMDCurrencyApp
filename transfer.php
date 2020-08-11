@@ -51,8 +51,13 @@ session_start();
 
 
 	  $transfer->saveTransfer();
-	 //$transfer->checkTokens("tokens");
 
+
+	  $transaction = new Transaction();
+	  $transaction->setBedrag($_POST['bedrag']);
+	  Transaction::updateTokens($transaction);
+	  Transaction::updateTokensOntvanger($transaction);
+	
 
 	 
 		//$tokenschecken = Transaction::tokenscheck($transfer);
@@ -152,6 +157,13 @@ session_start();
                 <input class="form-control" type="text" name="searchField" placeholder="Naam" id="searchName" autocomplete="off">
                 <div id="suggesstionBox"></div>
             </div>
+
+
+
+
+
+
+
 
 
 				<br> 
