@@ -6,6 +6,7 @@ include_once (__DIR__ . "/classes/User.php");
 
 
 session_start();
+	
 
 
 //------- search user
@@ -52,12 +53,10 @@ session_start();
 
 	  $transfer->saveTransfer();
 
-
 	  $transaction = new Transaction();
 	  $transaction->setBedrag($_POST['bedrag']);
 	  Transaction::updateTokens($transaction);
 	  Transaction::updateTokensOntvanger($transaction);
-	
 
 	 
 		//$tokenschecken = Transaction::tokenscheck($transfer);

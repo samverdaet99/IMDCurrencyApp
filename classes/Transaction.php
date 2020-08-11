@@ -220,7 +220,8 @@ class Transaction{
     public function saveTransfer(){
 
         $conn = Db::getConnection();
-        $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum, user_verzender, user_ontvanger) values (:id, :bedrag, :description, :datum, :usersender, :userontvanger)");
+        $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum, user_verzender, user_ontvanger) 
+        values (:id, :bedrag, :description, :datum, :usersender, :userontvanger)");
 
        
         $id = $this->getId();
@@ -228,8 +229,6 @@ class Transaction{
         $description = $this->getDescription();
         $datum = $this->getDatum();
         $ontvanger = $this->getUser_ontvanger();
-
-
 
         if(empty($bedrag) || empty($description) ){
             throw new Exception("Alle velden moeten ingevuld worden");
@@ -378,7 +377,6 @@ class Transaction{
         $statement->bindValue(":add", $bedrag );
         $statement->bindValue(":id", "id");
         $result = $statement->execute();
-    
         return $result;
 
     }
