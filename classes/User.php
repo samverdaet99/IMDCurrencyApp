@@ -270,6 +270,14 @@ private $transfer_id;
         $password = $this->getPassword();
         $confirmPassword = $this->getConfirmPassword();
         $tokens = $this->getTokens();
+
+
+        $statement2 = $conn->prepare("select bedrag from transfers WHERE id = :id");
+        $bedrag = $bedrag;
+        $statement2->bindValue(":id", $_SESSION['userid']);
+        $result2 = $statement2->execute();
+        $user2 = $statement2->fetch(PDO::FETCH_ASSOC);
+        return $user;
         
  
         if(empty($email) || empty($username) || empty($password) || empty($confirmPassword)) {

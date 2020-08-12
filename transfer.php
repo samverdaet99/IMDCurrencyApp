@@ -62,12 +62,12 @@ session_start();
 	//$bedragchecken = User::checkBedrag($transfer);
 	$bedragchecken = $transfer->setBedrag($_POST['bedrag']);
 		
-		var_dump($bedragchecken);
+		//var_dump($bedragchecken);
 
 	  if ($tokenschecken > $bedragchecken){
-		echo "beschikbaar";
+		throw new Exception("te weinig tokens voor transactie");
 	  } else{
-	  echo "niet beschikbaar";
+	  echo " beschikbaar";
 		}
 
 
