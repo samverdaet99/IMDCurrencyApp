@@ -9,6 +9,8 @@ session_start();
     $transfer = new Transaction();
     $allTransfers = $transfer->getTransfers();
 
+
+
     $transactieVerzender = Transaction::transactiesVerzender($transfer);
     $transactieOntvanger = Transaction::transactiesOntvanger($transfer);
 
@@ -62,50 +64,73 @@ session_start();
 
   
 
+
 <div id="details_kader">
 
 <?php if(isset($emptymessage)) :?>
         <h2 class="emptyMessage"><?php echo $emptymessage; ?></h2>
     <?php endif; ?>   
 
-    <!--for($i= 1, $count = count($transactieOntvanger);$i<$count;$i++):
+    <?php
+
+for($i= 1, $count = count($transactieOntvanger);$i<$count;$i++):
           $transactieOntvangers = $transactieOntvanger[$i];
           $transactieVerzenders = $transactieVerzender[$i];
 
       
 
-      if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
+if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
 
--->
-
-<?php foreach ($allTransfers as $allTranser) :?>
-
-
+  ?>
   <div id="details_datum">
-  <p> Uitvoerdatum: <br><?php echo $allTranser['datum'];?> </p>
+  <p> Uitvoerdatum: <br><?php echo $transactieVerzenders['datum']?> </p>
   </div>
+
+
 
   <div id="details_gegevens">
 
-  <p>Verzender: <br><?php echo $allTranser['user_verzender'];?></p>
-  <p>Ontvanger: <br><?php echo $allTranser['user_ontvanger'];?> </p>
+ 
+        
+            <?php 
+            {
+                
+                 ?>
 
+                    <?php echo  " verzender: ";
+                      echo $transactieVerzenders['username'];
+                      
+                          
+                    
+           } 
+     {                  echo  "<ontvanger: ";
+                         echo  $transactieOntvangers['username']; ?>
+
+                <?php           
+            } 
+           ?>
+    
+       
+  
 
 
   <div id="details_bedrag">
-  <p> Tokens: <br><?php echo $allTranser['bedrag'];?> </p>
+  <p> Tokens: <br><?php echo $transactieVerzenders['bedrag']?> </p>
   </div>
 
-  <div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
+<div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
 
 
-  </div>
+<?php     
+} else{
+  echo "TEST";
+}
+endfor; 
+
+
+?>
  
-  <?php endforeach; ?>
-
-      </div>
-</div>
-
+ </div>
 
 
   
