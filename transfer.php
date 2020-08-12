@@ -58,16 +58,16 @@ session_start();
 	  Transaction::updateTokensOntvanger($transaction);
 
 
-	  $tokenschecken = User::checkTokens($transfer); //werkt
-	  $bedragchecken = Transaction::checkBedrag($transfer);
+	$tokenschecken = User::checkTokens($transfer); //werkt
+	 $bedragchecken = Transaction::getAll($transfer);
 		
 		var_dump($bedragchecken);
 
-	  //if ($tokenschecken > $bedragchekken){
-	//	echo "beschikbaar";
-	 // } else{
-		//  echo "niet beschikbaar";
-		//}
+	  if ($tokenschecken > $bedragchecken){
+		echo "beschikbaar";
+	  } else{
+	  echo "niet beschikbaar";
+		}
 
 
 	  

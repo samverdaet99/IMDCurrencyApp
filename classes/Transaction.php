@@ -258,10 +258,9 @@ class Transaction{
 
         public static function getAll($bedrag){
         $conn = Db::getConnection();
-        $statement = $conn->prepare('select $ from transfers where bedrag = :bedrag');
-        $statement->bindValue(':bedrag', $bedrag);
-
-        $result = $statement-execute();
+        $statement = $conn->prepare('select bedrag from transfers');
+        //$statement->bindValue(':bedrag', $bedrag);
+        //$result = $statement-execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -381,12 +380,14 @@ class Transaction{
     {
         $conn = Db::getConnection();
         $statement = $conn->prepare("select bedrag from transfers WHERE id = :id");
-        $bedrag = $bedrag;
         $statement->bindValue(":id", $_SESSION['userid']);
         $result = $statement->execute();
-        $bedragchecken = $statement->fetch(PDO::FETCH_ASSOC);
-        return $bedragchecken;
+        $bedrag = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
+
+        
+    
 
 
 
