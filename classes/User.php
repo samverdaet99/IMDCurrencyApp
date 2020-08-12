@@ -349,6 +349,23 @@ private $transfer_id;
     }
 
 
+    
+// get bedrag ---------
+
+public function checkBedrag($bedrag)
+{
+    $conn = Db::getConnection();
+    $statement = $conn->prepare("select bedrag from transfers WHERE id = :id");
+    $bedrag = $bedrag;
+    $statement->bindValue(":id", $_SESSION['userid']);
+    $result = $statement->execute();
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    return $user;
+}
+
+
+
+
 
 
 

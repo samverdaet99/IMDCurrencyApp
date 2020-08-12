@@ -59,7 +59,8 @@ session_start();
 
 
 	$tokenschecken = User::checkTokens($transfer); //werkt
-	 $bedragchecken = Transaction::getAll($transfer);
+	//$bedragchecken = User::checkBedrag($transfer);
+	$bedragchecken = $transfer->setBedrag($_POST['bedrag']);
 		
 		var_dump($bedragchecken);
 

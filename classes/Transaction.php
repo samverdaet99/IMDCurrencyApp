@@ -253,19 +253,6 @@ class Transaction{
 
         }
 
-
-    // get bedrag
-
-        public static function getAll($bedrag){
-        $conn = Db::getConnection();
-        $statement = $conn->prepare('select bedrag from transfers');
-        //$statement->bindValue(':bedrag', $bedrag);
-        //$result = $statement-execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-
-
-    }
-
     
          // get user by name-------------
 
@@ -374,21 +361,7 @@ class Transaction{
     }
 
 
-    // get tokens ---------
-
-    public function checkBedrag($bedrag)
-    {
-        $conn = Db::getConnection();
-        $statement = $conn->prepare("select bedrag from transfers WHERE id = :id");
-        $statement->bindValue(":id", $_SESSION['userid']);
-        $result = $statement->execute();
-        $bedrag = $statement->fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
-
-        
     
-
 
 
 
