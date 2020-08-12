@@ -46,22 +46,22 @@ session_start();
 	  $transfer->setBedrag($_POST['bedrag']);
 	  $transfer->setDescription($_POST['description']);
 	  $transfer->setDatum($_POST['datum']);
-		$transfer->setUser_ontvanger($_POST['searchField']);
-
-
+	  $transfer->setUser_ontvanger($_POST['searchField']);
 
 	  $transfer->saveTransfer();
+
+
 
 	  $transaction = new Transaction();
 	  $transaction->setBedrag($_POST['bedrag']);
 	  Transaction::updateTokens($transaction);
 	  Transaction::updateTokensOntvanger($transaction);
 
-	 
-		//$tokenschecken = Transaction::tokenscheck($transfer);
-		//$bedragchekken = Transaction::bedragcheck($transfer);
+
+	  $tokenschecken = User::checkTokens($transfer); //werkt
+	  $bedragchecken = Transaction::checkBedrag($transfer);
 		
-		//var_dump($tokenschecken);
+		var_dump($bedragchecken);
 
 	  //if ($tokenschecken > $bedragchekken){
 	//	echo "beschikbaar";

@@ -335,7 +335,18 @@ private $transfer_id;
     }
 
 
+// get tokens ---------
 
+    public function checkTokens($tokens)
+    {
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select tokens from users WHERE id = :id");
+        $tokens = $tokens;
+        $statement->bindValue(":id", $_SESSION['userid']);
+        $result = $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        return $user;
+    }
 
 
 

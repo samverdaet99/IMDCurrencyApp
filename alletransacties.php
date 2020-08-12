@@ -9,7 +9,7 @@ session_start();
     $transfer = new Transaction();
     $allTransfers = $transfer->getTransfers();
 
-
+  // NB: OM USERNAMES TE LATEN ZIEN ZOU IK DEZE FUNCTIE GEBRUIKEN, HET IS MIJ ECHTER NOOIT GELUKT OM DEZE 100% WERKEND TE KRIJGEN, VANDAAR DAT IK HET MET DE ID'S HEB GEDAAN.
     $transactieVerzender = Transaction::transactiesVerzender($transfer);
     $transactieOntvanger = Transaction::transactiesOntvanger($transfer);
 
@@ -20,24 +20,6 @@ session_start();
     {
     $emptymessage = "Nog geen transacties";
     }
-
-  
-
-//if(isset($_SESSION['transfer'])){
-  //if (!empty($_POST)) {
-
-   // $transfer = new Transaction();
-
-    //$allTransfers = $transfer->getTransfers($_SESSION['transfer']);
-
-    //if ($allTransfers == null)
-    //{
-    //$emptymessage = "Nog geen transacties";
-    //}
-   
-  //} else {
-    //header("Location: alletransacties.php");
-  //}
 
 
 
@@ -73,7 +55,11 @@ session_start();
         <h2 class="emptyMessage"><?php echo $emptymessage; ?></h2>
     <?php endif; ?>   
 
-    <!--for($i= 1, $count = count($transactieOntvanger);$i<$count;$i++):
+    <!--
+      NB: OM USERNAMES TE LATEN ZIEN ZOU IK DEZE FUNCTIE GEBRUIKEN, HET IS MIJ ECHTER NOOIT GELUKT OM DEZE 100% WERKEND TE KRIJGEN, VANDAAR DAT IK HET MET DE ID'S HEB GEDAAN.
+
+
+      for($i= 1, $count = count($transactieOntvanger);$i<$count;$i++):
           $transactieOntvangers = $transactieOntvanger[$i];
           $transactieVerzenders = $transactieVerzender[$i];
 
