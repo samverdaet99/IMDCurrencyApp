@@ -64,11 +64,11 @@ private $transfer_id;
         $emailCheck = strrpos($email, "@student.thomasmore.be");
     
         if (empty ($email)){
-            throw new Exception ("Gelieve je email in te voeren.");
+            throw new Exception ("Gelieve je email in te voeren, het emailadres hoort te eindigen met ' @student.thomasmore.be ' ");
         }
 
         if ($emailCheck === false) { 
-            throw new Exception ("Vul een geldig email adress in");
+            throw new Exception ("Vul een geldig email adress in, , het emailadres hoort te eindigen met ' @student.thomasmore.be ' ");
         }
 
 

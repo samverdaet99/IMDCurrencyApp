@@ -85,9 +85,6 @@ session_start();
   <p> Uitvoerdatum: <br><?php echo $allTranser['datum'];?> </p>
   </div>
 
-
-
-
   <div id="details_gegevens">
 
   <p>Verzender: <br><?php echo $allTranser['user_verzender'];?></p>

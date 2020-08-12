@@ -6,7 +6,6 @@ include_once (__DIR__ . "/classes/User.php");
 
 
 session_start();
-	
 
 
 //------- search user
@@ -124,7 +123,7 @@ session_start();
 
 				<?php if (isset($succes)) : ?>
             <p id="description"><?php echo $succes; ?></p>
-        <?php endif; ?>
+       			 <?php endif; ?>
 
 
             </div>
@@ -142,15 +141,6 @@ session_start();
 <form action="" method="POST" id="form_transfer">
 
 
-            <div class="form-group">
-
-        <?php if (isset($succes1)) : ?>
-            <p>
-                <?php echo $succes1; ?>
-            </p>
-        <?php endif; ?>
-		</div>
-
 
 			<div class="formfield">
                 <label for="name">Naar:</label><br>
@@ -159,8 +149,12 @@ session_start();
             </div>
 
 
-
-
+			<?php if (isset($succes1)) : ?>
+			<p>
+			<?php echo $succes1; ?>
+		</p>
+		<?php endif; ?>
+		</div>	
 
 
 
@@ -200,6 +194,8 @@ session_start();
 			</form>
 
 			</section>
+
+			<div class="form-group">
 
 
 			 <script src="js/autocomplete.js"></script> 
