@@ -3,12 +3,11 @@ include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
  
   
-//$transfer = new Transaction();
 session_start();
+
 
     $transfer = new Transaction();
     $allTransfers = $transfer->getTransfers();
-
 
 
     $transactieVerzender = Transaction::transactiesVerzender($transfer);
@@ -22,6 +21,7 @@ session_start();
     $emptymessage = "Nog geen transacties";
     }
 
+  
 
 //if(isset($_SESSION['transfer'])){
   //if (!empty($_POST)) {
@@ -65,72 +65,49 @@ session_start();
   
 
 
+  
+
 <div id="details_kader">
 
 <?php if(isset($emptymessage)) :?>
         <h2 class="emptyMessage"><?php echo $emptymessage; ?></h2>
     <?php endif; ?>   
 
-    <?php
-
-for($i= 1, $count = count($transactieOntvanger);$i<$count;$i++):
+    <!--for($i= 1, $count = count($transactieOntvanger);$i<$count;$i++):
           $transactieOntvangers = $transactieOntvanger[$i];
           $transactieVerzenders = $transactieVerzender[$i];
 
       
 
-if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
+      if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
 
-  ?>
+-->
+
+<?php foreach ($allTransfers as $allTranser) :?>
+
   <div id="details_datum">
-  <p> Uitvoerdatum: <br><?php echo $transactieVerzenders['datum']?> </p>
+  <p> Uitvoerdatum: <br><?php echo $allTranser['datum'];?> </p>
   </div>
-
-
 
   <div id="details_gegevens">
 
- 
-        
-            <?php 
-            {
-                
-                 ?>
-
-                    <?php echo  " verzender: ";
-                      echo $transactieVerzenders['username'];
-                      
-                          
-                    
-           } 
-     {                  echo  "<ontvanger: ";
-                         echo  $transactieOntvangers['username']; ?>
-
-                <?php           
-            } 
-           ?>
-    
-       
-  
+  <p>Verzender: <br><?php echo $allTranser['user_verzender'];?></p>
+  <p>Ontvanger: <br><?php echo $allTranser['user_ontvanger'];?> </p>
 
 
   <div id="details_bedrag">
-  <p> Tokens: <br><?php echo $transactieVerzenders['bedrag']?> </p>
+  <p> Tokens: <br><?php echo $allTranser['bedrag'];?> </p>
   </div>
 
-<div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
+  <div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
 
-
-<?php     
-} else{
-  echo "TEST";
-}
-endfor; 
-
-
-?>
+  </div>
  
- </div>
+  <?php endforeach; ?>
+
+      </div>
+</div>
+
 
 
   
