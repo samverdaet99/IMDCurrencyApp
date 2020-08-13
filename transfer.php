@@ -51,7 +51,7 @@ session_start();
 
 	  $tokenschecken = User::checkTokens($transfer); //werkt
 	  $transfer->saveTransfer($tokenschecken);
-	var_dump($tokenschecken);
+
 
 
 

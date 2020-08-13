@@ -85,6 +85,8 @@ session_start();
   <p> Tokens: <br><?php echo $allTranser['bedrag'];?> </p>
   </div>
 
+  
+
   <div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
 
   </div>

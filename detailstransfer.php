@@ -72,6 +72,9 @@ session_start();
   <p> Tokens: <br><?php echo $allTranser['bedrag'];?> </p>
   </div>
 
+
+  
+
   <div id="details_beschrijving">
   <p> Beschrijving transactie: <br><?php echo $allTranser['description'];?> </p>
   </div>

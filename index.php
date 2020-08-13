@@ -8,7 +8,7 @@ if(isset($_SESSION['user'])){
 
     $username = $user->getUserByEmail($_SESSION['user']);
     $_SESSION['userid'] = $username['id'];
-    var_dump($username);
+    //var_dump($username);
 
    
   } else {
