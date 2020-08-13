@@ -234,10 +234,11 @@ class Transaction{
             throw new Exception("Alle velden moeten ingevuld worden");
             return false;
         } 
-        elseif ($bedrag > $tokenschecken){
+        elseif (($bedrag) > (intval($tokenschecken['tokens']))){
            throw new Exception("Je hebt te weinig saldo voor deze transactie");
            return false;
-            }
+
+        }
             else {
             $statement->bindValue(":id", $id);
             $statement->bindValue(":bedrag", $bedrag);
@@ -328,7 +329,7 @@ class Transaction{
     //----tokens checken verzender
 
     
-    public function updateTokens($transaction){
+    public static function updateTokens($transaction){
         $conn = Db::getConnection();
         $bedrag = $transaction->getBedrag();
         $statement = $conn->prepare("UPDATE users SET tokens = tokens - :add WHERE id = :id");
@@ -346,7 +347,7 @@ class Transaction{
      //----tokens checken ontvanger
 
     
-     public function updateTokensOntvanger($transaction){
+     public static function updateTokensOntvanger($transaction){
         $conn = Db::getConnection();
         $bedrag = $transaction->getBedrag();
         $id = $transaction->getId();
