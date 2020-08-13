@@ -59,10 +59,10 @@ session_start();
 
 
 	$tokenschecken = User::checkTokens($transfer); //werkt
-	//$bedragchecken = User::checkBedrag($transfer);
-	$bedragchecken = $transfer->setBedrag($_POST['bedrag']);
+	$bedragchecken = $transfer->getBedrag($_POST['bedrag']); //werkt
 		
-		//var_dump($bedragchecken);
+	var_dump($bedragchecken);
+	var_dump($tokenschecken);
 
 	  if ($tokenschecken > $bedragchecken){
 		throw new Exception("te weinig tokens voor transactie");
