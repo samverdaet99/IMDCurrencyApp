@@ -217,7 +217,7 @@ class Transaction{
 
 
 
-    public function saveTransfer(){
+    public function saveTransfer($tokenschecken){
 
         $conn = Db::getConnection();
         $statement = $conn->prepare("insert into transfers (id,bedrag, description, datum, user_verzender, user_ontvanger) 
@@ -234,7 +234,7 @@ class Transaction{
             throw new Exception("Alle velden moeten ingevuld worden");
             return false;
         } 
-        elseif ($bedrag < 0){
+        elseif ($bedrag > $tokenschecken){
            throw new Exception("Je hebt te weinig saldo voor deze transactie");
            return false;
             }

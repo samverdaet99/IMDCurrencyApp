@@ -48,7 +48,10 @@ session_start();
 	  $transfer->setDatum($_POST['datum']);
 	  $transfer->setUser_ontvanger($_POST['searchField']);
 
-	  $transfer->saveTransfer();
+
+	  $tokenschecken = User::checkTokens($transfer); //werkt
+	  $transfer->saveTransfer($tokenschecken);
+	var_dump($tokenschecken);
 
 
 
@@ -58,20 +61,10 @@ session_start();
 	  Transaction::updateTokensOntvanger($transaction);
 
 
-	$tokenschecken = User::checkTokens($transfer); //werkt
-	$bedragchecken = $transfer->getBedrag($_POST['bedrag']); //werkt
-		
-	var_dump($bedragchecken);
-	var_dump($tokenschecken);
 
-	  if ($tokenschecken > $bedragchecken){
-		throw new Exception("te weinig tokens voor transactie");
-	  } else{
-	  echo " beschikbaar";
-		}
-
-
-	  
+	//$bedragchecken = $transfer->getBedrag($_POST['bedrag']); 
+	//var_dump(($tokenschecken) - ($bedragchecken) );
+  
 
 	  $_SESSION['transfer'] = $_POST['bedrag'];
 
