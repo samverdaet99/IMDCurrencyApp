@@ -8,6 +8,7 @@ include_once (__DIR__ . "/classes/User.php");
 session_start();
 
 
+
 //------- search user
 
 
@@ -67,6 +68,7 @@ session_start();
   
 
 	  $_SESSION['transfer'] = $_POST['bedrag'];
+	  $succes =  "✔ transactie gelukt!";
 
 	} 
 	catch (\Throwable $th) {
@@ -102,10 +104,20 @@ session_start();
 				<br> 
 
         <?php if (isset($error)) : ?>
-            <p><?php echo $error; ?></p>
+           <div id="error"> 
+		   <p><?php echo $error; ?></p>
+		   </div>
         <?php endif; ?>
 
     </div>
+
+	
+	<?php if (isset($succes)) : ?>
+		<div id="error"><p>
+			<?php echo $succes; ?>
+		</p></div>
+			<?php endif; ?>
+		</div>	
 
 
 <!--
@@ -114,10 +126,6 @@ session_start();
                 <label for="username">Naar welke gebruiker wil je een bedrag overschrijven? (Bv: 'Max') <br></label>
                 <input class="formfield" type="text" name="searchField" placeholder="Zoek een gebruiker" id='searchUser' autocomplete="off">
                 <div><a class="" id="autocompleteClass"></a></div>
-
-				<?php if (isset($succes)) : ?>
-            <p id="description"><?php echo $succes; ?></p>
-       			 <?php endif; ?>
 
 
             </div>
@@ -143,17 +151,7 @@ session_start();
             </div>
 
 
-			<?php if (isset($succes1)) : ?>
-			<p>
-			<?php echo $succes1; ?>
-		</p>
-		<?php endif; ?>
-		</div>	
-
-
-
-
-
+	
 				<br> 
 
 				<div class="formfield">

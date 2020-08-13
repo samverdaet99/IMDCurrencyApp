@@ -230,7 +230,7 @@ class Transaction{
         $datum = $this->getDatum();
         $ontvanger = $this->getUser_ontvanger();
 
-        if(empty($bedrag) || empty($description) ){
+        if(empty($bedrag) || empty($description) || empty($datum) ){
             throw new Exception("Alle velden moeten ingevuld worden");
             return false;
         } 

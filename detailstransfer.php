@@ -90,10 +90,6 @@ session_start();
 
 </section>
 
-<div id="logout">
-<a href="logout.php">
-Uitloggen</a>
-</div>
     
 </body>
 </html>
