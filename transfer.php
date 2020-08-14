@@ -98,7 +98,7 @@ session_start();
 		De code hiervan staat in '//' in het document. Om de transacties toch te laten lukken met je in het invulveld voorlopig de id van een gebruiker ingeven. Dit is indd niet volgens de opdracht,
 		maar ik heb het even zo opgelost om toch de transacties mooi te kunnen laten zien. 
 		<br> Voorbeelden die reeds in de databak staan: <br>
-		ID 56 &#8594; Max | ID 57 &#8594; Emma | ID 3 &#8594; Jouw nieuw aangemaakte user
+		ID 56 &#8594; Max | ID 57 &#8594; Emma 
 	</p>
 </div>
 
