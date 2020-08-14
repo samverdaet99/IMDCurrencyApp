@@ -105,14 +105,3 @@ session_start();
     
 </body>
 </html>
-
-
-
-  
-
-</section>    
-
-
-    
-</body>
-</html>
