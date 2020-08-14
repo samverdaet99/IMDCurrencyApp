@@ -19,6 +19,23 @@ p{
 
 }
 
+#uitlegjoris{
+    background-color: pink;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
+#uitlegjoris a{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7px;
+} 
+
 #terug{
     padding-left: 20px; 
     padding-right: 20px;
@@ -46,12 +63,22 @@ p{
      padding: 5px;
      text-align: center;
      border-radius: 20px;
+     margin-bottom: 20px;
  }
 
  #error p{
 font-family: Arial, Helvetica, sans-serif;
 font-weight: bold;
 
+}
+
+#succes2{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 20px;
 }
 
 
@@ -194,7 +221,7 @@ font-weight: bold;
     padding: 20px;
     margin-top: 30px;
     width: 70%;
-    height:100%;
+    height:150%;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 5px 5px 8px #e2e2e2;
@@ -286,6 +313,7 @@ font-weight: bold;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
+
     box-shadow: 5px 5px 8px rgb(144, 174, 179);
 
 }
@@ -296,9 +324,16 @@ font-weight: bold;
 }
 
 .formfield, .search-box{
+    text-align: left;
     font-family: Arial, Helvetica, sans-serif;;
     font-size: 15px;
     width: 40%;
+}
+
+.form-group {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:20px;
 }
 
 #form_transfer .formfield{
@@ -377,7 +412,7 @@ font-weight: bold;
     border-radius: 20px;
     font-family: arial;
     color: rgb(71, 71, 71);
-    padding-left: 60px;
+    padding-left: 20px;
     padding-top: 30px;
 }
  
@@ -455,7 +490,7 @@ font-weight: bold;
 }
 
 .formfield{
-    text-align: center;
+    text-align: left;
     margin-left: auto;
     margin-right: auto;
 }
@@ -651,8 +686,6 @@ font-weight: bold;
 
 
 #form_transfer .formfield{
-    margin-left: 50px;
-    margin-right: 0px;
     text-align: left;
 }
 
@@ -784,6 +817,7 @@ font-weight: bold;
     padding: 5px;
     text-align: center;
     border-radius: 20px;
+    margin-bottom: 20px;
 }
 
 #error p{
@@ -792,5 +826,33 @@ font-family: Arial, Helvetica, sans-serif;
 font-weight: bold;
 
 }
+
+
+#succes2{
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 170px;
+    margin-right: 170px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+
+#uitlegjoris{
+    background-color: pink;
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+}
+
+#uitlegjoris a{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7px;
+} 
 
 }

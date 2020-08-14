@@ -350,10 +350,10 @@ class Transaction{
      public static function updateTokensOntvanger($transaction){
         $conn = Db::getConnection();
         $bedrag = $transaction->getBedrag();
-        $id = $transaction->getId();
+       $id = $transaction->getId();
         $statement = $conn->prepare("UPDATE users SET tokens = tokens + :add inner join transfers on user.id = transfers.user_ontvanger WHERE id = :id");
         $statement->bindValue(":add", $bedrag );
-        $statement->bindValue(":id", $id);
+        $statement->bindValue(":id",  $id);
         $result = $statement->execute();
         return $result;
 

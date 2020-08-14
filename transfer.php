@@ -25,11 +25,11 @@ session_start();
         if (strlen($searchField) > 2) {
             if (count($searchUser) > 0) {
                 foreach ($searchUser as $searchusers) {
-                    $succes = '<div>' . 'Gevonden user: '
+                    $succes2 = '<div>' . 'Gevonden user: '
                         . htmlspecialchars($searchusers['username']) . '</div>' ;
                 }
             } else {
-                $error = 'Geen users gevonden';
+                $error = 'Geen users gevonden, probeer opnieuw';
             }
         }
     
@@ -93,6 +93,15 @@ session_start();
 <div id="terug"><a href="index.php">&#8592;</a></div>
 
 
+<div id="uitlegjoris">
+	<p>Joris, Omdat ik mijn ajax automatic search niet 100% aan de praat krijg, lukt het mij niet deze te gebruiken op deze pagina, omdat dan al mijn transacties moeilijkheden krijgen.
+		De code hiervan staat in '//' in het document. Om de transacties toch te laten lukken met je in het invulveld voorlopig de id van een gebruiker ingeven. Dit is indd niet volgens de opdracht,
+		maar ik heb het even zo opgelost om toch de transacties mooi te kunnen laten zien. 
+		<br> Voorbeelden die reeds in de databak staan: <br>
+		ID 56 &#8594; Max | ID 57 &#8594; Emma | ID 3 &#8594; Jouw nieuw aangemaakte user
+	</p>
+</div>
+
 <div id="paginatitel">
 	<h1>Nieuwe transactie</h1>
 	<p>Vul onderstaande velden in om een nieuwe transactie uit te voeren.</p>
@@ -119,8 +128,8 @@ session_start();
 			<?php endif; ?>
 		</div>	
 
-
 <!--
+
 	<form method="GET" action="">
             <div class="formfield">
                 <label for="username">Naar welke gebruiker wil je een bedrag overschrijven? (Bv: 'Max') <br></label>
@@ -130,6 +139,14 @@ session_start();
 
             </div>
 
+				
+	<?php if (isset($succes2)) : ?>
+		<div id="succes2"><p>
+			<?php echo $succes2; ?>
+		</p></div>
+			<?php endif; ?>
+		</div>	
+
 
         <div class="form-group">
                 <input class="btn" type="submit" value="Zoek" name='searchUser'>
@@ -137,7 +154,9 @@ session_start();
 			
 
 			</form> 
--->
+
+				-->
+
 	
 
 <form action="" method="POST" id="form_transfer">
