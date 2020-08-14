@@ -118,7 +118,6 @@ if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($trans
   <div id="details_bedrag">
   <p> Tokens: <br><?php echo $transactieVerzenders['bedrag']?> </p>
   </div>
-
 <div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
 
 </div>

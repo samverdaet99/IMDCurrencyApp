@@ -95,7 +95,7 @@ session_start();
 
 <div id="uitlegjoris">
 	<p>Joris, Omdat ik mijn ajax automatic search niet 100% aan de praat krijg, lukt het mij niet deze te gebruiken op deze pagina, omdat dan al mijn transacties moeilijkheden krijgen.
-		De code hiervan staat in '//' in het document. Om de transacties toch te laten lukken met je in het invulveld voorlopig de id van een gebruiker ingeven. Dit is indd niet volgens de opdracht,
+		De code hiervan staat in '//' in het document. Om de transacties toch te laten lukken kan je in het invul-veld voorlopig de id van een gebruiker ingeven. Dit is indd niet volgens de opdracht,
 		maar ik heb het even zo opgelost om toch de transacties mooi te kunnen laten zien. 
 		<br> Voorbeelden die reeds in de databak staan: <br>
 		ID 56 &#8594; Max | ID 57 &#8594; Emma 
