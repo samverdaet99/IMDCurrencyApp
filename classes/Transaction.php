@@ -366,7 +366,8 @@ class Transaction{
 
     public function showDetails($id){
         $conn = Db::getConnection();  
-        $statement = $conn->prepare("SELECT * FROM transefrs WHERE id = '$id' "); 
+        $statement = $conn->prepare("SELECT * FROM transfers WHERE id = :id"); 
+        $statement->bindValue(":id",  $id);
         $statement->execute();
         $result = $statement->fetchAll();
         return $result();

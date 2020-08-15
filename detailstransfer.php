@@ -21,6 +21,16 @@ session_start();
     }
 
 
+    
+
+  //$detailsShow = $_GET['transfer'];
+  $detWeergeven = Transaction::showDetails($transfer);
+  var_dump($detWeergeven);
+
+
+
+
+
 //if(isset($_SESSION['transfer'])){
   //if (!empty($_POST)) {
 
@@ -63,11 +73,9 @@ session_start();
 
 <div id="details_kader">
 
-<?php
-$result = $transfer->showDetails($_GET['id']);
 
 
-?>
+
 </div>
 
 
