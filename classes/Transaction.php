@@ -366,11 +366,11 @@ class Transaction{
 
     public function showDetails($id){
         $conn = Db::getConnection();  
-        $statement = $conn->prepare("SELECT * FROM transfers WHERE id = :id"); 
-        $statement->bindValue(":id",  $id);
+        $statement = $conn->prepare("select * from transfers where user_verzender =:id or user_ontvanger =:id"); 
+        $statement->bindValue(":id", $_SESSION['userid']);
         $statement->execute();
-        $result = $statement->fetchAll();
-        return $result();
+        $id = $statement->fetchAll();
+        return $id;
         
     }
 

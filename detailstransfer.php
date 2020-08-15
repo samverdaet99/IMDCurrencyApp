@@ -2,12 +2,13 @@
 include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
  
-  
-//$transfer = new Transaction();
+
 session_start();
 
     $transfer = new Transaction();
     $allTransfers = $transfer->getTransfers();
+
+    $user = new User();
 
     $transactieVerzender = Transaction::transactiesVerzender($transfer);
     $transactieOntvanger = Transaction::transactiesOntvanger($transfer);
@@ -19,34 +20,6 @@ session_start();
     {
     $emptymessage = "Nog geen transacties";
     }
-
-
-    
-
-  //$detailsShow = $_GET['transfer'];
-  $detWeergeven = Transaction::showDetails($transfer);
-  var_dump($detWeergeven);
-
-
-
-
-
-//if(isset($_SESSION['transfer'])){
-  //if (!empty($_POST)) {
-
-   // $transfer = new Transaction();
-
-    //$allTransfers = $transfer->getTransfers($_SESSION['transfer']);
-
-    //if ($allTransfers == null)
-    //{
-    //$emptymessage = "Nog geen transacties";
-    //}
-   
-  //} else {
-    //header("Location: alletransacties.php");
-  //}
-
 
 
   ?>
@@ -72,6 +45,24 @@ session_start();
 <section id="kader_details">
 
 <div id="details_kader">
+
+<?php
+
+
+$detWeergeven = Transaction::showDetails($_GET['id']);
+var_dump($detWeergeven);
+
+
+?>
+
+
+<div id="details_bedrag">
+  <p> Tokens: <br><?php echo $detWeergeven['bedrag']?> </p>
+  </div>
+
+<?php
+
+?>
 
 
 
