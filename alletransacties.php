@@ -61,6 +61,9 @@ session_start();
 
 <section id="kader_details">
 
+
+
+
 <div id="details_kader">
 
 <?php if(isset($emptymessage)) :?>
@@ -80,6 +83,8 @@ for($i=0, $count = count($transactieOntvanger);$i<$count;$i++):
 if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
 
   ?>
+
+
   <div id="details_datum">
   <p> Uitvoerdatum: <br><?php echo $transactieVerzenders['datum']?> </p>
   </div>
@@ -118,9 +123,21 @@ if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($trans
   <div id="details_bedrag">
   <p> Tokens: <br><?php echo $transactieVerzenders['bedrag']?> </p>
   </div>
+
+
+
+
+
+
+
 <div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
 
 </div>
+
+
+
+
+
 
 <?php     
 } else{

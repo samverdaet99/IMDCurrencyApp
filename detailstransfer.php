@@ -126,6 +126,7 @@ if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($trans
 
 </div>
 
+
 <?php     
 } else{
   
