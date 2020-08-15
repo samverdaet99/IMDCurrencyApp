@@ -130,7 +130,10 @@ if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($trans
 
 
 
-<div class="btndetails"><a href="detailstransfer.php">Bekijk details</a></div>
+<div class="btndetails"><a href="detailstransfer.php?id="
+<?php echo $transactieVerzenders['id']?>
+
+>Bekijk details</a></div>
 
 </div>
 

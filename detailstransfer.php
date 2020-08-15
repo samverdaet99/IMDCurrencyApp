@@ -2,12 +2,13 @@
 include_once (__DIR__ . "/classes/User.php");
 include_once (__DIR__ . "/classes/Transaction.php");
  
-  
-//$transfer = new Transaction();
+
 session_start();
 
     $transfer = new Transaction();
     $allTransfers = $transfer->getTransfers();
+
+    $user = new User();
 
     $transactieVerzender = Transaction::transactiesVerzender($transfer);
     $transactieOntvanger = Transaction::transactiesOntvanger($transfer);
@@ -19,22 +20,6 @@ session_start();
     {
     $emptymessage = "Nog geen transacties";
     }
-
-//if(isset($_SESSION['transfer'])){
-  //if (!empty($_POST)) {
-
-   // $transfer = new Transaction();
-
-    //$allTransfers = $transfer->getTransfers($_SESSION['transfer']);
-
-    //if ($allTransfers == null)
-    //{
-    //$emptymessage = "Nog geen transacties";
-    //}
-   
-  //} else {
-    //header("Location: alletransacties.php");
-  //}
 
 
   ?>
@@ -48,90 +33,91 @@ session_start();
 </head>
 <body>
 
+
 <div id="terug"><a href="alletransacties.php">&#8592;</a></div>
 
+
 <div id="paginatitel">
-  <h1>Details</h1>
-  <p>Hieronder vindt u een gedetailleerde weergave van de transacties.</p>
+	<h1>Details</h1>
+	<p>Hieronder vindt u een gedetailleerde weergave van de transacties.</p>
 </div>
 
 <section id="kader_details">
 
 <div id="details_kader">
 
-<?php if(isset($emptymessage)) :?>
-        <h2 class="emptyMessage"><?php echo $emptymessage; ?></h2>
-    <?php endif; ?>   
+<?php
 
-    <?php
 
-for($i=0, $count = count($transactieOntvanger);$i<$count;$i++):
-          $transactieOntvangers = $transactieOntvanger[$i];
-          $transactieVerzenders = $transactieVerzender[$i];
+$detWeergeven = Transaction::showDetails($_GET['id']);
+//var_dump($detWeergeven);
 
-      
+foreach($detWeergeven as $detWeergeven2) { ?>
 
-if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
 
-  ?>
-  <div id="details_datum">
-  <p> Uitvoerdatum: <br><?php echo $transactieVerzenders['datum']?> </p>
+<div id="details_bedrag">
+
+<?php
+$details=$transfer->showDetails($detWeergeven2['id']);
+?>
+
+
+<div id="details_datum">
+  <p> Uitvoerdatum: <br><?php echo $detWeergeven2['datum']?> </p>
   </div>
-
 
 
   <div id="details_gegevens">
 
  
         
-            <?php 
-            {
-                
-                 ?>
-
-                    <?php echo  " verzender: ";
-                      echo $transactieVerzenders['username'];
-                      
-                          
-                    
-           } 
-     {                  echo  "<br> ontvanger: ";
-                         echo  $transactieOntvangers['username']; ; ?>
-
-                <?php           
-            } 
-           ?>
+<?php 
+{
     
-       
+     ?>
+
+        <?php echo  " verzender: ";
+         echo $detWeergeven2['user_verzender'];
+          
+              
+        
+} 
+{                  echo  "<br> ontvanger: ";
+              echo $detWeergeven2['user_ontvanger']; ; ?>
+
+
+    <?php           
+} 
+?>
+
+
+<div id="details_bedrag">
+  <p> Tokens: <br><?php echo $detWeergeven2['bedrag']?> </p>
+  </div>
+
+
+  <div id="details_beschrijving">
+  <p> Tokens: <br><?php echo $detWeergeven2['description']?> </p>
+  </div>
+
+
   
-
-    <div id="details_beschrijving">
-  <p> Beschrijving van de transactie: <br><?php echo $transactieVerzenders['description'];?> </p>
   </div>
 
-  <div id="details_bedrag">
-  <p> Aantal tokens: <br><?php echo $transactieVerzenders['bedrag']?> </p>
-  </div>
+<?php
+}
+?>
+
+
 
 
 </div>
 
-<?php     
-} else{
-  
-}
-endfor; 
 
-?>
  
 
-  
-  
-
-
-  
-
 </section>    
+
 
     
 </body>
