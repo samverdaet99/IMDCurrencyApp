@@ -63,87 +63,15 @@ session_start();
 
 <div id="details_kader">
 
-<?php if(isset($emptymessage)) :?>
-        <h2 class="emptyMessage"><?php echo $emptymessage; ?></h2>
-    <?php endif; ?>   
-
-
-    <?php
-
-
-for($i=0, $count = count($transactieOntvanger);$i<$count;$i++):
-          $transactieOntvangers = $transactieOntvanger[$i];
-          $transactieVerzenders = $transactieVerzender[$i];
-
-      
-
-if (($transactieOntvangers['user_ontvanger']  == $_SESSION['userid']) || ($transactieVerzenders['user_verzender'] == $_SESSION['userid'])){
-
-  ?>
-  <div id="details_datum">
-  <p> Uitvoerdatum: <br><?php echo $transactieVerzenders['datum']?> </p>
-  </div>
-
-
-
-
-  <div id="details_gegevens">
-
- 
-        
-            <?php 
-            {
-                
-                 ?>
-
-                    <?php echo  " verzender: ";
-                      echo $transactieVerzenders['username'];
-                      
-                          
-                    
-           } 
-     {                  echo  "<br> ontvanger: ";
-                         echo  $transactieOntvangers['username']; ; ?>
-
-
-                <?php           
-            } 
-           ?>
-    
-       
-  
-
-    <div id="details_beschrijving">
-  <p> Beschrijving van de transactie: <br><?php echo $transactieVerzenders['description'];?> </p>
-  </div>
-
-
-  <div id="details_bedrag">
-  <p> Aantal tokens: <br><?php echo $transactieVerzenders['bedrag']?> </p>
-  </div>
-
-
-
-</div>
-
-
-<?php     
-} else{
-  
-}
-endfor; 
+<?php
+$result = $transfer->showDetails($_GET['id']);
 
 
 ?>
+</div>
+
+
  
-
-
-  
-  
-
-
-
-  
 
 </section>    
 
