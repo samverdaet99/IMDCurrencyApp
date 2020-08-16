@@ -57,6 +57,7 @@ session_start();
 
 
 	  $transaction = new Transaction();
+	  $transaction->setUser_ontvanger($_POST['searchField']);
 	  $transaction->setBedrag($_POST['bedrag']);
 	  Transaction::updateTokens($transaction);
 	  Transaction::updateTokensOntvanger($transaction);
