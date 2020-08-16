@@ -47,8 +47,7 @@ if(!empty($_POST)){
 
 	<div id="welkomtekst">
 	<h1>Welkom terug bij IMDcurrency!</h1>
-	<h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit incidunt in consequuntur nobis debitis odit architecto voluptates quidem alias magnam, hic at tempore non voluptate dolores perspiciatis, dolorum veniam repudiandae?</h2>
-	<p>Vul onderstaande velden in om verder te gaan</p>
+	<h2>Fijn dat je gebruik wilt maken van de IMDCurrency app! De app waar je online geld <br> kan ontvangen of versturen naar al je vrienden. </p>
 	</div>
         
         <div id="form_inloggen">

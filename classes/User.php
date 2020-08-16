@@ -68,7 +68,7 @@ private $transfer_id;
         }
 
         if ($emailCheck === false) { 
-            throw new Exception ("Vul een geldig email adress in, , het emailadres hoort te eindigen met ' @student.thomasmore.be ' ");
+            throw new Exception ("Vul een geldig emailadres in, , het emailadres hoort te eindigen met ' @student.thomasmore.be ' ");
         }
 
 
