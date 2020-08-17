@@ -9,7 +9,7 @@ if (!empty($_POST)){
     
     $searchUser = $_POST['text'];
 
-    $result = Search::autocompleteClass($searchUser);
+    $result = Search::autocompleteTest($searchUser);
 
     $resp_body = $result ? [$result] : [];
     $response = [

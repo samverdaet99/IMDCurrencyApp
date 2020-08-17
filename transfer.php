@@ -135,7 +135,7 @@ session_start();
             <div class="formfield">
                 <label for="username">Naar welke gebruiker wil je een bedrag overschrijven? (Bv: 'Max') <br></label>
                 <input class="formfield" type="text" name="searchField" placeholder="Zoek een gebruiker" id='searchUser' autocomplete="off">
-                <div><a class="" id="autocompleteClass"></a></div>
+                <div><a class="" id="autocompleteTest"></a></div>
 
 
             </div>

@@ -15,7 +15,7 @@ class Search
         return $count;
     }
 
-    public static function autocompleteClass($searchUser)
+    public static function autocompleteTest($searchUser)
     {
         $conn = Db::getConnection();
         $statement = $conn->prepare("SELECT username FROM users WHERE LOWER(username) LIKE LOWER(:username)");
