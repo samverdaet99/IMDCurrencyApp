@@ -1,7 +1,7 @@
 //auto complete lokaal vinder
-var autocompleteclass = document.querySelector("#autocompleteClass");
+var autocompletetest = document.querySelector("#autocompleteTest");
 
-//autocompleteclass.style.display = "none";
+//autocompletetest.style.display = "none";
 
 document.querySelector('#searchUser').addEventListener("keyup", event => {
         let input = document.querySelector('#searchUser').value;
@@ -15,13 +15,13 @@ document.querySelector('#searchUser').addEventListener("keyup", event => {
         }).then(response => response.json())
         .then(result => {
             console.log(result.body);
-            autocompleteclass.style.display = "block";
-            autocompleteclass.innerHTML = "";
+            autocompletetest.style.display = "block";
+            autocompletetest.innerHTML = "";
             result.body.forEach(element => {
                 let suggestion = document.createElement('a');
                 suggestion.innerHTML = element.username;
                 suggestion.setAttribute("href", "/transfer.php?searchField="+element.username+"&searchUser=Zoek");
-                autocompleteclass.appendChild(suggestion);
+                autocompletetest.appendChild(suggestion);
             });
         }).catch( error => {
             console.log("Error:", error);
