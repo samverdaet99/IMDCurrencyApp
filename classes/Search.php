@@ -19,7 +19,7 @@ class Search
     {
         $conn = Db::getConnection();
         $statement = $conn->prepare("SELECT username FROM users WHERE LOWER(username) LIKE LOWER(:username)");
-        $statement->bindValue(':username', '%' . $searchClass . '%');
+        $statement->bindValue(':username', '%' . $searchUser . '%');
         $statement->execute();
         $autocomplete = $statement->fetch(PDO::FETCH_ASSOC);
         return $autocomplete;
