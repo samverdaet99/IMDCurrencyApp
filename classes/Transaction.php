@@ -254,22 +254,6 @@ class Transaction{
 
         }
 
-    
-         // get user by name-------------
-
-         public function getUserUsername($username)
-         {
-           $conn = Db::getConnection();
-           $statement = $conn->prepare("select * from users where username = :username");
-           $username = $username;
-           $statement->bindValue(':username', $email);
-           $result = $statement->execute();
-           $user = $statement->fetch(PDO::FETCH_ASSOC);
-           return $user;
-       
-         }
-
-
          // get user by email-------------
 
          public function getUserByEmail($email)
